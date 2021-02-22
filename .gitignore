@@ -64,8 +64,12 @@ crashlytics-build.properties
 # Assets
 Assets/ConsolePro
 Assets/ConsolePro.meta
+Assets/Doozy
+Assets/Doozy.meta
 Assets/Editor
 Assets/Editor.meta
+Assets/Gizmos
+Assets/Gizmos.meta
 Assets/NCMB
 Assets/NCMB.meta
 Assets/Plugins
