@@ -1,6 +1,8 @@
 using Common;
 using Common.Extension;
 using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 using Game.Stage;
 using UniRx;
 using UniRx.Triggers;
@@ -13,6 +15,7 @@ namespace Game.Player
     {
         [SerializeField] private PlayerType playerType = default;
         public bool isGround;
+        private TweenerCore<Vector3, Vector3, VectorOptions> _tween;
 
         private Collider2D _collider2D;
         private PlayerMover _playerMover;
@@ -22,7 +25,7 @@ namespace Game.Player
         {
             _collider2D = GetComponent<Collider2D>();
             var rigidbody2d = GetComponent<Rigidbody2D>();
-            _playerMover = new PlayerMover(playerType, rigidbody2d);
+            _playerMover = new PlayerMover(playerType, rigidbody2d, transform);
             _playerRotator = new PlayerRotator(transform);
         }
 
@@ -41,9 +44,10 @@ namespace Game.Player
 
             // 接地したら位置を補正
             this.OnCollisionEnter2DAsObservable()
-                .Where(_ => isGround == false)
                 .Subscribe(_ =>
                 {
+                    _tween?.Kill();
+
                     isGround = true;
 
                     var roundPosition = transform.RoundPosition();
@@ -57,6 +61,11 @@ namespace Game.Player
         public void ActivateCollider(bool value)
         {
             _collider2D.enabled = value;
+        }
+
+        public void Move(MoveDirection moveDirection)
+        {
+            _tween = _playerMover.Move(moveDirection);
         }
 
         public void Rotate(RotateDirection rotateDirection)

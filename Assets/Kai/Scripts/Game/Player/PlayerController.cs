@@ -39,8 +39,8 @@ namespace Game.Player
                 .Merge(inputMoveLeft, moveLeft.onPush)
                 .Subscribe(_ =>
                 {
-                    //
                     moveLeft.Push();
+                    MovePlayer(MoveDirection.Left);
                 })
                 .AddTo(this);
 
@@ -50,8 +50,8 @@ namespace Game.Player
                 .Merge(inputMoveRight, moveRight.onPush)
                 .Subscribe(_ =>
                 {
-                    //
                     moveRight.Push();
+                    MovePlayer(MoveDirection.Right);
                 })
                 .AddTo(this);
         }
@@ -116,6 +116,14 @@ namespace Game.Player
             foreach (var player in _players)
             {
                 player.Rotate(rotateDirection);
+            }
+        }
+
+        private void MovePlayer(MoveDirection moveDirection)
+        {
+            foreach (var player in _players)
+            {
+                player.Move(moveDirection);
             }
         }
     }
