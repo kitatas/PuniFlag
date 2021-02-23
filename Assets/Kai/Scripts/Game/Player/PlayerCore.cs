@@ -1,6 +1,7 @@
 using Common;
 using Common.Extension;
 using DG.Tweening;
+using Game.Stage;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
@@ -13,15 +14,16 @@ namespace Game.Player
         [SerializeField] private PlayerType playerType = default;
         public bool isGround;
 
-        private Rigidbody2D _rigidbody2D;
         private Collider2D _collider2D;
         private PlayerMover _playerMover;
+        private PlayerRotator _playerRotator;
 
         private void Awake()
         {
-            _rigidbody2D = GetComponent<Rigidbody2D>();
             _collider2D = GetComponent<Collider2D>();
-            _playerMover = new PlayerMover(playerType, _rigidbody2D);
+            var rigidbody2d = GetComponent<Rigidbody2D>();
+            _playerMover = new PlayerMover(playerType, rigidbody2d);
+            _playerRotator = new PlayerRotator(transform);
         }
 
         private void Start()
@@ -39,6 +41,7 @@ namespace Game.Player
 
             // 接地したら位置を補正
             this.OnCollisionEnter2DAsObservable()
+                .Where(_ => isGround == false)
                 .Subscribe(_ =>
                 {
                     isGround = true;
@@ -46,7 +49,7 @@ namespace Game.Player
                     var roundPosition = transform.RoundPosition();
                     transform
                         .DOMove(roundPosition, Const.CORRECT_TIME)
-                        .SetEase(Ease.Linear);
+                        .OnComplete(() => _playerMover.ResetVelocity());
                 })
                 .AddTo(this);
         }
@@ -54,6 +57,11 @@ namespace Game.Player
         public void ActivateCollider(bool value)
         {
             _collider2D.enabled = value;
+        }
+
+        public void Rotate(RotateDirection rotateDirection)
+        {
+            _playerRotator.Rotate(rotateDirection);
         }
     }
 }

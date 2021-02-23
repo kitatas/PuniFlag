@@ -20,6 +20,11 @@ namespace Game.Player
             _rigidbody2D.AddForce(_gravity, ForceMode2D.Force);
         }
 
+        public void ResetVelocity()
+        {
+            _rigidbody2D.velocity = Vector2.zero;
+        }
+
         private static Vector3 GetGravity(PlayerType playerType)
         {
             switch (playerType)

@@ -66,6 +66,7 @@ namespace Game.Player
                 {
                     rotateLeft.Push();
                     InitActivatePlayer();
+                    UpdatePlayerRotate(RotateDirection.Left);
                 })
                 .AddTo(this);
 
@@ -77,6 +78,7 @@ namespace Game.Player
                 {
                     rotateRight.Push();
                     InitActivatePlayer();
+                    UpdatePlayerRotate(RotateDirection.Right);
                 })
                 .AddTo(this);
         }
@@ -89,7 +91,7 @@ namespace Game.Player
                 .AppendCallback(() =>
                 {
                     ActivatePlayerCollider(true);
-                    UpdateRotate();
+                    SetOnGravity();
                 });
         }
 
@@ -101,11 +103,19 @@ namespace Game.Player
             }
         }
 
-        private void UpdateRotate()
+        private void SetOnGravity()
         {
             foreach (var player in _players)
             {
                 player.isGround = false;
+            }
+        }
+
+        private void UpdatePlayerRotate(RotateDirection rotateDirection)
+        {
+            foreach (var player in _players)
+            {
+                player.Rotate(rotateDirection);
             }
         }
     }
