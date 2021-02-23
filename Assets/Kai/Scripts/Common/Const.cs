@@ -6,5 +6,6 @@ namespace Common
         
         public const float ROTATE_SPEED = 0.25f;
         public const float MOVE_SPEED = 0.25f;
+        public const float CORRECT_TIME = 0.1f;
     }
 }

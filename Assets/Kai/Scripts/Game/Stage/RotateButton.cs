@@ -21,10 +21,10 @@ namespace Game.Stage
         private ButtonAnimator _buttonAnimator;
 
         [Inject]
-        private void Construct(SeController seController, StageRotator stageRotator)
+        private void Construct(SeController seController)
         {
             _seController = seController;
-            _stageRotator = stageRotator;
+            _stageRotator = FindObjectOfType<StageRotator>();
             _buttonAnimator = GetComponent<ButtonAnimator>();
         }
 

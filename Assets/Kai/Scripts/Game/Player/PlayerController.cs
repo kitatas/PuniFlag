@@ -1,3 +1,5 @@
+using Common;
+using DG.Tweening;
 using Game.Stage;
 using UniRx;
 using UniRx.Triggers;
@@ -14,11 +16,13 @@ namespace Game.Player
         [SerializeField] private RotateButton rotateRight = default;
 
         private PlayerInput _playerInput;
+        private PlayerCore[] _players;
 
         [Inject]
         private void Construct(PlayerInput playerInput)
         {
             _playerInput = playerInput;
+            _players = FindObjectsOfType<PlayerCore>();
         }
 
         private void Start()
@@ -60,8 +64,8 @@ namespace Game.Player
                 .Merge(inputRotateLeft, rotateLeft.onPush)
                 .Subscribe(_ =>
                 {
-                    //
                     rotateLeft.Push();
+                    InitActivatePlayer();
                 })
                 .AddTo(this);
 
@@ -71,10 +75,38 @@ namespace Game.Player
                 .Merge(inputRotateRight, rotateRight.onPush)
                 .Subscribe(_ =>
                 {
-                    //
                     rotateRight.Push();
+                    InitActivatePlayer();
                 })
                 .AddTo(this);
+        }
+
+        private void InitActivatePlayer()
+        {
+            ActivatePlayerCollider(false);
+            DOTween.Sequence()
+                .AppendInterval(Const.ROTATE_SPEED)
+                .AppendCallback(() =>
+                {
+                    ActivatePlayerCollider(true);
+                    UpdateRotate();
+                });
+        }
+
+        private void ActivatePlayerCollider(bool value)
+        {
+            foreach (var player in _players)
+            {
+                player.ActivateCollider(value);
+            }
+        }
+
+        private void UpdateRotate()
+        {
+            foreach (var player in _players)
+            {
+                player.isGround = false;
+            }
         }
     }
 }

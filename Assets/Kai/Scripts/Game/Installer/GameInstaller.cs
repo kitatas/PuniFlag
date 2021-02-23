@@ -8,7 +8,6 @@ namespace Game.Installer
     public sealed class GameInstaller : MonoInstaller
     {
         [SerializeField] private PlayerController playerController = default;
-        [SerializeField] private StageRotator stageRotator = default;
 
         public override void InstallBindings()
         {
@@ -27,10 +26,6 @@ namespace Game.Installer
 
             #region Stage
 
-            Container
-                .Bind<StageRotator>()
-                .FromInstance(stageRotator)
-                .AsCached();
 
             #endregion
         }
