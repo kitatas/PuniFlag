@@ -78,6 +78,7 @@ namespace Game.Player
         public void Rotate(RotateDirection rotateDirection)
         {
             _playerRotator.Rotate(rotateDirection);
+            flag.Rotate(rotateDirection);
         }
     }
 }
