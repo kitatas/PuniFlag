@@ -1,6 +1,5 @@
 using System;
 using Common;
-using DG.Tweening;
 using Game.Stage;
 using UniRx;
 using UniRx.Triggers;
@@ -107,7 +106,11 @@ namespace Game.Player
             _isInput.Value = true;
             Observable
                 .Timer(TimeSpan.FromSeconds(Const.ROTATE_SPEED + 0.15f))
-                .Subscribe(_ => _isInput.Value = false)
+                .Subscribe(_ =>
+                {
+                    _isInput.Value = false;
+                    SetOnGravity();
+                })
                 .AddTo(this);
         }
 
@@ -122,13 +125,10 @@ namespace Game.Player
         private void InitActivatePlayer()
         {
             ActivatePlayerCollider(false);
-            DOTween.Sequence()
-                .AppendInterval(Const.ROTATE_SPEED)
-                .AppendCallback(() =>
-                {
-                    ActivatePlayerCollider(true);
-                    SetOnGravity();
-                });
+            Observable
+                .Timer(TimeSpan.FromSeconds(Const.ROTATE_SPEED + 0.15f))
+                .Subscribe(_ => ActivatePlayerCollider(true))
+                .AddTo(this);
         }
 
         private void ActivatePlayerCollider(bool value)
