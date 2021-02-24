@@ -9,6 +9,7 @@ using Zenject;
 namespace Game.Stage
 {
     [RequireComponent(typeof(Button))]
+    [RequireComponent(typeof(ButtonActivator))]
     [RequireComponent(typeof(ButtonAnimator))]
     public sealed class RotateButton : MonoBehaviour
     {
@@ -18,6 +19,7 @@ namespace Game.Stage
 
         private SeController _seController;
         private StageRotator _stageRotator;
+        private ButtonActivator _buttonActivator;
         private ButtonAnimator _buttonAnimator;
 
         [Inject]
@@ -25,6 +27,7 @@ namespace Game.Stage
         {
             _seController = seController;
             _stageRotator = FindObjectOfType<StageRotator>();
+            _buttonActivator = GetComponent<ButtonActivator>();
             _buttonAnimator = GetComponent<ButtonAnimator>();
         }
 
@@ -41,6 +44,11 @@ namespace Game.Stage
             _seController.PlaySe(SeType.Decision);
             _stageRotator.Rotate(rotateDirection);
             _buttonAnimator.Play();
+        }
+
+        public void Activate(bool value)
+        {
+            _buttonActivator.Activate(value);
         }
     }
 }
