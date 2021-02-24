@@ -11,6 +11,7 @@ using UnityEngine;
 namespace Game.Player
 {
     [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(PlayerView))]
     public sealed class PlayerCore : MonoBehaviour
     {
         [SerializeField] private PlayerType playerType = default;
@@ -18,12 +19,14 @@ namespace Game.Player
         private TweenerCore<Vector3, Vector3, VectorOptions> _tween;
 
         private Collider2D _collider2D;
+        private PlayerView _playerView;
         private PlayerMover _playerMover;
         private PlayerRotator _playerRotator;
 
         private void Awake()
         {
             _collider2D = GetComponent<Collider2D>();
+            _playerView = GetComponent<PlayerView>();
             var rigidbody2d = GetComponent<Rigidbody2D>();
             _playerMover = new PlayerMover(playerType, rigidbody2d, transform);
             _playerRotator = new PlayerRotator(transform);
@@ -66,6 +69,7 @@ namespace Game.Player
         public void Move(MoveDirection moveDirection)
         {
             _tween = _playerMover.Move(moveDirection);
+            _playerView.Flip(moveDirection);
         }
 
         public void Rotate(RotateDirection rotateDirection)
