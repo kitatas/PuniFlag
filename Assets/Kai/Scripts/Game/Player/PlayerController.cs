@@ -4,6 +4,7 @@ using System.Threading;
 using Common;
 using Cysharp.Threading.Tasks;
 using Game.Stage;
+using Game.View;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
@@ -17,6 +18,7 @@ namespace Game.Player
         [SerializeField] private MoveButton moveRight = default;
         [SerializeField] private RotateButton rotateLeft = default;
         [SerializeField] private RotateButton rotateRight = default;
+        [SerializeField] private ClearView clearView = default;
         private ReactiveProperty<bool> _isInput;
         private CancellationToken _token;
 
@@ -118,7 +120,7 @@ namespace Game.Player
 
             if (IsGoalAllPlayer())
             {
-                // TODO: ゴール処理
+                clearView.Show();
             }
             else
             {
