@@ -116,7 +116,14 @@ namespace Game.Player
 
             await UniTask.WaitUntil(IsGroundAllPlayer, cancellationToken: token);
 
-            _isInput.Value = false;
+            if (IsGoalAllPlayer())
+            {
+                // TODO: ゴール処理
+            }
+            else
+            {
+                _isInput.Value = false;
+            }
         }
 
         private void ActivateButton(bool value)
@@ -171,6 +178,11 @@ namespace Game.Player
             {
                 player.Move(moveDirection);
             }
+        }
+
+        private bool IsGoalAllPlayer()
+        {
+            return _players.All(player => player.IsGoal());
         }
     }
 }

@@ -15,6 +15,7 @@ namespace Game.Player
     public sealed class PlayerCore : MonoBehaviour
     {
         [SerializeField] private PlayerType playerType = default;
+        [SerializeField] private Flag flag = default;
         public bool isGround;
         private TweenerCore<Vector3, Vector3, VectorOptions> _tween;
 
@@ -60,6 +61,8 @@ namespace Game.Player
                 })
                 .AddTo(this);
         }
+
+        public bool IsGoal() => flag.EqualPosition(transform.RoundPosition());
 
         public void ActivateCollider(bool value)
         {
