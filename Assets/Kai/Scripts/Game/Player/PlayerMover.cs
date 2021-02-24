@@ -56,9 +56,9 @@ namespace Game.Player
             switch (moveDirection)
             {
                 case MoveDirection.Left:
-                    return -1.5f;
+                    return -1.0f;
                 case MoveDirection.Right:
-                    return 1.5f;
+                    return 1.0f;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(moveDirection), moveDirection, null);
             }
