@@ -13,7 +13,7 @@ namespace Game.Player
         private readonly Rigidbody2D _rigidbody2D;
         private readonly Transform _transform;
         private readonly Vector3 _gravity;
-        private readonly float _rate = 98.0f;
+        private readonly float _rate = 49.0f;
 
         public PlayerMover(PlayerType playerType, Rigidbody2D rigidbody2D, Transform transform)
         {

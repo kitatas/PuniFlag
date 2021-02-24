@@ -1,5 +1,8 @@
 using System;
+using System.Linq;
+using System.Threading;
 using Common;
+using Cysharp.Threading.Tasks;
 using Game.Stage;
 using UniRx;
 using UniRx.Triggers;
@@ -15,6 +18,7 @@ namespace Game.Player
         [SerializeField] private RotateButton rotateLeft = default;
         [SerializeField] private RotateButton rotateRight = default;
         private ReactiveProperty<bool> _isInput;
+        private CancellationToken _token;
 
         private PlayerInput _playerInput;
         private PlayerCore[] _players;
@@ -22,6 +26,8 @@ namespace Game.Player
         [Inject]
         private void Construct(PlayerInput playerInput)
         {
+            _isInput = new ReactiveProperty<bool>(false);
+            _token = this.GetCancellationTokenOnDestroy();
             _playerInput = playerInput;
             _players = FindObjectsOfType<PlayerCore>();
         }
@@ -35,7 +41,6 @@ namespace Game.Player
 
         private void InitButton()
         {
-            _isInput = new ReactiveProperty<bool>(false);
             _isInput
                 .Subscribe(x => ActivateButton(!x))
                 .AddTo(this);
@@ -52,7 +57,7 @@ namespace Game.Player
                 {
                     moveLeft.Push();
                     MovePlayer(MoveDirection.Left);
-                    SetButton();
+                    SetButtonAsync(_token).Forget();
                 })
                 .AddTo(this);
 
@@ -65,7 +70,7 @@ namespace Game.Player
                 {
                     moveRight.Push();
                     MovePlayer(MoveDirection.Right);
-                    SetButton();
+                    SetButtonAsync(_token).Forget();
                 })
                 .AddTo(this);
         }
@@ -82,7 +87,7 @@ namespace Game.Player
                     rotateLeft.Push();
                     ActivatePlayerCollider();
                     RotatePlayer(RotateDirection.Left);
-                    SetButton();
+                    SetButtonAsync(_token).Forget();
                 })
                 .AddTo(this);
 
@@ -96,22 +101,22 @@ namespace Game.Player
                     rotateRight.Push();
                     ActivatePlayerCollider();
                     RotatePlayer(RotateDirection.Right);
-                    SetButton();
+                    SetButtonAsync(_token).Forget();
                 })
                 .AddTo(this);
         }
 
-        private void SetButton()
+        private async UniTaskVoid SetButtonAsync(CancellationToken token)
         {
             _isInput.Value = true;
-            Observable
-                .Timer(TimeSpan.FromSeconds(Const.ROTATE_SPEED + 0.15f))
-                .Subscribe(_ =>
-                {
-                    _isInput.Value = false;
-                    SetOnGravity();
-                })
-                .AddTo(this);
+
+            await UniTask.Delay(TimeSpan.FromSeconds(Const.ROTATE_SPEED), cancellationToken: token);
+
+            SetOnGravity();
+
+            await UniTask.WaitUntil(IsGroundAllPlayer, cancellationToken: token);
+
+            _isInput.Value = false;
         }
 
         private void ActivateButton(bool value)
@@ -145,6 +150,11 @@ namespace Game.Player
             {
                 player.isGround = false;
             }
+        }
+
+        private bool IsGroundAllPlayer()
+        {
+            return _players.All(player => player.isGround);
         }
 
         private void RotatePlayer(RotateDirection rotateDirection)
