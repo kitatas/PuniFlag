@@ -80,8 +80,8 @@ namespace Game.Player
                 .Subscribe(_ =>
                 {
                     rotateLeft.Push();
-                    InitActivatePlayer();
-                    UpdatePlayerRotate(RotateDirection.Left);
+                    ActivatePlayerCollider();
+                    RotatePlayer(RotateDirection.Left);
                     SetButton();
                 })
                 .AddTo(this);
@@ -94,8 +94,8 @@ namespace Game.Player
                 .Subscribe(_ =>
                 {
                     rotateRight.Push();
-                    InitActivatePlayer();
-                    UpdatePlayerRotate(RotateDirection.Right);
+                    ActivatePlayerCollider();
+                    RotatePlayer(RotateDirection.Right);
                     SetButton();
                 })
                 .AddTo(this);
@@ -122,7 +122,7 @@ namespace Game.Player
             rotateRight.Activate(value);
         }
 
-        private void InitActivatePlayer()
+        private void ActivatePlayerCollider()
         {
             ActivatePlayerCollider(false);
             Observable
@@ -147,7 +147,7 @@ namespace Game.Player
             }
         }
 
-        private void UpdatePlayerRotate(RotateDirection rotateDirection)
+        private void RotatePlayer(RotateDirection rotateDirection)
         {
             foreach (var player in _players)
             {
