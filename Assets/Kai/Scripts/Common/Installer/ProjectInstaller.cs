@@ -42,7 +42,7 @@ namespace Common.Installer
                 .AsCached();
 
             #endregion
-            
+
             #region MoveCount
 
             Container
@@ -58,6 +58,15 @@ namespace Common.Installer
                 .Bind<StepCountPresenter>()
                 .AsCached()
                 .NonLazy();
+
+            #endregion
+
+            #region Level
+
+            Container
+                .Bind<int>()
+                .AsCached()
+                .IfNotBound();
 
             #endregion
         }

@@ -26,6 +26,10 @@ namespace Game.Installer
 
             #region Stage
 
+            Container
+                .Bind<StageLoader>()
+                .AsCached()
+                .NonLazy();
 
             #endregion
         }

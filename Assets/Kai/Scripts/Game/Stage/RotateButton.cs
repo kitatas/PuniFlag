@@ -26,9 +26,13 @@ namespace Game.Stage
         private void Construct(SeController seController)
         {
             _seController = seController;
-            _stageRotator = FindObjectOfType<StageRotator>();
             _buttonActivator = GetComponent<ButtonActivator>();
             _buttonAnimator = GetComponent<ButtonAnimator>();
+        }
+
+        private void Awake()
+        {
+            _stageRotator = FindObjectOfType<StageRotator>();
         }
 
         private void Start()

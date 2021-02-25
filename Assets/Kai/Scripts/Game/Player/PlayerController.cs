@@ -33,8 +33,12 @@ namespace Game.Player
             _isInput = new ReactiveProperty<bool>(false);
             _token = this.GetCancellationTokenOnDestroy();
             _playerInput = playerInput;
-            _players = FindObjectsOfType<PlayerCore>();
             _stepCountModel = stepCountModel;
+        }
+
+        private void Awake()
+        {
+            _players = FindObjectsOfType<PlayerCore>();
         }
 
         private void Start()
