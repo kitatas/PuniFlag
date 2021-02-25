@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.StepCount;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace Common.Transition
@@ -28,17 +29,20 @@ namespace Common.Transition
             _tokenSource?.Dispose();
         }
 
-        public void LoadScene(SceneName sceneName)
+        public void LoadScene(SceneName sceneName, int level = 0)
         {
-            LoadSceneAsync(sceneName, _tokenSource.Token).Forget();
+            LoadSceneAsync(sceneName, level, _tokenSource.Token).Forget();
         }
 
-        private async UniTaskVoid LoadSceneAsync(SceneName sceneName, CancellationToken token)
+        private async UniTaskVoid LoadSceneAsync(SceneName sceneName, int level, CancellationToken token)
         {
             _stepCountPresenter.TweenCenter();
             await _transitionMask.FadeInAsync(token);
 
-            await _zenjectSceneLoader.LoadSceneAsync(sceneName.ToString());
+            await _zenjectSceneLoader.LoadSceneAsync(sceneName.ToString(), LoadSceneMode.Single, container =>
+            {
+                container.BindInstance(level);
+            });
 
             await UniTask.Delay(TimeSpan.FromSeconds(Const.FADE_TIME), cancellationToken: token);
 
