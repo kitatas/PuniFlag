@@ -4,6 +4,7 @@ using System.Threading;
 using Common;
 using Cysharp.Threading.Tasks;
 using Game.Stage;
+using Game.StepCount;
 using Game.View;
 using UniRx;
 using UniRx.Triggers;
@@ -24,14 +25,16 @@ namespace Game.Player
 
         private PlayerInput _playerInput;
         private PlayerCore[] _players;
+        private StepCountModel _stepCountModel;
 
         [Inject]
-        private void Construct(PlayerInput playerInput)
+        private void Construct(PlayerInput playerInput, StepCountModel stepCountModel)
         {
             _isInput = new ReactiveProperty<bool>(false);
             _token = this.GetCancellationTokenOnDestroy();
             _playerInput = playerInput;
             _players = FindObjectsOfType<PlayerCore>();
+            _stepCountModel = stepCountModel;
         }
 
         private void Start()
@@ -111,6 +114,7 @@ namespace Game.Player
         private async UniTaskVoid SetButtonAsync(CancellationToken token)
         {
             _isInput.Value = true;
+            _stepCountModel.CountUp();
 
             await UniTask.Delay(TimeSpan.FromSeconds(Const.ROTATE_SPEED), cancellationToken: token);
 

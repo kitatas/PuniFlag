@@ -24,9 +24,19 @@ namespace Common.Transition
         {
             await DOTween.Sequence()
                 .Append(up
-                    .DOAnchorPosY(100.0f, Const.FADE_TIME))
+                    .DOAnchorPosY(90.0f, Const.FADE_TIME))
                 .Join(down
-                    .DOAnchorPosY(-100.0f, Const.FADE_TIME))
+                    .DOAnchorPosY(-90.0f, Const.FADE_TIME))
+                .WithCancellation(token);
+        }
+
+        public async UniTask FadeOutAllAsync(CancellationToken token)
+        {
+            await DOTween.Sequence()
+                .Append(up
+                    .DOAnchorPosY(110.0f, Const.FADE_TIME))
+                .Join(down
+                    .DOAnchorPosY(-110.0f, Const.FADE_TIME))
                 .WithCancellation(token);
         }
     }

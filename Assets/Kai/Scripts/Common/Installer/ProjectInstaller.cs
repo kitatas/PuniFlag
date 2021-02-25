@@ -1,6 +1,7 @@
 using Common.Sound.BGM;
 using Common.Sound.SE;
 using Common.Transition;
+using Game.StepCount;
 using UnityEngine;
 using Zenject;
 
@@ -11,6 +12,7 @@ namespace Common.Installer
         [SerializeField] private BgmController bgmController = default;
         [SerializeField] private SeController seController = default;
         [SerializeField] private TransitionMask transitionMask = default;
+        [SerializeField] private StepCountView stepCountView = default;
 
         public override void InstallBindings()
         {
@@ -38,6 +40,24 @@ namespace Common.Installer
                 .Bind<TransitionMask>()
                 .FromInstance(transitionMask)
                 .AsCached();
+
+            #endregion
+            
+            #region MoveCount
+
+            Container
+                .Bind<StepCountModel>()
+                .AsCached();
+
+            Container
+                .Bind<StepCountView>()
+                .FromInstance(stepCountView)
+                .AsCached();
+
+            Container
+                .Bind<StepCountPresenter>()
+                .AsCached()
+                .NonLazy();
 
             #endregion
         }
