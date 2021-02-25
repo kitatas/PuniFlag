@@ -9,5 +9,7 @@ namespace Game.Player
 
         public bool isRotateLeft => Input.GetKeyDown(KeyCode.Q);
         public bool isRotateRight => Input.GetKeyDown(KeyCode.E);
+
+        public bool isReset => Input.GetKeyDown(KeyCode.Space);
     }
 }

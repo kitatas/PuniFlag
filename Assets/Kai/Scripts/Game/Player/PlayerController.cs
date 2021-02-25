@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Threading;
 using Common;
+using Common.Transition;
 using Cysharp.Threading.Tasks;
 using Game.Stage;
 using Game.StepCount;
@@ -19,6 +20,7 @@ namespace Game.Player
         [SerializeField] private MoveButton moveRight = default;
         [SerializeField] private RotateButton rotateLeft = default;
         [SerializeField] private RotateButton rotateRight = default;
+        [SerializeField] private LoadButton resetButton = default;
         [SerializeField] private ClearView clearView = default;
         private ReactiveProperty<bool> _isInput;
         private CancellationToken _token;
@@ -52,6 +54,19 @@ namespace Game.Player
         {
             _isInput
                 .Subscribe(x => ActivateButton(!x))
+                .AddTo(this);
+
+            var inputReset = this.UpdateAsObservable()
+                .Where(_ => _playerInput.isReset);
+            Observable
+                .Merge(inputReset, resetButton.onPush)
+                .Where(_ => _isInput.Value == false)
+                .Subscribe(_ =>
+                {
+                    resetButton.Push();
+                    _isInput.Value = true;
+                    _stepCountModel.CountUp();
+                })
                 .AddTo(this);
         }
 
@@ -142,6 +157,7 @@ namespace Game.Player
             moveRight.Activate(value);
             rotateLeft.Activate(value);
             rotateRight.Activate(value);
+            resetButton.Activate(value);
         }
 
         private void ActivatePlayerCollider()

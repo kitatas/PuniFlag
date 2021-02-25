@@ -7,13 +7,21 @@ using Zenject;
 
 namespace Common.Transition
 {
+    [RequireComponent(typeof(Button))]
+    [RequireComponent(typeof(ButtonActivator))]
     [RequireComponent(typeof(ButtonAnimator))]
     public sealed class LoadButton : MonoBehaviour
     {
         [SerializeField] private SceneName sceneName = default;
         [SerializeField] private LoadType loadType = default;
+        [SerializeField] private bool isLoad = true;
+
+        private readonly Subject<Unit> _subject = new Subject<Unit>();
+        public IObservable<Unit> onPush => _subject;
+
         private int _level;
         private SceneLoader _sceneLoader;
+        private ButtonActivator _buttonActivator;
         private ButtonAnimator _buttonAnimator;
 
         [Inject]
@@ -21,6 +29,7 @@ namespace Common.Transition
         {
             _level = level;
             _sceneLoader = sceneLoader;
+            _buttonActivator = GetComponent<ButtonActivator>();
             _buttonAnimator = GetComponent<ButtonAnimator>();
         }
 
@@ -30,10 +39,19 @@ namespace Common.Transition
                 .OnClickAsObservable()
                 .Subscribe(_ =>
                 {
-                    LoadScene();
-                    _buttonAnimator.Play();
+                    _subject.OnNext(Unit.Default);
+                    if (isLoad)
+                    {
+                        Push();
+                    }
                 })
                 .AddTo(this);
+        }
+
+        public void Push()
+        {
+            LoadScene();
+            _buttonAnimator.Play();
         }
 
         private void LoadScene()
@@ -54,6 +72,11 @@ namespace Common.Transition
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+        }
+
+        public void Activate(bool value)
+        {
+            _buttonActivator.Activate(value);
         }
     }
 }
