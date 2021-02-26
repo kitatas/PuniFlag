@@ -1,5 +1,6 @@
 using System;
 using Common.View.Button;
+using Game.Stage.Level;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,15 +20,15 @@ namespace Common.Transition
         private readonly Subject<Unit> _subject = new Subject<Unit>();
         public IObservable<Unit> onPush => _subject;
 
-        private int _level;
+        private LevelModel _levelModel;
         private SceneLoader _sceneLoader;
         private ButtonActivator _buttonActivator;
         private ButtonAnimator _buttonAnimator;
 
         [Inject]
-        private void Construct(int level, SceneLoader sceneLoader)
+        private void Construct(LevelModel levelModel, SceneLoader sceneLoader)
         {
-            _level = level;
+            _levelModel = levelModel;
             _sceneLoader = sceneLoader;
             _buttonActivator = GetComponent<ButtonActivator>();
             _buttonAnimator = GetComponent<ButtonAnimator>();
@@ -62,12 +63,11 @@ namespace Common.Transition
                     _sceneLoader.LoadScene(sceneName);
                     break;
                 case LoadType.Next:
-                    var nextLevel = _level + 1;
-                    var loadLevel = nextLevel < Const.STAGE_COUNT ? nextLevel : 0;
-                    _sceneLoader.LoadScene(sceneName, loadLevel);
+                    _levelModel.LevelUp();
+                    _sceneLoader.LoadScene(sceneName, _levelModel.GetLevel());
                     break;
                 case LoadType.Reload:
-                    _sceneLoader.LoadScene(sceneName, _level);
+                    _sceneLoader.LoadScene(sceneName, _levelModel.GetLevel());
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

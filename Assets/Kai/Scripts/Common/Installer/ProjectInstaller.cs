@@ -1,6 +1,7 @@
 using Common.Sound.BGM;
 using Common.Sound.SE;
 using Common.Transition;
+using Game.Stage.Level;
 using Game.StepCount;
 using UnityEngine;
 using Zenject;
@@ -13,6 +14,7 @@ namespace Common.Installer
         [SerializeField] private SeController seController = default;
         [SerializeField] private TransitionMask transitionMask = default;
         [SerializeField] private StepCountView stepCountView = default;
+        [SerializeField] private LevelView levelView = default;
 
         public override void InstallBindings()
         {
@@ -64,9 +66,18 @@ namespace Common.Installer
             #region Level
 
             Container
-                .Bind<int>()
+                .Bind<LevelModel>()
+                .AsCached();
+
+            Container
+                .Bind<LevelView>()
+                .FromInstance(levelView)
+                .AsCached();
+
+            Container
+                .Bind<LevelPresenter>()
                 .AsCached()
-                .IfNotBound();
+                .NonLazy();
 
             #endregion
         }
