@@ -44,7 +44,7 @@ namespace Common.Transition
                 container.BindInstance(level);
             });
 
-            await UniTask.Delay(TimeSpan.FromSeconds(Const.FADE_TIME), cancellationToken: token);
+            await UniTask.Delay(TimeSpan.FromSeconds(Const.INTERVAL), cancellationToken: token);
 
             switch (sceneName)
             {

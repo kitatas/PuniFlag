@@ -51,13 +51,13 @@ namespace Common.Transition
 
         public void Push()
         {
-            LoadScene();
+            LoadScene(loadType);
             _buttonAnimator.Play();
         }
 
-        private void LoadScene()
+        public void LoadScene(LoadType type)
         {
-            switch (loadType)
+            switch (type)
             {
                 case LoadType.Direct:
                     _sceneLoader.LoadScene(sceneName);

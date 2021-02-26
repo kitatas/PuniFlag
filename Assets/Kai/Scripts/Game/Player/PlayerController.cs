@@ -28,14 +28,16 @@ namespace Game.Player
         private PlayerInput _playerInput;
         private PlayerCore[] _players;
         private StepCountModel _stepCountModel;
+        private SceneLoader _sceneLoader;
 
         [Inject]
-        private void Construct(PlayerInput playerInput, StepCountModel stepCountModel)
+        private void Construct(PlayerInput playerInput, StepCountModel stepCountModel, SceneLoader sceneLoader)
         {
             _isInput = new ReactiveProperty<bool>(false);
             _token = this.GetCancellationTokenOnDestroy();
             _playerInput = playerInput;
             _stepCountModel = stepCountModel;
+            _sceneLoader = sceneLoader;
         }
 
         private void Awake()
@@ -143,7 +145,7 @@ namespace Game.Player
 
             if (IsGoalAllPlayer())
             {
-                clearView.Show();
+                ClearAsync(_token).Forget();
             }
             else
             {
@@ -209,6 +211,15 @@ namespace Game.Player
         private bool IsGoalAllPlayer()
         {
             return _players.All(player => player.IsGoal());
+        }
+
+        private async UniTaskVoid ClearAsync(CancellationToken token)
+        {
+            clearView.Show();
+
+            await UniTask.Delay(TimeSpan.FromSeconds(Const.INTERVAL), cancellationToken: token);
+
+            resetButton.LoadScene(LoadType.Next);
         }
     }
 }
