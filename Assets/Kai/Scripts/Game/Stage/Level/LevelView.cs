@@ -14,10 +14,28 @@ namespace Game.Stage.Level
             stageLevelText.text = $"{level + 1:00} / {Const.STAGE_COUNT:00}";
         }
 
+        public void ShowClear()
+        {
+            stageText.enabled = true;
+            stageLevelText.enabled = false;
+            stageText.text = $"game clear";
+        }
+
+        public void Show()
+        {
+            stageText.text = $"stage";
+            Activate(true);
+        }
+
         public void Hide()
         {
-            stageText.enabled = false;
-            stageLevelText.enabled = false;
+            Activate(false);
+        }
+
+        private void Activate(bool value)
+        {
+            stageText.enabled = value;
+            stageLevelText.enabled = value;
         }
     }
 }

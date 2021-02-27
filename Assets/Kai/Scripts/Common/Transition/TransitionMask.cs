@@ -12,6 +12,9 @@ namespace Common.Transition
 
         public async UniTask FadeInAsync(CancellationToken token)
         {
+            up.sizeDelta = new Vector2(320.0f, 181.0f);
+            down.sizeDelta = new Vector2(320.0f, 181.0f);
+
             await DOTween.Sequence()
                 .Append(up
                     .DOAnchorPosY(0.0f, Const.FADE_TIME))
@@ -22,6 +25,9 @@ namespace Common.Transition
 
         public async UniTask FadeOutAsync(CancellationToken token)
         {
+            up.sizeDelta = new Vector2(320.0f, 180.0f);
+            down.sizeDelta = new Vector2(320.0f, 180.0f);
+
             await DOTween.Sequence()
                 .Append(up
                     .DOAnchorPosY(90.0f, Const.FADE_TIME))
@@ -32,6 +38,9 @@ namespace Common.Transition
 
         public async UniTask FadeOutAllAsync(CancellationToken token)
         {
+            up.sizeDelta = new Vector2(320.0f, 180.0f);
+            down.sizeDelta = new Vector2(320.0f, 180.0f);
+
             await DOTween.Sequence()
                 .Append(up
                     .DOAnchorPosY(110.0f, Const.FADE_TIME))

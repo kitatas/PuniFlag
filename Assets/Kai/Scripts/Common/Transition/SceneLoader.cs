@@ -43,7 +43,15 @@ namespace Common.Transition
 
         private async UniTaskVoid LoadSceneAsync(SceneName sceneName, int level, CancellationToken token)
         {
-            _stepCountView.TweenCenter();
+            if (sceneName == SceneName.Title)
+            {
+                _levelView.Hide();
+            }
+            else
+            {
+                _stepCountView.TweenCenter();
+            }
+
             await _transitionMask.FadeInAsync(token);
 
             await _zenjectSceneLoader.LoadSceneAsync(sceneName.ToString(), LoadSceneMode.Single, container =>
@@ -56,12 +64,14 @@ namespace Common.Transition
             switch (sceneName)
             {
                 case SceneName.Title:
+                    _stepCountView.Hide(Const.UI_ANIMATION_TIME);
                     await _transitionMask.FadeOutAllAsync(token);
                     _stepCountModel.ResetStepCount();
                     _levelModel.ResetLevel();
+                    _levelView.Show();
                     break;
                 case SceneName.Main:
-                    _stepCountView.TweenBottom();
+                    _stepCountView.TweenTop();
                     await _transitionMask.FadeOutAsync(token);
                     break;
                 default:
@@ -76,7 +86,7 @@ namespace Common.Transition
 
         private async UniTaskVoid LoadResultAsync(CancellationToken token)
         {
-            _levelView.Hide();
+            _levelView.ShowClear();
             _stepCountView.TweenCenter();
             await _transitionMask.FadeInAsync(token);
 
@@ -85,6 +95,7 @@ namespace Common.Transition
             await UniTask.Delay(TimeSpan.FromSeconds(Const.INTERVAL), cancellationToken: token);
 
             await _transitionMask.FadeOutAllAsync(token);
+            _stepCountView.Hide();
         }
     }
 }
