@@ -215,7 +215,7 @@ namespace Game.Player
 
         private async UniTaskVoid ClearAsync(CancellationToken token)
         {
-            clearView.Show();
+            await clearView.ShowAsync(token);
 
             await UniTask.Delay(TimeSpan.FromSeconds(Const.INTERVAL), cancellationToken: token);
 
