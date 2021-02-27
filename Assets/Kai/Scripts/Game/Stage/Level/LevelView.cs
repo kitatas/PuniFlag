@@ -1,3 +1,4 @@
+using Common;
 using TMPro;
 using UnityEngine;
 
@@ -10,7 +11,13 @@ namespace Game.Stage.Level
 
         public void DisplayLevel(int level)
         {
-            stageLevelText.text = $"Stage {level + 1:00}";
+            stageLevelText.text = $"{level + 1:00} / {Const.STAGE_COUNT:00}";
+        }
+
+        public void Hide()
+        {
+            stageText.enabled = false;
+            stageLevelText.enabled = false;
         }
     }
 }

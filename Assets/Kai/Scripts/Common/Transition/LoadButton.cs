@@ -64,7 +64,15 @@ namespace Common.Transition
                     break;
                 case LoadType.Next:
                     _levelModel.LevelUp();
-                    _sceneLoader.LoadScene(sceneName, _levelModel.GetLevel());
+                    var level = _levelModel.GetLevel();
+                    if (level < Const.STAGE_COUNT)
+                    {
+                        _sceneLoader.LoadScene(sceneName, level);
+                    }
+                    else
+                    {
+                        _sceneLoader.LoadResult();
+                    }
                     break;
                 case LoadType.Reload:
                     _sceneLoader.LoadScene(sceneName, _levelModel.GetLevel());

@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Game.Stage.Level;
 using Game.StepCount;
 using UnityEngine.SceneManagement;
 using Zenject;
@@ -12,15 +13,21 @@ namespace Common.Transition
         private readonly CancellationTokenSource _tokenSource;
         private readonly ZenjectSceneLoader _zenjectSceneLoader;
         private readonly TransitionMask _transitionMask;
-        private readonly StepCountPresenter _stepCountPresenter;
+        private readonly StepCountModel _stepCountModel;
+        private readonly StepCountView _stepCountView;
+        private readonly LevelModel _levelModel;
+        private readonly LevelView _levelView;
 
         public SceneLoader(ZenjectSceneLoader zenjectSceneLoader, TransitionMask transitionMask,
-            StepCountPresenter stepCountPresenter)
+            StepCountModel stepCountModel, StepCountView stepCountView, LevelModel levelModel, LevelView levelView)
         {
             _tokenSource = new CancellationTokenSource();
             _zenjectSceneLoader = zenjectSceneLoader;
             _transitionMask = transitionMask;
-            _stepCountPresenter = stepCountPresenter;
+            _stepCountModel = stepCountModel;
+            _stepCountView = stepCountView;
+            _levelModel = levelModel;
+            _levelView = levelView;
         }
 
         ~SceneLoader()
@@ -36,7 +43,7 @@ namespace Common.Transition
 
         private async UniTaskVoid LoadSceneAsync(SceneName sceneName, int level, CancellationToken token)
         {
-            _stepCountPresenter.TweenCenter();
+            _stepCountView.TweenCenter();
             await _transitionMask.FadeInAsync(token);
 
             await _zenjectSceneLoader.LoadSceneAsync(sceneName.ToString(), LoadSceneMode.Single, container =>
@@ -50,15 +57,34 @@ namespace Common.Transition
             {
                 case SceneName.Title:
                     await _transitionMask.FadeOutAllAsync(token);
-                    _stepCountPresenter.ResetCount();
+                    _stepCountModel.ResetStepCount();
+                    _levelModel.ResetLevel();
                     break;
                 case SceneName.Main:
-                    _stepCountPresenter.TweenBottom();
+                    _stepCountView.TweenBottom();
                     await _transitionMask.FadeOutAsync(token);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(sceneName), sceneName, null);
             }
+        }
+
+        public void LoadResult()
+        {
+            LoadResultAsync(_tokenSource.Token).Forget();
+        }
+
+        private async UniTaskVoid LoadResultAsync(CancellationToken token)
+        {
+            _levelView.Hide();
+            _stepCountView.TweenCenter();
+            await _transitionMask.FadeInAsync(token);
+
+            await _zenjectSceneLoader.LoadSceneAsync(SceneName.Ranking.ToString());
+
+            await UniTask.Delay(TimeSpan.FromSeconds(Const.INTERVAL), cancellationToken: token);
+
+            await _transitionMask.FadeOutAllAsync(token);
         }
     }
 }

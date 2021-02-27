@@ -4,5 +4,6 @@ namespace Common.Transition
     {
         Title,
         Main,
+        Ranking,
     }
 }

@@ -20,9 +20,7 @@ namespace Game.Stage.Level
 
         public void LevelUp()
         {
-            var nextLevel = GetLevel() + 1;
-            var loadLevel = nextLevel < Const.STAGE_COUNT ? nextLevel : 0;
-            SetLevel(loadLevel);
+            SetLevel(GetLevel() + 1);
         }
 
         public void ResetLevel() => SetLevel(0);
