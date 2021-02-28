@@ -13,6 +13,8 @@ TagManager:
   - UI
   - 
   - 
+  - Player
+  - Stage
   - 
   - 
   - 
@@ -24,9 +26,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - PostProcessing
   - 
   - 
   - 
@@ -40,4 +40,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Stage
+    uniqueID: 2647490055
+    locked: 0
+  - name: Flag
+    uniqueID: 3594626027
+    locked: 0
+  - name: Player
+    uniqueID: 1940792411
+    locked: 0
+  - name: UI
+    uniqueID: 1946945147
     locked: 0

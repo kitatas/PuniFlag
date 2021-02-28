@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Kai/Scenes/Title.unity
+    guid: b676720a4e4c444659e17b0e2c14d1c4
+  - enabled: 1
+    path: Assets/Kai/Scenes/Main.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Kai/Scenes/Ranking.unity
+    guid: 152244f5855414ac4a3874f14efa583c
   m_configObjects: {}
