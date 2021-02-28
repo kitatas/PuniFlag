@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12060a0cb0e54d0da30432fa84b0546f, type: 3}
+  m_Name: SeData - Decision
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 1c02f717044244481b2647c42537c67b, type: 3}
+  type: 0
