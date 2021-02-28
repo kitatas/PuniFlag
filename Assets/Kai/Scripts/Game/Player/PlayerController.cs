@@ -28,16 +28,14 @@ namespace Game.Player
         private PlayerInput _playerInput;
         private PlayerCore[] _players;
         private StepCountModel _stepCountModel;
-        private SceneLoader _sceneLoader;
 
         [Inject]
-        private void Construct(PlayerInput playerInput, StepCountModel stepCountModel, SceneLoader sceneLoader)
+        private void Construct(PlayerInput playerInput, StepCountModel stepCountModel)
         {
             _isInput = new ReactiveProperty<bool>(false);
             _token = this.GetCancellationTokenOnDestroy();
             _playerInput = playerInput;
             _stepCountModel = stepCountModel;
-            _sceneLoader = sceneLoader;
         }
 
         private void Awake()
@@ -47,6 +45,14 @@ namespace Game.Player
 
         private void Start()
         {
+            DelayStartAsync(_token).Forget();
+        }
+
+        private async UniTaskVoid DelayStartAsync(CancellationToken token)
+        {
+            var delayTime = Const.FADE_TIME + Const.INTERVAL;
+            await UniTask.Delay(TimeSpan.FromSeconds(delayTime), cancellationToken: token);
+
             InitButton();
             InitMove();
             InitRotate();
