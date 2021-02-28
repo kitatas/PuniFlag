@@ -52,12 +52,14 @@ namespace Game.Player
                 {
                     _tween?.Kill();
 
-                    isGround = true;
-
                     var roundPosition = transform.RoundPosition();
                     transform
                         .DOMove(roundPosition, Const.CORRECT_TIME)
-                        .OnComplete(() => _playerMover.ResetVelocity());
+                        .OnComplete(() =>
+                        {
+                            isGround = true;
+                            _playerMover.ResetVelocity();
+                        });
                 })
                 .AddTo(this);
         }
