@@ -1,7 +1,9 @@
 using System.Threading;
+using Common.Sound.SE;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
+using Zenject;
 
 namespace Common.Transition
 {
@@ -10,8 +12,19 @@ namespace Common.Transition
         [SerializeField] private RectTransform up = default;
         [SerializeField] private RectTransform down = default;
 
+        private SeController _seController;
+
+        [Inject]
+        private void Construct(SeController seController)
+        {
+            _seController = seController;
+        }
+
         public async UniTask FadeInAsync(CancellationToken token)
         {
+            var delayTime = Const.FADE_TIME - 0.1f;
+            _seController.DelayPlaySeAsync(SeType.Transition, delayTime, token).Forget();
+
             up.sizeDelta = new Vector2(320.0f, 181.0f);
             down.sizeDelta = new Vector2(320.0f, 181.0f);
 

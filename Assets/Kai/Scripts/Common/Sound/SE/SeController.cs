@@ -1,4 +1,7 @@
+using System;
 using System.Collections.Generic;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using Zenject;
 
 namespace Common.Sound.SE
@@ -27,6 +30,13 @@ namespace Common.Sound.SE
             }
 
             audioSource.PlayOneShot(seData.audioClip);
+        }
+
+        public async UniTaskVoid DelayPlaySeAsync(SeType seType, float delayTime, CancellationToken token)
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(delayTime), cancellationToken: token);
+
+            PlaySe(seType);
         }
     }
 }

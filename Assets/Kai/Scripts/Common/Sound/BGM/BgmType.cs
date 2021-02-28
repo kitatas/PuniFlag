@@ -2,6 +2,8 @@ namespace Common.Sound.BGM
 {
     public enum BgmType
     {
-        Main = 0,
+        Title = 0,
+        Main = 1,
+        Result = 2,
     }
 }
