@@ -133,9 +133,8 @@ namespace Game.Player
                 .Subscribe(_ =>
                 {
                     rotateLeft.Push();
-                    _stageRotator.Rotate(RotateDirection.Left);
                     ActivatePlayerCollider();
-                    RotatePlayer(RotateDirection.Left);
+                    Rotate(RotateDirection.Left);
                     SetButtonAsync(_token).Forget();
                 })
                 .AddTo(this);
@@ -148,9 +147,8 @@ namespace Game.Player
                 .Subscribe(_ =>
                 {
                     rotateRight.Push();
-                    _stageRotator.Rotate(RotateDirection.Right);
                     ActivatePlayerCollider();
-                    RotatePlayer(RotateDirection.Right);
+                    Rotate(RotateDirection.Right);
                     SetButtonAsync(_token).Forget();
                 })
                 .AddTo(this);
@@ -217,8 +215,9 @@ namespace Game.Player
             return _players.All(player => player.isGround);
         }
 
-        private void RotatePlayer(RotateDirection rotateDirection)
+        private void Rotate(RotateDirection rotateDirection)
         {
+            _stageRotator.Rotate(rotateDirection);
             foreach (var player in _players)
             {
                 player.Rotate(rotateDirection);
