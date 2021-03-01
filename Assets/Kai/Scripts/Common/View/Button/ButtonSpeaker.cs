@@ -1,4 +1,3 @@
-using System;
 using Common.Sound.SE;
 using UniRx;
 using UnityEngine;
@@ -23,21 +22,8 @@ namespace Common.View.Button
         {
             GetComponent<UnityEngine.UI.Button>()
                 .OnClickAsObservable()
-                .Subscribe(_ => _seController.PlaySe(GetSeType(buttonType)))
+                .Subscribe(_ => _seController.PlaySe(buttonType))
                 .AddTo(this);
-        }
-
-        private static SeType GetSeType(ButtonType type)
-        {
-            switch (type)
-            {
-                case ButtonType.Decision:
-                    return SeType.Decision;
-                case ButtonType.Cancel:
-                    return SeType.Cancel;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(type), type, null);
-            }
         }
     }
 }
