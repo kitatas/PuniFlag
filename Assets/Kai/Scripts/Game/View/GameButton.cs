@@ -6,19 +6,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Game.Stage
+namespace Game.View
 {
-    [RequireComponent(typeof(Button))]
     [RequireComponent(typeof(ButtonActivator))]
     [RequireComponent(typeof(ButtonAnimator))]
-    public sealed class RotateButton : MonoBehaviour
+    public sealed class GameButton : MonoBehaviour
     {
-        [SerializeField] private RotateDirection rotateDirection = default;
+        [SerializeField] private ButtonType buttonType = default;
+
         private readonly Subject<Unit> _subject = new Subject<Unit>();
         public IObservable<Unit> onPush => _subject;
 
         private SeController _seController;
-        private StageRotator _stageRotator;
         private ButtonActivator _buttonActivator;
         private ButtonAnimator _buttonAnimator;
 
@@ -28,11 +27,6 @@ namespace Game.Stage
             _seController = seController;
             _buttonActivator = GetComponent<ButtonActivator>();
             _buttonAnimator = GetComponent<ButtonAnimator>();
-        }
-
-        private void Awake()
-        {
-            _stageRotator = FindObjectOfType<StageRotator>();
         }
 
         private void Start()
@@ -45,8 +39,7 @@ namespace Game.Stage
 
         public void Push()
         {
-            _seController.PlaySe(SeType.Decision);
-            _stageRotator.Rotate(rotateDirection);
+            _seController.PlaySe(buttonType);
             _buttonAnimator.Play();
         }
 

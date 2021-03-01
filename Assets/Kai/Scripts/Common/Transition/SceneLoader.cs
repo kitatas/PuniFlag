@@ -36,6 +36,33 @@ namespace Common.Transition
             _tokenSource?.Dispose();
         }
 
+        public void LoadScene(SceneName sceneName, LoadType loadType)
+        {
+            switch (loadType)
+            {
+                case LoadType.Direct:
+                    LoadScene(sceneName);
+                    break;
+                case LoadType.Next:
+                    _levelModel.LevelUp();
+                    var level = _levelModel.GetLevel();
+                    if (level < Const.STAGE_COUNT)
+                    {
+                        LoadScene(sceneName, level);
+                    }
+                    else
+                    {
+                        LoadResult();
+                    }
+                    break;
+                case LoadType.Reload:
+                    LoadScene(sceneName, _levelModel.GetLevel());
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
         public void LoadScene(SceneName sceneName, int level = 0)
         {
             LoadSceneAsync(sceneName, level, _tokenSource.Token).Forget();

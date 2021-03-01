@@ -16,31 +16,36 @@ namespace Game.Player
 {
     public sealed class PlayerController : MonoBehaviour
     {
-        [SerializeField] private MoveButton moveLeft = default;
-        [SerializeField] private MoveButton moveRight = default;
-        [SerializeField] private RotateButton rotateLeft = default;
-        [SerializeField] private RotateButton rotateRight = default;
-        [SerializeField] private LoadButton resetButton = default;
+        [SerializeField] private GameButton moveLeft = default;
+        [SerializeField] private GameButton moveRight = default;
+        [SerializeField] private GameButton rotateLeft = default;
+        [SerializeField] private GameButton rotateRight = default;
+        [SerializeField] private GameButton resetButton = default;
+        [SerializeField] private GameButton homeButton = default;
         [SerializeField] private ClearView clearView = default;
         private ReactiveProperty<bool> _isInput;
         private CancellationToken _token;
 
         private PlayerInput _playerInput;
-        private PlayerCore[] _players;
         private StepCountModel _stepCountModel;
+        private SceneLoader _sceneLoader;
+        private PlayerCore[] _players;
+        private StageRotator _stageRotator;
 
         [Inject]
-        private void Construct(PlayerInput playerInput, StepCountModel stepCountModel)
+        private void Construct(PlayerInput playerInput, StepCountModel stepCountModel, SceneLoader sceneLoader)
         {
             _isInput = new ReactiveProperty<bool>(false);
             _token = this.GetCancellationTokenOnDestroy();
             _playerInput = playerInput;
             _stepCountModel = stepCountModel;
+            _sceneLoader = sceneLoader;
         }
 
         private void Awake()
         {
             _players = FindObjectsOfType<PlayerCore>();
+            _stageRotator = FindObjectOfType<StageRotator>();
         }
 
         private void Start()
@@ -73,7 +78,18 @@ namespace Game.Player
                 {
                     resetButton.Push();
                     _isInput.Value = true;
+                    _sceneLoader.LoadScene(SceneName.Main, LoadType.Reload);
                     _stepCountModel.CountUp();
+                })
+                .AddTo(this);
+
+            homeButton.onPush
+                .Where(_ => _isInput.Value == false)
+                .Subscribe(_ =>
+                {
+                    homeButton.Push();
+                    _isInput.Value = true;
+                    _sceneLoader.LoadScene(SceneName.Title);
                 })
                 .AddTo(this);
         }
@@ -117,6 +133,7 @@ namespace Game.Player
                 .Subscribe(_ =>
                 {
                     rotateLeft.Push();
+                    _stageRotator.Rotate(RotateDirection.Left);
                     ActivatePlayerCollider();
                     RotatePlayer(RotateDirection.Left);
                     SetButtonAsync(_token).Forget();
@@ -131,6 +148,7 @@ namespace Game.Player
                 .Subscribe(_ =>
                 {
                     rotateRight.Push();
+                    _stageRotator.Rotate(RotateDirection.Right);
                     ActivatePlayerCollider();
                     RotatePlayer(RotateDirection.Right);
                     SetButtonAsync(_token).Forget();
@@ -166,6 +184,7 @@ namespace Game.Player
             rotateLeft.Activate(value);
             rotateRight.Activate(value);
             resetButton.Activate(value);
+            homeButton.Activate(value);
         }
 
         private void ActivatePlayerCollider()
@@ -225,7 +244,7 @@ namespace Game.Player
 
             await UniTask.Delay(TimeSpan.FromSeconds(Const.INTERVAL), cancellationToken: token);
 
-            resetButton.LoadScene(LoadType.Next);
+            _sceneLoader.LoadScene(SceneName.Main, LoadType.Next);
         }
     }
 }
