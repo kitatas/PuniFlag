@@ -155,6 +155,7 @@ MonoBehaviour:
   rotateLeft: {fileID: 906077639}
   rotateRight: {fileID: 1802161020}
   resetButton: {fileID: 1822354034}
+  homeButton: {fileID: 539991361}
   clearView: {fileID: 426227178}
 --- !u!4 &31814443
 Transform:
@@ -184,7 +185,6 @@ GameObject:
   - component: {fileID: 136265400}
   - component: {fileID: 136265405}
   - component: {fileID: 136265404}
-  - component: {fileID: 136265406}
   - component: {fileID: 136265403}
   m_Layer: 5
   m_Name: Button - MoveRight
@@ -302,9 +302,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 136265398}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5343d4d9e91b441caf0c5d64d2411aa9, type: 3}
+  m_Script: {fileID: 11500000, guid: 1682f618b0084b1ca65307d3ed2f0896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonType: 0
 --- !u!114 &136265404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,19 +330,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb86c580b298400098b4bd05bd84bf84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &136265406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 136265398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60576b9972f744149680f1d70376b5ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonType: 0
 --- !u!1 &202011640
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,7 +496,6 @@ GameObject:
   - component: {fileID: 377469804}
   - component: {fileID: 377469803}
   - component: {fileID: 377469802}
-  - component: {fileID: 377469807}
   - component: {fileID: 377469801}
   m_Layer: 5
   m_Name: Button - LoadNext
@@ -550,7 +537,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: 1
   loadType: 1
-  isLoad: 1
 --- !u!114 &377469802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -730,19 +716,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 377469799}
   m_CullTransparentMesh: 0
---- !u!114 &377469807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 377469799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60576b9972f744149680f1d70376b5ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonType: 0
 --- !u!1001 &426227174
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -969,10 +942,9 @@ GameObject:
   - component: {fileID: 539991365}
   - component: {fileID: 539991364}
   - component: {fileID: 539991363}
-  - component: {fileID: 539991362}
   - component: {fileID: 539991361}
   m_Layer: 5
-  m_Name: Button - LoadTitle
+  m_Name: Button - Home
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -995,7 +967,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 32, y: -24}
+  m_AnchoredPosition: {x: 64, y: -24}
   m_SizeDelta: {x: 192, y: 192}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &539991361
@@ -1007,22 +979,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 539991359}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f9abfc3fd014bbf9883b5590831baa4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneName: 0
-  loadType: 0
-  isLoad: 1
---- !u!114 &539991362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 539991359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60576b9972f744149680f1d70376b5ee, type: 3}
+  m_Script: {fileID: 11500000, guid: 1682f618b0084b1ca65307d3ed2f0896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buttonType: 1
@@ -1210,7 +1167,6 @@ GameObject:
   - component: {fileID: 906077636}
   - component: {fileID: 906077641}
   - component: {fileID: 906077640}
-  - component: {fileID: 906077642}
   - component: {fileID: 906077639}
   m_Layer: 5
   m_Name: Button - RotateLeft
@@ -1328,10 +1284,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 906077634}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3d51626a7fe45e1a0f91590b9b316fd, type: 3}
+  m_Script: {fileID: 11500000, guid: 1682f618b0084b1ca65307d3ed2f0896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateDirection: 0
+  buttonType: 0
 --- !u!114 &906077640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1356,19 +1312,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb86c580b298400098b4bd05bd84bf84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &906077642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 906077634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60576b9972f744149680f1d70376b5ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonType: 0
 --- !u!1 &1316897919
 GameObject:
   m_ObjectHideFlags: 0
@@ -1574,7 +1517,6 @@ GameObject:
   - component: {fileID: 1726728224}
   - component: {fileID: 1726728229}
   - component: {fileID: 1726728228}
-  - component: {fileID: 1726728230}
   - component: {fileID: 1726728227}
   m_Layer: 5
   m_Name: Button - MoveLeft
@@ -1692,9 +1634,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1726728222}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5343d4d9e91b441caf0c5d64d2411aa9, type: 3}
+  m_Script: {fileID: 11500000, guid: 1682f618b0084b1ca65307d3ed2f0896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonType: 0
 --- !u!114 &1726728228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1719,19 +1662,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb86c580b298400098b4bd05bd84bf84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1726728230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1726728222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60576b9972f744149680f1d70376b5ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonType: 0
 --- !u!1 &1802161019
 GameObject:
   m_ObjectHideFlags: 0
@@ -1746,7 +1676,6 @@ GameObject:
   - component: {fileID: 1802161021}
   - component: {fileID: 1802161026}
   - component: {fileID: 1802161025}
-  - component: {fileID: 1802161027}
   - component: {fileID: 1802161020}
   m_Layer: 5
   m_Name: Button - RotateRight
@@ -1764,10 +1693,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1802161019}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3d51626a7fe45e1a0f91590b9b316fd, type: 3}
+  m_Script: {fileID: 11500000, guid: 1682f618b0084b1ca65307d3ed2f0896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateDirection: 1
+  buttonType: 0
 --- !u!114 &1802161021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1892,19 +1821,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb86c580b298400098b4bd05bd84bf84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1802161027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1802161019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60576b9972f744149680f1d70376b5ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonType: 0
 --- !u!1 &1822354032
 GameObject:
   m_ObjectHideFlags: 0
@@ -1919,7 +1835,6 @@ GameObject:
   - component: {fileID: 1822354038}
   - component: {fileID: 1822354037}
   - component: {fileID: 1822354036}
-  - component: {fileID: 1822354035}
   - component: {fileID: 1822354034}
   m_Layer: 5
   m_Name: Button - Reset
@@ -1957,22 +1872,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1822354032}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f9abfc3fd014bbf9883b5590831baa4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneName: 1
-  loadType: 2
-  isLoad: 0
---- !u!114 &1822354035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1822354032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60576b9972f744149680f1d70376b5ee, type: 3}
+  m_Script: {fileID: 11500000, guid: 1682f618b0084b1ca65307d3ed2f0896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buttonType: 0
