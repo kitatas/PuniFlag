@@ -2572,7 +2572,7 @@ PrefabInstance:
     - target: {fileID: 6875668330391687379, guid: c6ba340fac02d46f787a6bad32cc02e4,
         type: 3}
       propertyPath: m_text
-      value: ver 1.0
+      value: ver 1.01
       objectReference: {fileID: 0}
     - target: {fileID: 6875668330391687379, guid: c6ba340fac02d46f787a6bad32cc02e4,
         type: 3}
@@ -3004,6 +3004,7 @@ GameObject:
   - component: {fileID: 524173717}
   - component: {fileID: 524173716}
   - component: {fileID: 524173715}
+  - component: {fileID: 524173722}
   m_Layer: 0
   m_Name: Button - Back
   m_TagString: Untagged
@@ -5441,6 +5442,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 524173713}
   m_CullTransparentMesh: 0
+--- !u!114 &524173722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524173713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aa7be314a3e44b6a94c0b85a28532a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &535472833
 GameObject:
   m_ObjectHideFlags: 0
@@ -5652,6 +5665,7 @@ GameObject:
   - component: {fileID: 638259390}
   - component: {fileID: 638259389}
   - component: {fileID: 638259388}
+  - component: {fileID: 638259393}
   - component: {fileID: 638259387}
   - component: {fileID: 638259386}
   m_Layer: 0
@@ -5690,10 +5704,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 638259384}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60576b9972f744149680f1d70376b5ee, type: 3}
+  m_Script: {fileID: 11500000, guid: 5aa7be314a3e44b6a94c0b85a28532a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonType: 0
 --- !u!114 &638259387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5703,9 +5716,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 638259384}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 488a1bd7f0d8401e9027d557ece658e0, type: 3}
+  m_Script: {fileID: 11500000, guid: 60576b9972f744149680f1d70376b5ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonType: 0
 --- !u!114 &638259388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6166,7 +6180,7 @@ MonoBehaviour:
     m_behaviorType: 4
   OnPointerDown:
     Animators: []
-    ButtonAnimationType: 0
+    ButtonAnimationType: 1
     DeselectButton: 0
     DisableInterval: 0
     Enabled: 0
@@ -6242,7 +6256,7 @@ MonoBehaviour:
         Duration: 1
       Scale:
         AnimationType: 4
-        Enabled: 0
+        Enabled: 1
         From: {x: 0, y: 0, z: 0}
         To: {x: 0, y: 0, z: 0}
         By: {x: 0, y: 0, z: 0}
@@ -6331,7 +6345,7 @@ MonoBehaviour:
         Duration: 1
       Scale:
         AnimationType: 5
-        Enabled: 0
+        Enabled: 1
         From: {x: 0, y: 0, z: 0}
         To: {x: 0, y: 0, z: 0}
         By: {x: 0, y: 0, z: 0}
@@ -6349,7 +6363,7 @@ MonoBehaviour:
           m_PostInfinity: 2
           m_RotationOrder: 4
         StartDelay: 0
-        Duration: 1
+        Duration: 0.1
       Fade:
         AnimationType: 5
         Enabled: 0
@@ -6674,7 +6688,7 @@ MonoBehaviour:
           m_PostInfinity: 2
           m_RotationOrder: 4
         StartDelay: 0
-        Duration: 1
+        Duration: 0.1
       Fade:
         AnimationType: 4
         Enabled: 0
@@ -8091,6 +8105,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 638259384}
   m_CullTransparentMesh: 0
+--- !u!114 &638259393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638259384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 488a1bd7f0d8401e9027d557ece658e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &641930865
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8585,6 +8611,7 @@ GameObject:
   - component: {fileID: 737842600}
   - component: {fileID: 737842599}
   - component: {fileID: 737842598}
+  - component: {fileID: 737842605}
   m_Layer: 0
   m_Name: Button - Back
   m_TagString: Untagged
@@ -11022,6 +11049,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 737842596}
   m_CullTransparentMesh: 0
+--- !u!114 &737842605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 737842596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aa7be314a3e44b6a94c0b85a28532a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &744566603
 GameObject:
   m_ObjectHideFlags: 0
@@ -11683,7 +11722,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1861930354}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.029495806
+  m_Size: 0.029495804
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -11862,7 +11901,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: 1
   loadType: 0
-  isLoad: 1
 --- !u!114 &763172116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12945,7 +12983,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1598864166}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.18305084
+  m_Size: 0.18305083
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -14911,6 +14949,7 @@ GameObject:
   - component: {fileID: 1187328414}
   - component: {fileID: 1187328413}
   - component: {fileID: 1187328412}
+  - component: {fileID: 1187328419}
   m_Layer: 0
   m_Name: Button - Back
   m_TagString: Untagged
@@ -17348,6 +17387,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1187328410}
   m_CullTransparentMesh: 0
+--- !u!114 &1187328419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187328410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aa7be314a3e44b6a94c0b85a28532a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1191012719
 GameObject:
   m_ObjectHideFlags: 0
@@ -18862,6 +18913,7 @@ GameObject:
   - component: {fileID: 1350887534}
   - component: {fileID: 1350887537}
   - component: {fileID: 1350887533}
+  - component: {fileID: 1350887538}
   - component: {fileID: 1350887532}
   - component: {fileID: 1350887531}
   m_Layer: 5
@@ -18900,10 +18952,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1350887529}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60576b9972f744149680f1d70376b5ee, type: 3}
+  m_Script: {fileID: 11500000, guid: 5aa7be314a3e44b6a94c0b85a28532a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonType: 0
 --- !u!114 &1350887532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18913,9 +18964,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1350887529}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 488a1bd7f0d8401e9027d557ece658e0, type: 3}
+  m_Script: {fileID: 11500000, guid: 60576b9972f744149680f1d70376b5ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonType: 0
 --- !u!114 &1350887533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19456,7 +19508,7 @@ MonoBehaviour:
     m_behaviorType: 4
   OnPointerDown:
     Animators: []
-    ButtonAnimationType: 0
+    ButtonAnimationType: 1
     DeselectButton: 0
     DisableInterval: 0
     Enabled: 0
@@ -19532,7 +19584,7 @@ MonoBehaviour:
         Duration: 1
       Scale:
         AnimationType: 4
-        Enabled: 0
+        Enabled: 1
         From: {x: 0, y: 0, z: 0}
         To: {x: 0, y: 0, z: 0}
         By: {x: 0, y: 0, z: 0}
@@ -19621,7 +19673,7 @@ MonoBehaviour:
         Duration: 1
       Scale:
         AnimationType: 5
-        Enabled: 0
+        Enabled: 1
         From: {x: 0, y: 0, z: 0}
         To: {x: 0, y: 0, z: 0}
         By: {x: 0, y: 0, z: 0}
@@ -19639,7 +19691,7 @@ MonoBehaviour:
           m_PostInfinity: 2
           m_RotationOrder: 4
         StartDelay: 0
-        Duration: 1
+        Duration: 0.1
       Fade:
         AnimationType: 5
         Enabled: 0
@@ -19964,7 +20016,7 @@ MonoBehaviour:
           m_PostInfinity: 2
           m_RotationOrder: 4
         StartDelay: 0
-        Duration: 1
+        Duration: 0.1
       Fade:
         AnimationType: 4
         Enabled: 0
@@ -21301,6 +21353,18 @@ MonoBehaviour:
   TargetLabel: 0
   TextLabel: {fileID: 0}
   TextMeshProLabel: {fileID: 0}
+--- !u!114 &1350887538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350887529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 488a1bd7f0d8401e9027d557ece658e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1367519935
 GameObject:
   m_ObjectHideFlags: 0
@@ -21464,6 +21528,7 @@ GameObject:
   - component: {fileID: 1393178626}
   - component: {fileID: 1393178632}
   - component: {fileID: 1393178631}
+  - component: {fileID: 1393178633}
   - component: {fileID: 1393178630}
   - component: {fileID: 1393178629}
   m_Layer: 5
@@ -21582,10 +21647,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1393178624}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60576b9972f744149680f1d70376b5ee, type: 3}
+  m_Script: {fileID: 11500000, guid: 5aa7be314a3e44b6a94c0b85a28532a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonType: 0
 --- !u!114 &1393178630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21595,9 +21659,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1393178624}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 488a1bd7f0d8401e9027d557ece658e0, type: 3}
+  m_Script: {fileID: 11500000, guid: 60576b9972f744149680f1d70376b5ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonType: 0
 --- !u!114 &1393178631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22058,7 +22123,7 @@ MonoBehaviour:
     m_behaviorType: 4
   OnPointerDown:
     Animators: []
-    ButtonAnimationType: 0
+    ButtonAnimationType: 1
     DeselectButton: 0
     DisableInterval: 0
     Enabled: 0
@@ -22134,7 +22199,7 @@ MonoBehaviour:
         Duration: 1
       Scale:
         AnimationType: 4
-        Enabled: 0
+        Enabled: 1
         From: {x: 0, y: 0, z: 0}
         To: {x: 0, y: 0, z: 0}
         By: {x: 0, y: 0, z: 0}
@@ -22223,7 +22288,7 @@ MonoBehaviour:
         Duration: 1
       Scale:
         AnimationType: 5
-        Enabled: 0
+        Enabled: 1
         From: {x: 0, y: 0, z: 0}
         To: {x: 0, y: 0, z: 0}
         By: {x: 0, y: 0, z: 0}
@@ -22241,7 +22306,7 @@ MonoBehaviour:
           m_PostInfinity: 2
           m_RotationOrder: 4
         StartDelay: 0
-        Duration: 1
+        Duration: 0.1
       Fade:
         AnimationType: 5
         Enabled: 0
@@ -22566,7 +22631,7 @@ MonoBehaviour:
           m_PostInfinity: 2
           m_RotationOrder: 4
         StartDelay: 0
-        Duration: 1
+        Duration: 0.1
       Fade:
         AnimationType: 4
         Enabled: 0
@@ -23903,6 +23968,18 @@ MonoBehaviour:
   TargetLabel: 0
   TextLabel: {fileID: 0}
   TextMeshProLabel: {fileID: 0}
+--- !u!114 &1393178633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393178624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 488a1bd7f0d8401e9027d557ece658e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1410956689 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6875668330391687380, guid: c6ba340fac02d46f787a6bad32cc02e4,
@@ -24947,7 +25024,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 77f12af8bc2215941923696a909418b9, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -26753,7 +26830,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 77f12af8bc2215941923696a909418b9, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -27674,7 +27751,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1949747782}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99999934
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
