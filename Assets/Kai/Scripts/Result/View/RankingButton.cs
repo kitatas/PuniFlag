@@ -22,11 +22,7 @@ namespace Result.View
         {
             GetComponent<Button>()
                 .OnClickAsObservable()
-                .Subscribe(_ =>
-                {
-                    // 
-                    _buttonAnimator.Play();
-                })
+                .Subscribe(_ => _buttonAnimator.Play())
                 .AddTo(this);
         }
     }

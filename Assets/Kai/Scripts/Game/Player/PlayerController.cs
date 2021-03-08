@@ -189,7 +189,7 @@ namespace Game.Player
         {
             ActivatePlayerCollider(false);
             Observable
-                .Timer(TimeSpan.FromSeconds(Const.ROTATE_SPEED + 0.15f))
+                .Timer(TimeSpan.FromSeconds(Const.ROTATE_SPEED + 0.01f))
                 .Subscribe(_ => ActivatePlayerCollider(true))
                 .AddTo(this);
         }

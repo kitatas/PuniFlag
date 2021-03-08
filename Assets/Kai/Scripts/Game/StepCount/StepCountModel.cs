@@ -17,7 +17,7 @@ namespace Game.StepCount
 
         public void ResetStepCount() => SetStepCount(0);
 
-        public void CountUp() => SetStepCount(_stepCount.Value + 1);
+        public void CountUp() => SetStepCount(GetStepCount() + 1);
 
         public int GetStepCount() => stepCount.Value;
     }

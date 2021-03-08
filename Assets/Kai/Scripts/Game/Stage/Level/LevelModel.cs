@@ -1,4 +1,3 @@
-using Common;
 using UniRx;
 
 namespace Game.Stage.Level
