@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace Game.Stage
 {
-    [CreateAssetMenu(fileName = "StageData", menuName = "DataTable/StageData", order = 0)]
-    public sealed class StageData : ScriptableObject
+    [CreateAssetMenu(fileName = "StageDataTable", menuName = "DataTable/StageDataTable", order = 0)]
+    public sealed class StageDataTable : ScriptableObject
     {
         [SerializeField] private List<GameObject> stageData = default;
 

@@ -5,9 +5,9 @@ namespace Game.Stage
 {
     public sealed class StageLoader
     {
-        public StageLoader(LevelModel levelModel, StageData stageData)
+        public StageLoader(LevelModel levelModel, StageDataTable stageDataTable)
         {
-            Object.Instantiate(stageData.stageDataList[levelModel.GetLevel()]);
+            Object.Instantiate(stageDataTable.stageDataList[levelModel.GetLevel()]);
         }
     }
 }

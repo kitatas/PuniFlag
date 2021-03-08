@@ -7,13 +7,13 @@ namespace Game.Installer
     [CreateAssetMenu(fileName = "GameTableInstaller", menuName = "Installers/GameTableInstaller")]
     public sealed class GameTableInstaller : ScriptableObjectInstaller<GameTableInstaller>
     {
-        [SerializeField] private StageData stageData = default;
+        [SerializeField] private StageDataTable stageDataTable = default;
 
         public override void InstallBindings()
         {
             Container
-                .Bind<StageData>()
-                .FromInstance(stageData)
+                .Bind<StageDataTable>()
+                .FromInstance(stageDataTable)
                 .AsCached();
         }
     }

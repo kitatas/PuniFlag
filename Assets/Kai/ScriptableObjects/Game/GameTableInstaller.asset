@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83b68a24cddbd425c872f4addc94c123, type: 3}
   m_Name: GameTableInstaller
   m_EditorClassIdentifier: 
-  stageData: {fileID: 11400000, guid: 0082e6478af094da09927de333e65976, type: 2}
+  stageDataTable: {fileID: 11400000, guid: 0082e6478af094da09927de333e65976, type: 2}
