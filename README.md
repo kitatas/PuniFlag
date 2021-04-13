@@ -1,4 +1,6 @@
-# unity1week_akeru
+# unity1week_kai
+unity1week「回」参加作品  
+https://unityroom.com/games/puni_flag
 
 ## Usages Unity version
 
