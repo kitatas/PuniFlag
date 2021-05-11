@@ -1,6 +1,7 @@
+using Common.Application;
 using UnityEngine;
 
-namespace Common.Sound.SE
+namespace Common.Data.DataStore
 {
     [CreateAssetMenu(fileName = "SeData", menuName = "DataTable/SeData", order = 0)]
     public sealed class SeData : ScriptableObject

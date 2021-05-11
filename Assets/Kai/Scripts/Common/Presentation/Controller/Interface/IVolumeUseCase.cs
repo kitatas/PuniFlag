@@ -1,4 +1,4 @@
-namespace Common.Sound
+namespace Common.Presentation.Controller.Interface
 {
     public interface IVolumeUseCase
     {

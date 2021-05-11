@@ -1,6 +1,7 @@
+using Common.Presentation.Controller.Interface;
 using UnityEngine;
 
-namespace Common.Sound
+namespace Common.Presentation.Controller
 {
     [RequireComponent(typeof(AudioSource))]
     public abstract class BaseAudioSource : MonoBehaviour, IVolumeUseCase

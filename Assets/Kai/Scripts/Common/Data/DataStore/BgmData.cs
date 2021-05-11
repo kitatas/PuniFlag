@@ -1,6 +1,7 @@
+using Common.Application;
 using UnityEngine;
 
-namespace Common.Sound.BGM
+namespace Common.Data.DataStore
 {
     [CreateAssetMenu(fileName = "BgmData", menuName = "DataTable/BgmData", order = 0)]
     public sealed class BgmData : ScriptableObject

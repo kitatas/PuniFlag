@@ -1,7 +1,8 @@
+using Common.Application;
 using UnityEngine;
 using Zenject;
 
-namespace Common.Sound.BGM
+namespace Common.Presentation.Controller
 {
     public sealed class BgmPlayer : MonoBehaviour
     {

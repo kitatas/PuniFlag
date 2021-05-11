@@ -1,5 +1,4 @@
-using Common.Sound.BGM;
-using Common.Sound.SE;
+using Common.Data.DataStore;
 using UnityEngine;
 using Zenject;
 
@@ -13,7 +12,9 @@ namespace Common.Installer
 
         public override void InstallBindings()
         {
-            #region Sound
+            #region Data
+
+            #region DataStore
 
             Container
                 .Bind<BgmTable>()
@@ -24,6 +25,8 @@ namespace Common.Installer
                 .Bind<SeTable>()
                 .FromInstance(seTable)
                 .AsCached();
+
+            #endregion
 
             #endregion
         }

@@ -1,5 +1,6 @@
-using Common.Sound.BGM;
-using Common.Sound.SE;
+using Common.Domain.Repository;
+using Common.Domain.UseCase;
+using Common.Presentation.Controller;
 using Common.Transition;
 using Game.Stage.Level;
 using Game.StepCount;
@@ -18,7 +19,30 @@ namespace Common.Installer
 
         public override void InstallBindings()
         {
-            #region Sound
+            #region Domain
+
+            #region Repository
+
+            Container
+                .BindInterfacesTo<SoundRepository>()
+                .AsCached();
+
+            #endregion
+
+            #region UseCase
+
+            Container
+                .BindInterfacesTo<SoundUseCase>()
+                .AsCached();
+
+            #endregion
+
+            #endregion
+
+
+            #region Presentation
+
+            #region Controller
 
             Container
                 .Bind<BgmController>()
@@ -31,6 +55,9 @@ namespace Common.Installer
                 .AsCached();
 
             #endregion
+
+            #endregion
+
 
             #region Transition
 
