@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: StageDataTable
   m_EditorClassIdentifier: 
   stageData:
-  - {fileID: 8463659007953143596, guid: 7629725a0801f4812952a6f3d641e26e, type: 3}
-  - {fileID: 8463659007953143596, guid: 4cba1869573804ea0be648f76eb9ddee, type: 3}
-  - {fileID: 8463659007953143596, guid: 109f36f3f31384642bdc00df75c57376, type: 3}
-  - {fileID: 8463659007953143596, guid: 8dfb0770857524c72aaf11ddc55e238d, type: 3}
-  - {fileID: 8463659007953143596, guid: dad08ac0f923d41c9a12e317ecc2ae03, type: 3}
-  - {fileID: 8463659007953143596, guid: d76cb21d8ddcc4db287060a319543554, type: 3}
-  - {fileID: 6074323264955440505, guid: 1dfaf12e5972e4ac79e193e0961668df, type: 3}
-  - {fileID: 8463659007953143596, guid: 043d75f761b824183af7dae6312725ca, type: 3}
-  - {fileID: 8463659007953143596, guid: 9f3edec1475ff4645a966940bbec14e9, type: 3}
-  - {fileID: 8463659007953143596, guid: a7452a708127e4cd882988f14f8032fd, type: 3}
+  - {fileID: 4900000, guid: 74ebcaf4b4d80404d8c61e348656b673, type: 3}
+  - {fileID: 4900000, guid: d24ccd301ae7b487abbb048c0c1cb8da, type: 3}
+  - {fileID: 4900000, guid: ee52c1386e9d84da19d5b08628bb89b9, type: 3}
+  - {fileID: 4900000, guid: 9ae4906f95ea84ee1b08ef9abd4d2fd7, type: 3}
+  - {fileID: 4900000, guid: 5e034ea86535149db9923f0ee968d30b, type: 3}
+  - {fileID: 4900000, guid: b71a7eeb0edc7442ba574af49bb5582e, type: 3}
+  - {fileID: 4900000, guid: 3528f8b5c86604016818f85db7b42be7, type: 3}
+  - {fileID: 4900000, guid: e046d72344cd847269d72bb168bb51b3, type: 3}
+  - {fileID: 4900000, guid: f2d8f5fd331504e1598997559d995954, type: 3}
+  - {fileID: 4900000, guid: 6970f993f91ec485baecc0a8546392fb, type: 3}
