@@ -1,8 +1,11 @@
+using System.Linq;
 using Common;
 using Common.Extension;
 using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
+using Game.Application;
+using Game.Presentation.View;
 using Game.Stage;
 using UniRx;
 using UniRx.Triggers;
@@ -12,12 +15,28 @@ namespace Game.Player
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(PlayerView))]
-    public sealed class PlayerCore : MonoBehaviour
+    public sealed class PlayerCore : StageObjectView
     {
+        [SerializeField] private ColorType colorType = default;
         [SerializeField] private PlayerType playerType = default;
-        [SerializeField] private Flag flag = default;
         public bool isGround;
         private TweenerCore<Vector3, Vector3, VectorOptions> _tween;
+
+        private Flag _flag;
+
+        private Flag flag
+        {
+            get
+            {
+                if (_flag == null)
+                {
+                    var flags = FindObjectsOfType<Flag>();
+                    _flag = flags.ToList().Find(x => x.color == color);
+                }
+
+                return _flag;
+            }
+        }
 
         private Collider2D _collider2D;
         private PlayerView _playerView;
@@ -82,5 +101,8 @@ namespace Game.Player
             _playerRotator.Rotate(rotateDirection);
             flag.Rotate(rotateDirection);
         }
+
+        public override StageObjectType type => StageObjectType.Player;
+        public override ColorType color => colorType;
     }
 }

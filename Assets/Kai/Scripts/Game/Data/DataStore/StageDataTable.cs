@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.Stage
+namespace Game.Data.DataStore
 {
     [CreateAssetMenu(fileName = "StageDataTable", menuName = "DataTable/StageDataTable", order = 0)]
     public sealed class StageDataTable : ScriptableObject
     {
-        [SerializeField] private List<GameObject> stageData = default;
+        [SerializeField] private List<TextAsset> stageData = default;
 
-        public List<GameObject> stageDataList => stageData;
+        public List<TextAsset> stageDataList => stageData;
     }
 }
