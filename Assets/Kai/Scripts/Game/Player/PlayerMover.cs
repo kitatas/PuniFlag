@@ -3,6 +3,7 @@ using Common;
 using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
+using Game.Application;
 using UnityEngine;
 
 namespace Game.Player
@@ -33,34 +34,37 @@ namespace Game.Player
             _rigidbody2D.velocity = Vector2.zero;
         }
 
-        public TweenerCore<Vector3, Vector3, VectorOptions> Move(MoveDirection moveDirection)
+        public TweenerCore<Vector3, Vector3, VectorOptions> Move(InputType inputType)
         {
             switch (_playerType)
             {
                 case PlayerType.Red:
-                    var redValue = GetMoveValue(moveDirection) + _transform.position.y;
+                    var redValue = GetMoveValue(inputType) + _transform.position.y;
                     return _transform.DOMoveY(redValue, Const.MOVE_SPEED);
                 case PlayerType.Blue:
-                    var blueValue = GetMoveValue(moveDirection) + _transform.position.x;
+                    var blueValue = GetMoveValue(inputType) + _transform.position.x;
                     return _transform.DOMoveX(blueValue, Const.MOVE_SPEED);
                 case PlayerType.Green:
-                    var greenValue = -GetMoveValue(moveDirection) + _transform.position.y;
+                    var greenValue = -GetMoveValue(inputType) + _transform.position.y;
                     return _transform.DOMoveY(greenValue, Const.MOVE_SPEED);
                 default:
                     throw new ArgumentOutOfRangeException();
             }
         }
 
-        private static float GetMoveValue(MoveDirection moveDirection)
+        private static float GetMoveValue(InputType inputType)
         {
-            switch (moveDirection)
+            switch (inputType)
             {
-                case MoveDirection.Left:
+                case InputType.MoveLeft:
                     return -1.0f;
-                case MoveDirection.Right:
+                case InputType.MoveRight:
                     return 1.0f;
+                case InputType.None:
+                case InputType.RotateLeft:
+                case InputType.RotateRight:
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(moveDirection), moveDirection, null);
+                    throw new ArgumentOutOfRangeException(nameof(inputType), inputType, null);
             }
         }
 

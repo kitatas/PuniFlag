@@ -1,7 +1,7 @@
 using System;
 using Common;
 using DG.Tweening;
-using Game.Stage;
+using Game.Application;
 using UnityEngine;
 
 namespace Game.Player
@@ -18,23 +18,26 @@ namespace Game.Player
             _currentVector = transform.eulerAngles;
         }
 
-        public void Rotate(RotateDirection rotateDirection)
+        public void Rotate(InputType inputType)
         {
-            _currentVector = GetRotateVector(rotateDirection);
+            _currentVector = GetRotateVector(inputType);
             _transform
                 .DOLocalRotate(_currentVector, Const.ROTATE_SPEED);
         }
 
-        private Vector3 GetRotateVector(RotateDirection rotateDirection)
+        private Vector3 GetRotateVector(InputType inputType)
         {
-            switch (rotateDirection)
+            switch (inputType)
             {
-                case RotateDirection.Left:
+                case InputType.RotateLeft:
                     return _currentVector - _addVector;
-                case RotateDirection.Right:
+                case InputType.RotateRight:
                     return _currentVector + _addVector;
+                case InputType.None:
+                case InputType.MoveLeft:
+                case InputType.MoveRight:
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(rotateDirection), rotateDirection, null);
+                    throw new ArgumentOutOfRangeException(nameof(inputType), inputType, null);
             }
         }
     }

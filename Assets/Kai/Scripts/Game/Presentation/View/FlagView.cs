@@ -1,12 +1,11 @@
 using Common.Extension;
 using Game.Application;
 using Game.Player;
-using Game.Presentation.View;
 using UnityEngine;
 
-namespace Game.Stage
+namespace Game.Presentation.View
 {
-    public sealed class Flag : StageObjectView
+    public sealed class FlagView : StageObjectView
     {
         [SerializeField] private ColorType colorType = default;
 
@@ -17,9 +16,9 @@ namespace Game.Stage
             _playerRotator = new PlayerRotator(transform);
         }
 
-        public void Rotate(RotateDirection rotateDirection)
+        public void Rotate(InputType inputType)
         {
-            _playerRotator.Rotate(rotateDirection);
+            _playerRotator.Rotate(inputType);
         }
 
         public bool EqualPosition(Vector3 playerPosition) => transform.RoundPosition() == playerPosition;

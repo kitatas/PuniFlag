@@ -15,4 +15,13 @@ namespace Game.Application
         Green = 2,
         Blue = 3,
     }
+
+    public enum InputType
+    {
+        None = 0,
+        MoveLeft = 1,
+        MoveRight = 2,
+        RotateLeft = 3,
+        RotateRight = 4,
+    }
 }

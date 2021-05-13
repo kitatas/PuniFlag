@@ -1,5 +1,6 @@
 using System;
 using Common;
+using Game.Application;
 using UniRx;
 using UnityEngine;
 
@@ -28,18 +29,21 @@ namespace Game.Player
             _spriteRenderer.sprite = movement;
         }
 
-        public void Flip(MoveDirection moveDirection)
+        public void Flip(InputType inputType)
         {
-            switch (moveDirection)
+            switch (inputType)
             {
-                case MoveDirection.Left:
+                case InputType.MoveLeft:
                     _spriteRenderer.flipX = true;
                     break;
-                case MoveDirection.Right:
+                case InputType.MoveRight:
                     _spriteRenderer.flipX = false;
                     break;
+                case InputType.None:
+                case InputType.RotateLeft:
+                case InputType.RotateRight:
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(moveDirection), moveDirection, null);
+                    throw new ArgumentOutOfRangeException(nameof(inputType), inputType, null);
             }
 
             SetMovement();

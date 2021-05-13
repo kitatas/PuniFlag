@@ -6,7 +6,6 @@ using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
 using Game.Application;
 using Game.Presentation.View;
-using Game.Stage;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
@@ -22,19 +21,19 @@ namespace Game.Player
         public bool isGround;
         private TweenerCore<Vector3, Vector3, VectorOptions> _tween;
 
-        private Flag _flag;
+        private FlagView _flagView;
 
-        private Flag flag
+        private FlagView flagView
         {
             get
             {
-                if (_flag == null)
+                if (_flagView == null)
                 {
-                    var flags = FindObjectsOfType<Flag>();
-                    _flag = flags.ToList().Find(x => x.color == color);
+                    var flags = FindObjectsOfType<FlagView>();
+                    _flagView = flags.ToList().Find(x => x.color == color);
                 }
 
-                return _flag;
+                return _flagView;
             }
         }
 
@@ -83,23 +82,23 @@ namespace Game.Player
                 .AddTo(this);
         }
 
-        public bool IsGoal() => flag.EqualPosition(transform.RoundPosition());
+        public bool IsGoal() => flagView.EqualPosition(transform.RoundPosition());
 
         public void ActivateCollider(bool value)
         {
             _collider2D.enabled = value;
         }
 
-        public void Move(MoveDirection moveDirection)
+        public void Move(InputType inputType)
         {
-            _tween = _playerMover.Move(moveDirection);
-            _playerView.Flip(moveDirection);
+            _tween = _playerMover.Move(inputType);
+            _playerView.Flip(inputType);
         }
 
-        public void Rotate(RotateDirection rotateDirection)
+        public void Rotate(InputType inputType)
         {
-            _playerRotator.Rotate(rotateDirection);
-            flag.Rotate(rotateDirection);
+            _playerRotator.Rotate(inputType);
+            flagView.Rotate(inputType);
         }
 
         public override StageObjectType type => StageObjectType.Player;

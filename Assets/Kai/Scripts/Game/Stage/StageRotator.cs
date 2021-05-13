@@ -1,6 +1,7 @@
 using System;
 using Common;
 using DG.Tweening;
+using Game.Application;
 using UnityEngine;
 
 namespace Game.Stage
@@ -22,25 +23,28 @@ namespace Game.Stage
             };
         }
 
-        public void Rotate(RotateDirection rotateDirection)
+        public void Rotate(InputType inputType)
         {
-            _index += GetRotateVectorIndex(rotateDirection);
+            _index += GetRotateVectorIndex(inputType);
             _index = ClampRotateVectorIndex();
 
             transform
                 .DOLocalRotate(_rotateVector[_index], Const.ROTATE_SPEED);
         }
 
-        private static int GetRotateVectorIndex(RotateDirection rotateDirection)
+        private static int GetRotateVectorIndex(InputType inputType)
         {
-            switch (rotateDirection)
+            switch (inputType)
             {
-                case RotateDirection.Left:
+                case InputType.RotateLeft:
                     return 1;
-                case RotateDirection.Right:
+                case InputType.RotateRight:
                     return -1;
+                case InputType.None:
+                case InputType.MoveLeft:
+                case InputType.MoveRight:
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(rotateDirection), rotateDirection, null);
+                    throw new ArgumentOutOfRangeException(nameof(inputType), inputType, null);
             }
         }
 
