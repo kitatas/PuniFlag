@@ -2,6 +2,11 @@ using UnityEngine;
 
 namespace Game.Application
 {
+    public sealed class InGameConfig
+    {
+        public const GameState INIT_STATE = GameState.Input;
+    }
+
     public sealed class StageObjectConfig
     {
         public static readonly Quaternion rotateDefault = Quaternion.Euler(new Vector3(0.0f, 0.0f, 90.0f));

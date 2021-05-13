@@ -24,4 +24,12 @@ namespace Game.Application
         RotateLeft = 3,
         RotateRight = 4,
     }
+
+    public enum GameState
+    {
+        None,
+        Input,
+        Move,
+        Clear,
+    }
 }
