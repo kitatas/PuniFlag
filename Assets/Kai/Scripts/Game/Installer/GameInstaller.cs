@@ -3,7 +3,7 @@ using Game.Domain.Model;
 using Game.Domain.Repository;
 using Game.Domain.UseCase;
 using Game.Factory;
-using Game.Player;
+using Game.Presentation.Controller;
 using Game.Presentation.Presenter;
 using Game.Presentation.View;
 using Game.Presentation.View.State;

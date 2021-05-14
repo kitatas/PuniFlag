@@ -4,17 +4,16 @@ using System.Threading;
 using Common;
 using Cysharp.Threading.Tasks;
 using Game.Application;
-using Game.Player;
 
 namespace Game.Presentation.View.State
 {
     public sealed class MoveState : BaseState
     {
-        private PlayerCore[] _players;
+        private PlayerView[] _players;
 
         private void Awake()
         {
-            _players = FindObjectsOfType<PlayerCore>();
+            _players = FindObjectsOfType<PlayerView>();
         }
 
         public override GameState GetState() => GameState.Move;

@@ -4,11 +4,9 @@ using Common;
 using Common.Presentation.View;
 using Cysharp.Threading.Tasks;
 using Game.Application;
-using Game.Player;
-using Game.Stage;
+using Game.Presentation.Controller;
 using Game.StepCount;
 using UniRx;
-using UnityEngine;
 using Zenject;
 
 namespace Game.Presentation.View.State
@@ -33,8 +31,8 @@ namespace Game.Presentation.View.State
             }
         }
 
-        private PlayerCore[] _players;
-        private StageRotator _stageRotator;
+        private PlayerView[] _players;
+        private StageView _stageView;
 
         [Inject]
         private void Construct(ButtonController buttonController, StepCountModel stepCountModel)
@@ -45,8 +43,8 @@ namespace Game.Presentation.View.State
 
         private void Awake()
         {
-            _players = FindObjectsOfType<PlayerCore>();
-            _stageRotator = FindObjectOfType<StageRotator>();
+            _players = FindObjectsOfType<PlayerView>();
+            _stageView = FindObjectOfType<StageView>();
         }
 
         public override GameState GetState() => GameState.Input;
@@ -63,7 +61,7 @@ namespace Game.Presentation.View.State
 
             // ボタン入力待ち
             var input = await _buttonController.PushButton().ToUniTask(true, token);
-            Debug.Log($"{input}");
+
             switch (input)
             {
                 case InputType.MoveLeft:
@@ -74,6 +72,7 @@ namespace Game.Presentation.View.State
                 case InputType.RotateRight:
                     ActivatePlayerCollider();
                     RotatePlayer(input);
+                    _stageView.Rotate(input);
                     break;
                 case InputType.None:
                 default:
@@ -122,7 +121,6 @@ namespace Game.Presentation.View.State
 
         private void RotatePlayer(InputType inputType)
         {
-            _stageRotator.Rotate(inputType);
             foreach (var player in _players)
             {
                 player.Rotate(inputType);

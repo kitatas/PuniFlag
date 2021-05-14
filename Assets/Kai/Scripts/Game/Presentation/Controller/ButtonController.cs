@@ -9,7 +9,7 @@ using UniRx.Triggers;
 using UnityEngine;
 using Zenject;
 
-namespace Game.Player
+namespace Game.Presentation.Controller
 {
     public sealed class ButtonController : MonoBehaviour
     {

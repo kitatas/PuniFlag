@@ -4,10 +4,10 @@ using Game.Application;
 using UniRx;
 using UnityEngine;
 
-namespace Game.Player
+namespace Game.Presentation.View
 {
     [RequireComponent(typeof(SpriteRenderer))]
-    public sealed class PlayerView : MonoBehaviour
+    public sealed class PlayerSpriteView : MonoBehaviour
     {
         [SerializeField] private Sprite normal = default;
         [SerializeField] private Sprite movement = default;

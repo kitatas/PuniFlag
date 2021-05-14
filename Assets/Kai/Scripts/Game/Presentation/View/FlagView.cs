@@ -1,6 +1,7 @@
 using Common.Extension;
 using Game.Application;
-using Game.Player;
+using Game.Domain.UseCase;
+using Game.Domain.UseCase.Interface;
 using UnityEngine;
 
 namespace Game.Presentation.View
@@ -9,16 +10,16 @@ namespace Game.Presentation.View
     {
         [SerializeField] private ColorType colorType = default;
 
-        private PlayerRotator _playerRotator;
+        private IStageObjectRotateUseCase _stageObjectRotateUseCase;
 
         private void Awake()
         {
-            _playerRotator = new PlayerRotator(transform);
+            _stageObjectRotateUseCase = new StageObjectRotateUseCase(transform);
         }
 
         public void Rotate(InputType inputType)
         {
-            _playerRotator.Rotate(inputType);
+            _stageObjectRotateUseCase.Rotate(inputType);
         }
 
         public bool EqualPosition(Vector3 playerPosition) => transform.RoundPosition() == playerPosition;

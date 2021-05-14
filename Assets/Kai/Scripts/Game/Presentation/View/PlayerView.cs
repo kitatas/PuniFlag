@@ -5,19 +5,19 @@ using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
 using Game.Application;
-using Game.Presentation.View;
+using Game.Domain.UseCase;
+using Game.Domain.UseCase.Interface;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
 
-namespace Game.Player
+namespace Game.Presentation.View
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    [RequireComponent(typeof(PlayerView))]
-    public sealed class PlayerCore : StageObjectView
+    [RequireComponent(typeof(PlayerSpriteView))]
+    public sealed class PlayerView : StageObjectView
     {
         [SerializeField] private ColorType colorType = default;
-        [SerializeField] private PlayerType playerType = default;
         public bool isGround;
         private TweenerCore<Vector3, Vector3, VectorOptions> _tween;
 
@@ -38,17 +38,17 @@ namespace Game.Player
         }
 
         private Collider2D _collider2D;
-        private PlayerView _playerView;
-        private PlayerMover _playerMover;
-        private PlayerRotator _playerRotator;
+        private PlayerSpriteView _playerSpriteView;
+        private IPlayerMoveUseCase _playerMoveUseCase;
+        private IStageObjectRotateUseCase _stageObjectRotateUseCase;
 
         private void Awake()
         {
             _collider2D = GetComponent<Collider2D>();
-            _playerView = GetComponent<PlayerView>();
+            _playerSpriteView = GetComponent<PlayerSpriteView>();
             var rigidbody2d = GetComponent<Rigidbody2D>();
-            _playerMover = new PlayerMover(playerType, rigidbody2d, transform);
-            _playerRotator = new PlayerRotator(transform);
+            _playerMoveUseCase = new PlayerMoveUseCase(color, rigidbody2d, transform);
+            _stageObjectRotateUseCase = new StageObjectRotateUseCase(transform);
         }
 
         private void Start()
@@ -60,7 +60,7 @@ namespace Game.Player
                 .Where(_ => isGround == false)
                 .Subscribe(_ =>
                 {
-                    _playerMover.UpdateGravity();
+                    _playerMoveUseCase.UpdateGravity();
                 })
                 .AddTo(this);
 
@@ -76,7 +76,7 @@ namespace Game.Player
                         .OnComplete(() =>
                         {
                             isGround = true;
-                            _playerMover.ResetVelocity();
+                            _playerMoveUseCase.ResetVelocity();
                         });
                 })
                 .AddTo(this);
@@ -91,13 +91,13 @@ namespace Game.Player
 
         public void Move(InputType inputType)
         {
-            _tween = _playerMover.Move(inputType);
-            _playerView.Flip(inputType);
+            _tween = _playerMoveUseCase.Move(inputType);
+            _playerSpriteView.Flip(inputType);
         }
 
         public void Rotate(InputType inputType)
         {
-            _playerRotator.Rotate(inputType);
+            _stageObjectRotateUseCase.Rotate(inputType);
             flagView.Rotate(inputType);
         }
 

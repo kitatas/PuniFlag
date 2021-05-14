@@ -2,17 +2,21 @@ using System;
 using Common;
 using DG.Tweening;
 using Game.Application;
+using Game.Domain.UseCase.Interface;
 using UnityEngine;
 
-namespace Game.Stage
+namespace Game.Domain.UseCase
 {
-    public sealed class StageRotator : MonoBehaviour
+    public sealed class StageRotateUseCase : IStageRotateUseCase
     {
         private int _index;
-        private Vector3[] _rotateVector;
+        private readonly Vector3[] _rotateVector;
+        private readonly Transform _transform;
 
-        private void Start()
+        public StageRotateUseCase(Transform transform)
         {
+            _transform = transform;
+            
             _index = 0;
             _rotateVector = new Vector3[4]
             {
@@ -28,7 +32,7 @@ namespace Game.Stage
             _index += GetRotateVectorIndex(inputType);
             _index = ClampRotateVectorIndex();
 
-            transform
+            _transform
                 .DOLocalRotate(_rotateVector[_index], Const.ROTATE_SPEED);
         }
 

@@ -4,24 +4,25 @@ using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
 using Game.Application;
+using Game.Domain.UseCase.Interface;
 using UnityEngine;
 
-namespace Game.Player
+namespace Game.Domain.UseCase
 {
-    public sealed class PlayerMover
+    public sealed class PlayerMoveUseCase : IPlayerMoveUseCase
     {
-        private readonly PlayerType _playerType;
+        private readonly ColorType _colorType;
         private readonly Rigidbody2D _rigidbody2D;
         private readonly Transform _transform;
         private readonly Vector3 _gravity;
         private readonly float _rate = 49.0f;
 
-        public PlayerMover(PlayerType playerType, Rigidbody2D rigidbody2D, Transform transform)
+        public PlayerMoveUseCase(ColorType colorType, Rigidbody2D rigidbody2D, Transform transform)
         {
-            _playerType = playerType;
+            _colorType = colorType;
             _rigidbody2D = rigidbody2D;
             _transform = transform;
-            _gravity = GetGravity(_playerType) * _rate;
+            _gravity = GetGravity(_colorType) * _rate;
         }
 
         public void UpdateGravity()
@@ -36,17 +37,18 @@ namespace Game.Player
 
         public TweenerCore<Vector3, Vector3, VectorOptions> Move(InputType inputType)
         {
-            switch (_playerType)
+            switch (_colorType)
             {
-                case PlayerType.Red:
+                case ColorType.Red:
                     var redValue = GetMoveValue(inputType) + _transform.position.y;
                     return _transform.DOMoveY(redValue, Const.MOVE_SPEED);
-                case PlayerType.Blue:
-                    var blueValue = GetMoveValue(inputType) + _transform.position.x;
-                    return _transform.DOMoveX(blueValue, Const.MOVE_SPEED);
-                case PlayerType.Green:
+                case ColorType.Green:
                     var greenValue = -GetMoveValue(inputType) + _transform.position.y;
                     return _transform.DOMoveY(greenValue, Const.MOVE_SPEED);
+                case ColorType.Blue:
+                    var blueValue = GetMoveValue(inputType) + _transform.position.x;
+                    return _transform.DOMoveX(blueValue, Const.MOVE_SPEED);
+                case ColorType.None:
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -68,18 +70,19 @@ namespace Game.Player
             }
         }
 
-        private static Vector3 GetGravity(PlayerType playerType)
+        private static Vector3 GetGravity(ColorType colorType)
         {
-            switch (playerType)
+            switch (colorType)
             {
-                case PlayerType.Red:
+                case ColorType.Red:
                     return Vector3.right;
-                case PlayerType.Blue:
-                    return Vector3.down;
-                case PlayerType.Green:
+                case ColorType.Green:
                     return Vector3.left;
+                case ColorType.Blue:
+                    return Vector3.down;
+                case ColorType.None:
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(playerType), playerType, null);
+                    throw new ArgumentOutOfRangeException(nameof(colorType), colorType, null);
             }
         }
     }

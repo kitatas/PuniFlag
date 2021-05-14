@@ -2,17 +2,18 @@ using System;
 using Common;
 using DG.Tweening;
 using Game.Application;
+using Game.Domain.UseCase.Interface;
 using UnityEngine;
 
-namespace Game.Player
+namespace Game.Domain.UseCase
 {
-    public sealed class PlayerRotator
+    public sealed class StageObjectRotateUseCase : IStageObjectRotateUseCase
     {
         private readonly Transform _transform;
         private readonly Vector3 _addVector = new Vector3(0.0f, 0.0f, 90.0f);
         private Vector3 _currentVector;
 
-        public PlayerRotator(Transform transform)
+        public StageObjectRotateUseCase(Transform transform)
         {
             _transform = transform;
             _currentVector = transform.eulerAngles;
