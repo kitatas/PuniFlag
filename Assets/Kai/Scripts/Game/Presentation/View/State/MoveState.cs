@@ -1,19 +1,21 @@
 using System;
-using System.Linq;
 using System.Threading;
 using Common;
 using Cysharp.Threading.Tasks;
 using Game.Application;
+using Game.Domain.UseCase.Interface;
+using Zenject;
 
 namespace Game.Presentation.View.State
 {
     public sealed class MoveState : BaseState
     {
-        private PlayerView[] _players;
+        private IStageObjectContainerUseCase _stageObjectContainerUseCase;
 
-        private void Awake()
+        [Inject]
+        private void Construct(IStageObjectContainerUseCase stageObjectContainerUseCase)
         {
-            _players = FindObjectsOfType<PlayerView>();
+            _stageObjectContainerUseCase = stageObjectContainerUseCase;
         }
 
         public override GameState GetState() => GameState.Move;
@@ -28,11 +30,9 @@ namespace Game.Presentation.View.State
             // 移動・回転待ち
             await UniTask.Delay(TimeSpan.FromSeconds(Const.ROTATE_SPEED), cancellationToken: token);
 
-            SetOnGravity();
+            var isClear = await _stageObjectContainerUseCase.IsAllGoalAsync(token);
 
-            await UniTask.WaitUntil(IsGroundAllPlayer, cancellationToken: token);
-
-            if (IsGoalAllPlayer())
+            if (isClear)
             {
                 return GameState.Clear;
             }
@@ -40,24 +40,6 @@ namespace Game.Presentation.View.State
             {
                 return GameState.Input;
             }
-        }
-
-        private void SetOnGravity()
-        {
-            foreach (var player in _players)
-            {
-                player.isGround = false;
-            }
-        }
-
-        private bool IsGroundAllPlayer()
-        {
-            return _players.All(player => player.isGround);
-        }
-
-        private bool IsGoalAllPlayer()
-        {
-            return _players.All(player => player.IsGoal());
         }
     }
 }

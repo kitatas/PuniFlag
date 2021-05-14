@@ -1,3 +1,4 @@
+using Game.Data.Container;
 using Game.Data.Entity;
 using Game.Domain.Model;
 using Game.Domain.Repository;
@@ -25,6 +26,18 @@ namespace Game.Installer
 
         public override void InstallBindings()
         {
+            #region Container
+
+            Container
+                .BindInterfacesTo<PlayerContainer>()
+                .AsCached();
+
+            Container
+                .BindInterfacesTo<FlagContainer>()
+                .AsCached();
+
+            #endregion
+
             #region Entity
 
             Container
@@ -59,6 +72,10 @@ namespace Game.Installer
                 .Bind<StageDataUseCase>()
                 .AsCached()
                 .NonLazy();
+
+            Container
+                .BindInterfacesTo<StageObjectContainerUseCase>()
+                .AsCached();
 
             Container
                 .BindInterfacesTo<InputUseCase>()

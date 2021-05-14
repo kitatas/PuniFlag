@@ -15,10 +15,11 @@ namespace Game.Factory
             _stageView = stageView;
         }
 
-        public void GenerateStageObject(GameObject stageObject, Vector2 position, Quaternion quaternion)
+        public GameObject GenerateStageObject(GameObject stageObject, Vector2 position, Quaternion quaternion)
         {
             var instance = Object.Instantiate(stageObject, position, quaternion);
             instance.transform.SetParent(_stageView.transform);
+            return instance;
         }
     }
 }

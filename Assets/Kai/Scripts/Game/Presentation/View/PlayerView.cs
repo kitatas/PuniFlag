@@ -1,4 +1,3 @@
-using System.Linq;
 using Common;
 using Common.Extension;
 using DG.Tweening;
@@ -18,42 +17,20 @@ namespace Game.Presentation.View
     public sealed class PlayerView : StageObjectView
     {
         [SerializeField] private ColorType colorType = default;
+        [SerializeField] private Collider2D collider2d = default;
+        [SerializeField] private Rigidbody2D rigidbody2d = default;
+        [SerializeField] private PlayerSpriteView playerSpriteView = default;
         public bool isGround;
         private TweenerCore<Vector3, Vector3, VectorOptions> _tween;
 
-        private FlagView _flagView;
-
-        private FlagView flagView
-        {
-            get
-            {
-                if (_flagView == null)
-                {
-                    var flags = FindObjectsOfType<FlagView>();
-                    _flagView = flags.ToList().Find(x => x.color == color);
-                }
-
-                return _flagView;
-            }
-        }
-
-        private Collider2D _collider2D;
-        private PlayerSpriteView _playerSpriteView;
         private IPlayerMoveUseCase _playerMoveUseCase;
         private IStageObjectRotateUseCase _stageObjectRotateUseCase;
 
-        private void Awake()
-        {
-            _collider2D = GetComponent<Collider2D>();
-            _playerSpriteView = GetComponent<PlayerSpriteView>();
-            var rigidbody2d = GetComponent<Rigidbody2D>();
-            _playerMoveUseCase = new PlayerMoveUseCase(color, rigidbody2d, transform);
-            _stageObjectRotateUseCase = new StageObjectRotateUseCase(transform);
-        }
-
-        private void Start()
+        public void Init()
         {
             isGround = false;
+            _playerMoveUseCase = new PlayerMoveUseCase(color, rigidbody2d, transform);
+            _stageObjectRotateUseCase = new StageObjectRotateUseCase(transform);
 
             // 落下
             this.FixedUpdateAsObservable()
@@ -82,23 +59,20 @@ namespace Game.Presentation.View
                 .AddTo(this);
         }
 
-        public bool IsGoal() => flagView.EqualPosition(transform.RoundPosition());
-
         public void ActivateCollider(bool value)
         {
-            _collider2D.enabled = value;
+            collider2d.enabled = value;
         }
 
         public void Move(InputType inputType)
         {
             _tween = _playerMoveUseCase.Move(inputType);
-            _playerSpriteView.Flip(inputType);
+            playerSpriteView.Flip(inputType);
         }
 
         public void Rotate(InputType inputType)
         {
             _stageObjectRotateUseCase.Rotate(inputType);
-            flagView.Rotate(inputType);
         }
 
         public override StageObjectType type => StageObjectType.Player;

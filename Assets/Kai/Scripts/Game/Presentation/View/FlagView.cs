@@ -12,7 +12,7 @@ namespace Game.Presentation.View
 
         private IStageObjectRotateUseCase _stageObjectRotateUseCase;
 
-        private void Awake()
+        public void Init()
         {
             _stageObjectRotateUseCase = new StageObjectRotateUseCase(transform);
         }

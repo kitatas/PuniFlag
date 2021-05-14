@@ -1,8 +1,10 @@
 using System;
 using Game.Application;
+using Game.Data.Container.Interface;
 using Game.Data.Entity;
 using Game.Domain.Repository.Interface;
 using Game.Factory.Interface;
+using Game.Presentation.View;
 using Game.Stage.Level;
 using UnityEngine;
 
@@ -11,7 +13,7 @@ namespace Game.Domain.UseCase
     public sealed class StageDataUseCase
     {
         public StageDataUseCase(LevelModel levelModel, IStageRepository stageRepository,
-                IStageObjectFactory stageObjectFactory)
+            IStageObjectFactory stageObjectFactory, IPlayerContainer playerContainer, IFlagContainer flagContainer)
         {
             var level = levelModel.GetLevel();
             var stageData = stageRepository.GetStageData(level).ToString();
@@ -20,27 +22,23 @@ namespace Game.Domain.UseCase
             foreach (var data in stageDataEntity.stageObjects)
             {
                 var stageObject = stageRepository.GetStageObject(data.type, data.color);
-                stageObjectFactory.GenerateStageObject(stageObject.gameObject, data.position, GetQuaternion(data.color));
+                var instance = stageObjectFactory.GenerateStageObject(stageObject.gameObject, data.position, GetQuaternion(data.color));
 
-                // switch (data.type)
-                // {
-                //     case StageObjectType.Player:
-                //         playerContainer.Add(stageObject as PlayerView);
-                //         break;
-                //     case StageObjectType.Flag:
-                //         flagContainer.Add(stageObject as FlagView);
-                //         break;
-                //     case StageObjectType.Block:
-                //         break;
-                //     case StageObjectType.None:
-                //     default:
-                //         throw new ArgumentOutOfRangeException();
-                // }
-
+                switch (data.type)
+                {
+                    case StageObjectType.Player:
+                        playerContainer.Add(instance.GetComponent<PlayerView>());
+                        break;
+                    case StageObjectType.Flag:
+                        flagContainer.Add(instance.GetComponent<FlagView>());
+                        break;
+                    case StageObjectType.Block:
+                        break;
+                    case StageObjectType.None:
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
             }
-
-            // playerContainer.InitAll();
-            // flagContainer.InitAll();
         }
 
         private static Quaternion GetQuaternion(ColorType colorType)

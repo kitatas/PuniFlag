@@ -1,12 +1,11 @@
 using System;
 using System.Threading;
-using Common;
 using Common.Presentation.View;
 using Cysharp.Threading.Tasks;
 using Game.Application;
+using Game.Domain.UseCase.Interface;
 using Game.Presentation.Controller;
 using Game.StepCount;
-using UniRx;
 using Zenject;
 
 namespace Game.Presentation.View.State
@@ -31,19 +30,20 @@ namespace Game.Presentation.View.State
             }
         }
 
-        private PlayerView[] _players;
         private StageView _stageView;
+        private IStageObjectContainerUseCase _stageObjectContainerUseCase;
 
         [Inject]
-        private void Construct(ButtonController buttonController, StepCountModel stepCountModel)
+        private void Construct(ButtonController buttonController, StepCountModel stepCountModel,
+            IStageObjectContainerUseCase stageObjectContainerUseCase)
         {
             _buttonController = buttonController;
             _stepCountModel = stepCountModel;
+            _stageObjectContainerUseCase = stageObjectContainerUseCase;
         }
 
         private void Awake()
         {
-            _players = FindObjectsOfType<PlayerView>();
             _stageView = FindObjectOfType<StageView>();
         }
 
@@ -66,12 +66,11 @@ namespace Game.Presentation.View.State
             {
                 case InputType.MoveLeft:
                 case InputType.MoveRight:
-                    MovePlayer(input);
+                    _stageObjectContainerUseCase.Move(input);
                     break;
                 case InputType.RotateLeft:
                 case InputType.RotateRight:
-                    ActivatePlayerCollider();
-                    RotatePlayer(input);
+                    _stageObjectContainerUseCase.Rotate(input);
                     _stageView.Rotate(input);
                     break;
                 case InputType.None:
@@ -91,39 +90,6 @@ namespace Game.Presentation.View.State
             foreach (var buttonActivator in buttonActivators)
             {
                 buttonActivator.Activate(value);
-            }
-        }
-
-        private void MovePlayer(InputType inputType)
-        {
-            foreach (var player in _players)
-            {
-                player.Move(inputType);
-            }
-        }
-
-        private void ActivatePlayerCollider()
-        {
-            ActivatePlayerCollider(false);
-            Observable
-                .Timer(TimeSpan.FromSeconds(Const.ROTATE_SPEED + 0.01f))
-                .Subscribe(_ => ActivatePlayerCollider(true))
-                .AddTo(this);
-        }
-
-        private void ActivatePlayerCollider(bool value)
-        {
-            foreach (var player in _players)
-            {
-                player.ActivateCollider(value);
-            }
-        }
-
-        private void RotatePlayer(InputType inputType)
-        {
-            foreach (var player in _players)
-            {
-                player.Rotate(inputType);
             }
         }
     }

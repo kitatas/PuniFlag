@@ -9,24 +9,18 @@ namespace Game.Presentation.View
     [RequireComponent(typeof(SpriteRenderer))]
     public sealed class PlayerSpriteView : MonoBehaviour
     {
+        [SerializeField] private SpriteRenderer spriteRenderer = default;
         [SerializeField] private Sprite normal = default;
         [SerializeField] private Sprite movement = default;
 
-        private SpriteRenderer _spriteRenderer;
-
-        private void Awake()
-        {
-            _spriteRenderer = GetComponent<SpriteRenderer>();
-        }
-
         public void SetNormal()
         {
-            _spriteRenderer.sprite = normal;
+            spriteRenderer.sprite = normal;
         }
 
         public void SetMovement()
         {
-            _spriteRenderer.sprite = movement;
+            spriteRenderer.sprite = movement;
         }
 
         public void Flip(InputType inputType)
@@ -34,10 +28,10 @@ namespace Game.Presentation.View
             switch (inputType)
             {
                 case InputType.MoveLeft:
-                    _spriteRenderer.flipX = true;
+                    spriteRenderer.flipX = true;
                     break;
                 case InputType.MoveRight:
-                    _spriteRenderer.flipX = false;
+                    spriteRenderer.flipX = false;
                     break;
                 case InputType.None:
                 case InputType.RotateLeft:
