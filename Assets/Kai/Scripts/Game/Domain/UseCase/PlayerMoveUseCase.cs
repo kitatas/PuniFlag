@@ -1,5 +1,4 @@
 using System;
-using Common;
 using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
@@ -41,13 +40,13 @@ namespace Game.Domain.UseCase
             {
                 case ColorType.Red:
                     var redValue = GetMoveValue(inputType) + _transform.position.y;
-                    return _transform.DOMoveY(redValue, Const.MOVE_SPEED);
+                    return _transform.DOMoveY(redValue, StageObjectConfig.MOVE_SPEED);
                 case ColorType.Green:
                     var greenValue = -GetMoveValue(inputType) + _transform.position.y;
-                    return _transform.DOMoveY(greenValue, Const.MOVE_SPEED);
+                    return _transform.DOMoveY(greenValue, StageObjectConfig.MOVE_SPEED);
                 case ColorType.Blue:
                     var blueValue = GetMoveValue(inputType) + _transform.position.x;
-                    return _transform.DOMoveX(blueValue, Const.MOVE_SPEED);
+                    return _transform.DOMoveX(blueValue, StageObjectConfig.MOVE_SPEED);
                 case ColorType.None:
                 default:
                     throw new ArgumentOutOfRangeException();

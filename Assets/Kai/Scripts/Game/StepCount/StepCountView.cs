@@ -1,4 +1,4 @@
-using Common;
+using Common.Application;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -14,18 +14,18 @@ namespace Game.StepCount
         {
             DOTween.Sequence()
                 .Append(background
-                    .DOAnchorPosY(0.0f, Const.FADE_TIME))
+                    .DOAnchorPosY(0.0f, CommonViewConfig.FADE_TIME))
                 .Join(stepCountText.rectTransform
-                    .DOAnchorPosY(-100.0f, Const.FADE_TIME));
+                    .DOAnchorPosY(-100.0f, CommonViewConfig.FADE_TIME));
         }
 
         public void TweenCenter()
         {
             DOTween.Sequence()
                 .Append(background
-                    .DOAnchorPosY(-90.0f, Const.FADE_TIME))
+                    .DOAnchorPosY(-90.0f, CommonViewConfig.FADE_TIME))
                 .Join(stepCountText.rectTransform
-                    .DOAnchorPosY(0.0f, Const.FADE_TIME));
+                    .DOAnchorPosY(0.0f, CommonViewConfig.FADE_TIME));
         }
 
         public void Hide(float animationTime = 0.0f)

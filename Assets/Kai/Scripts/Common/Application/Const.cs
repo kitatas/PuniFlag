@@ -6,4 +6,9 @@ namespace Common.Application
         public const float UI_ANIMATION_TIME = 0.1f;
         public const float FADE_TIME = 0.25f;
     }
+
+    public sealed class GameConfig
+    {
+        public const int STAGE_COUNT = 10;
+    }
 }

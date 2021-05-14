@@ -23,7 +23,7 @@ namespace Common.Transition
 
         public async UniTask FadeInAsync(CancellationToken token)
         {
-            var delayTime = Const.FADE_TIME - 0.1f;
+            var delayTime = CommonViewConfig.FADE_TIME - 0.1f;
             _seController.DelayPlaySeAsync(SeType.Transition, delayTime, token).Forget();
 
             up.sizeDelta = new Vector2(320.0f, 181.0f);
@@ -31,9 +31,9 @@ namespace Common.Transition
 
             await DOTween.Sequence()
                 .Append(up
-                    .DOAnchorPosY(0.0f, Const.FADE_TIME))
+                    .DOAnchorPosY(0.0f, CommonViewConfig.FADE_TIME))
                 .Join(down
-                    .DOAnchorPosY(0.0f, Const.FADE_TIME))
+                    .DOAnchorPosY(0.0f, CommonViewConfig.FADE_TIME))
                 .WithCancellation(token);
         }
 
@@ -44,9 +44,9 @@ namespace Common.Transition
 
             await DOTween.Sequence()
                 .Append(up
-                    .DOAnchorPosY(90.0f, Const.FADE_TIME))
+                    .DOAnchorPosY(90.0f, CommonViewConfig.FADE_TIME))
                 .Join(down
-                    .DOAnchorPosY(-90.0f, Const.FADE_TIME))
+                    .DOAnchorPosY(-90.0f, CommonViewConfig.FADE_TIME))
                 .WithCancellation(token);
         }
 
@@ -57,9 +57,9 @@ namespace Common.Transition
 
             await DOTween.Sequence()
                 .Append(up
-                    .DOAnchorPosY(110.0f, Const.FADE_TIME))
+                    .DOAnchorPosY(110.0f, CommonViewConfig.FADE_TIME))
                 .Join(down
-                    .DOAnchorPosY(-110.0f, Const.FADE_TIME))
+                    .DOAnchorPosY(-110.0f, CommonViewConfig.FADE_TIME))
                 .WithCancellation(token);
         }
     }

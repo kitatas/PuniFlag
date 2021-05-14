@@ -1,6 +1,5 @@
 using System;
 using System.Threading;
-using Common;
 using Common.Application;
 using Common.Presentation.Controller;
 using Common.Transition;
@@ -38,7 +37,7 @@ namespace Game.Presentation.View.State
 
             await _clearView.ShowAsync(token);
 
-            await UniTask.Delay(TimeSpan.FromSeconds(Const.INTERVAL), cancellationToken: token);
+            await UniTask.Delay(TimeSpan.FromSeconds(CommonViewConfig.LOAD_INTERVAL), cancellationToken: token);
 
             _sceneLoader.LoadScene(SceneName.Main, LoadType.Next);
 

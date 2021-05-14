@@ -1,6 +1,5 @@
 using System;
 using System.Threading;
-using Common;
 using Cysharp.Threading.Tasks;
 using Game.Application;
 using Game.Domain.UseCase.Interface;
@@ -28,7 +27,7 @@ namespace Game.Presentation.View.State
         public override async UniTask<GameState> TickAsync(CancellationToken token)
         {
             // 移動・回転待ち
-            await UniTask.Delay(TimeSpan.FromSeconds(Const.ROTATE_SPEED), cancellationToken: token);
+            await UniTask.Delay(TimeSpan.FromSeconds(StageObjectConfig.ROTATE_SPEED), cancellationToken: token);
 
             var isClear = await _stageObjectContainerUseCase.IsAllGoalAsync(token);
 

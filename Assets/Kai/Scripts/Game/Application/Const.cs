@@ -15,6 +15,7 @@ namespace Game.Application
         public static readonly Quaternion rotateBlue = Quaternion.Euler(new Vector3(0.0f, 0.0f, 0.0f));
         public static readonly Vector3 rotateAddVector = new Vector3(0.0f, 0.0f, 90.0f);
         public const float ROTATE_SPEED = 0.25f;
+        public const float MOVE_SPEED = 0.25f;
         public const float CORRECT_TIME = 0.1f;
     }
 }

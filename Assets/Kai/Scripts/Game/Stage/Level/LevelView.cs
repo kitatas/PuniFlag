@@ -1,6 +1,5 @@
 using System;
 using System.Threading;
-using Common;
 using Common.Application;
 using Common.Presentation.Controller;
 using Cysharp.Threading.Tasks;
@@ -33,16 +32,16 @@ namespace Game.Stage.Level
 
         private async UniTaskVoid UpdateLevelAsync(int level, CancellationToken token)
         {
-            if (level != 0 && level < Const.STAGE_COUNT)
+            if (level != 0 && level < GameConfig.STAGE_COUNT)
             {
-                await UniTask.Delay(TimeSpan.FromSeconds(Const.FADE_TIME), cancellationToken: token);
+                await UniTask.Delay(TimeSpan.FromSeconds(CommonViewConfig.FADE_TIME), cancellationToken: token);
 
-                await UniTask.Delay(TimeSpan.FromSeconds(Const.INTERVAL * 0.5f), cancellationToken: token);
+                await UniTask.Delay(TimeSpan.FromSeconds(CommonViewConfig.LOAD_INTERVAL * 0.5f), cancellationToken: token);
 
                 _seController.PlaySe(SeType.LevelUp);
             }
 
-            stageLevelText.text = $"{level + 1:00} / {Const.STAGE_COUNT:00}";
+            stageLevelText.text = $"{level + 1:00} / {GameConfig.STAGE_COUNT:00}";
         }
 
         public void ShowClear()
@@ -51,12 +50,12 @@ namespace Game.Stage.Level
             stageLevelText.enabled = false;
             stageText.text = $"";
             DOTween.Sequence()
-                .AppendInterval(Const.FADE_TIME)
+                .AppendInterval(CommonViewConfig.FADE_TIME)
                 .Append(stageText
-                    .DOText($"game clear", Const.INTERVAL * 0.5f)
+                    .DOText($"game clear", CommonViewConfig.LOAD_INTERVAL * 0.5f)
                     .SetEase(Ease.Linear));
 
-            _seController.DelayPlaySeAsync(SeType.GameClear, Const.FADE_TIME, _token).Forget();
+            _seController.DelayPlaySeAsync(SeType.GameClear, CommonViewConfig.FADE_TIME, _token).Forget();
         }
 
         public void Show()

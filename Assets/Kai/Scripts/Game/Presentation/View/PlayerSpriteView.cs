@@ -1,5 +1,4 @@
 using System;
-using Common;
 using Game.Application;
 using UniRx;
 using UnityEngine;
@@ -42,7 +41,7 @@ namespace Game.Presentation.View
 
             SetMovement();
             Observable
-                .Timer(TimeSpan.FromSeconds(Const.MOVE_SPEED))
+                .Timer(TimeSpan.FromSeconds(StageObjectConfig.MOVE_SPEED))
                 .Subscribe(_ => SetNormal())
                 .AddTo(this);
         }

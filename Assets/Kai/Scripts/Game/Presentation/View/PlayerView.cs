@@ -1,4 +1,3 @@
-using Common;
 using Common.Extension;
 using DG.Tweening;
 using DG.Tweening.Core;
@@ -49,7 +48,7 @@ namespace Game.Presentation.View
 
                     var roundPosition = transform.RoundPosition();
                     transform
-                        .DOMove(roundPosition, Const.CORRECT_TIME)
+                        .DOMove(roundPosition, StageObjectConfig.CORRECT_TIME)
                         .OnComplete(() =>
                         {
                             isGround = true;

@@ -1,5 +1,4 @@
 using System;
-using Common;
 using DG.Tweening;
 using Game.Application;
 using Game.Domain.UseCase.Interface;
@@ -33,7 +32,7 @@ namespace Game.Domain.UseCase
             _index = ClampRotateVectorIndex();
 
             _transform
-                .DOLocalRotate(_rotateVector[_index], Const.ROTATE_SPEED);
+                .DOLocalRotate(_rotateVector[_index], StageObjectConfig.ROTATE_SPEED);
         }
 
         private static int GetRotateVectorIndex(InputType inputType)

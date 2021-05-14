@@ -1,5 +1,4 @@
 using System;
-using Common;
 using DG.Tweening;
 using Game.Application;
 using Game.Domain.UseCase.Interface;
@@ -23,7 +22,7 @@ namespace Game.Domain.UseCase
         {
             _currentVector = GetRotateVector(inputType);
             _transform
-                .DOLocalRotate(_currentVector, Const.ROTATE_SPEED);
+                .DOLocalRotate(_currentVector, StageObjectConfig.ROTATE_SPEED);
         }
 
         private Vector3 GetRotateVector(InputType inputType)

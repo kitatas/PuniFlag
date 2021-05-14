@@ -1,5 +1,6 @@
 using System;
 using System.Threading;
+using Common.Application;
 using Cysharp.Threading.Tasks;
 using Game.Stage.Level;
 using Game.StepCount;
@@ -46,7 +47,7 @@ namespace Common.Transition
                 case LoadType.Next:
                     _levelModel.LevelUp();
                     var level = _levelModel.GetLevel();
-                    if (level < Const.STAGE_COUNT)
+                    if (level < GameConfig.STAGE_COUNT)
                     {
                         LoadScene(sceneName, level);
                     }
@@ -86,12 +87,12 @@ namespace Common.Transition
                 container.BindInstance(level);
             });
 
-            await UniTask.Delay(TimeSpan.FromSeconds(Const.INTERVAL), cancellationToken: token);
+            await UniTask.Delay(TimeSpan.FromSeconds(CommonViewConfig.LOAD_INTERVAL), cancellationToken: token);
 
             switch (sceneName)
             {
                 case SceneName.Title:
-                    _stepCountView.Hide(Const.UI_ANIMATION_TIME);
+                    _stepCountView.Hide(CommonViewConfig.UI_ANIMATION_TIME);
                     await _transitionMask.FadeOutAllAsync(token);
                     _stepCountModel.ResetStepCount();
                     _levelModel.ResetLevel();
@@ -119,7 +120,7 @@ namespace Common.Transition
 
             await _zenjectSceneLoader.LoadSceneAsync(SceneName.Ranking.ToString());
 
-            await UniTask.Delay(TimeSpan.FromSeconds(Const.INTERVAL), cancellationToken: token);
+            await UniTask.Delay(TimeSpan.FromSeconds(CommonViewConfig.LOAD_INTERVAL), cancellationToken: token);
 
             await _transitionMask.FadeOutAllAsync(token);
             _stepCountView.Hide();
