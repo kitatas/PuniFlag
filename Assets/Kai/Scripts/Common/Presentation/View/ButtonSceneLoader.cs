@@ -1,14 +1,15 @@
-using Common.Presentation.View;
+using Common.Application;
+using Common.Presentation.Controller;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Common.Transition
+namespace Common.Presentation.View
 {
     [RequireComponent(typeof(Button))]
     [RequireComponent(typeof(ButtonAnimator))]
-    public sealed class LoadButton : MonoBehaviour
+    public sealed class ButtonSceneLoader : MonoBehaviour
     {
         [SerializeField] private SceneName sceneName = default;
         [SerializeField] private LoadType loadType = default;

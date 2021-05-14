@@ -6,9 +6,9 @@ using DG.Tweening;
 using UnityEngine;
 using Zenject;
 
-namespace Common.Transition
+namespace Common.Presentation.View
 {
-    public sealed class TransitionMask : MonoBehaviour
+    public sealed class TransitionMaskView : MonoBehaviour
     {
         [SerializeField] private RectTransform up = default;
         [SerializeField] private RectTransform down = default;

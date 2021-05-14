@@ -16,10 +16,24 @@ namespace Common.Application
         LevelUp = 4,
         GameClear = 5,
     }
-    
+
     public enum ButtonType
     {
         Decision,
         Cancel,
+    }
+
+    public enum LoadType
+    {
+        Direct,
+        Next,
+        Reload,
+    }
+
+    public enum SceneName
+    {
+        Title,
+        Main,
+        Ranking,
     }
 }

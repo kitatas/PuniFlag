@@ -2,7 +2,7 @@ using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
 
-namespace Common.View
+namespace Common.Presentation.Controller
 {
     public sealed class RenderCameraSetter : MonoBehaviour
     {

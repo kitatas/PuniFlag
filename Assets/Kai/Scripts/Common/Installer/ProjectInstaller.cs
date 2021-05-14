@@ -1,7 +1,7 @@
 using Common.Domain.Repository;
 using Common.Domain.UseCase;
 using Common.Presentation.Controller;
-using Common.Transition;
+using Common.Presentation.View;
 using Game.Stage.Level;
 using Game.StepCount;
 using UnityEngine;
@@ -13,7 +13,7 @@ namespace Common.Installer
     {
         [SerializeField] private BgmController bgmController = default;
         [SerializeField] private SeController seController = default;
-        [SerializeField] private TransitionMask transitionMask = default;
+        [SerializeField] private TransitionMaskView transitionMaskView = default;
         [SerializeField] private StepCountView stepCountView = default;
         [SerializeField] private LevelView levelView = default;
 
@@ -66,8 +66,8 @@ namespace Common.Installer
                 .AsCached();
 
             Container
-                .Bind<TransitionMask>()
-                .FromInstance(transitionMask)
+                .Bind<TransitionMaskView>()
+                .FromInstance(transitionMaskView)
                 .AsCached();
 
             #endregion

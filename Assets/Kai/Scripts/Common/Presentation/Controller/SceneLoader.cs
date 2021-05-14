@@ -1,30 +1,31 @@
 using System;
 using System.Threading;
 using Common.Application;
+using Common.Presentation.View;
 using Cysharp.Threading.Tasks;
 using Game.Stage.Level;
 using Game.StepCount;
 using UnityEngine.SceneManagement;
 using Zenject;
 
-namespace Common.Transition
+namespace Common.Presentation.Controller
 {
     public sealed class SceneLoader
     {
         private readonly CancellationTokenSource _tokenSource;
         private readonly ZenjectSceneLoader _zenjectSceneLoader;
-        private readonly TransitionMask _transitionMask;
+        private readonly TransitionMaskView _transitionMaskView;
         private readonly StepCountModel _stepCountModel;
         private readonly StepCountView _stepCountView;
         private readonly LevelModel _levelModel;
         private readonly LevelView _levelView;
 
-        public SceneLoader(ZenjectSceneLoader zenjectSceneLoader, TransitionMask transitionMask,
+        public SceneLoader(ZenjectSceneLoader zenjectSceneLoader, TransitionMaskView transitionMaskView,
             StepCountModel stepCountModel, StepCountView stepCountView, LevelModel levelModel, LevelView levelView)
         {
             _tokenSource = new CancellationTokenSource();
             _zenjectSceneLoader = zenjectSceneLoader;
-            _transitionMask = transitionMask;
+            _transitionMaskView = transitionMaskView;
             _stepCountModel = stepCountModel;
             _stepCountView = stepCountView;
             _levelModel = levelModel;
@@ -80,7 +81,7 @@ namespace Common.Transition
                 _stepCountView.TweenCenter();
             }
 
-            await _transitionMask.FadeInAsync(token);
+            await _transitionMaskView.FadeInAsync(token);
 
             await _zenjectSceneLoader.LoadSceneAsync(sceneName.ToString(), LoadSceneMode.Single, container =>
             {
@@ -93,14 +94,14 @@ namespace Common.Transition
             {
                 case SceneName.Title:
                     _stepCountView.Hide(CommonViewConfig.UI_ANIMATION_TIME);
-                    await _transitionMask.FadeOutAllAsync(token);
+                    await _transitionMaskView.FadeOutAllAsync(token);
                     _stepCountModel.ResetStepCount();
                     _levelModel.ResetLevel();
                     _levelView.Show();
                     break;
                 case SceneName.Main:
                     _stepCountView.TweenTop();
-                    await _transitionMask.FadeOutAsync(token);
+                    await _transitionMaskView.FadeOutAsync(token);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(sceneName), sceneName, null);
@@ -116,13 +117,13 @@ namespace Common.Transition
         {
             _levelView.ShowClear();
             _stepCountView.TweenCenter();
-            await _transitionMask.FadeInAsync(token);
+            await _transitionMaskView.FadeInAsync(token);
 
             await _zenjectSceneLoader.LoadSceneAsync(SceneName.Ranking.ToString());
 
             await UniTask.Delay(TimeSpan.FromSeconds(CommonViewConfig.LOAD_INTERVAL), cancellationToken: token);
 
-            await _transitionMask.FadeOutAllAsync(token);
+            await _transitionMaskView.FadeOutAllAsync(token);
             _stepCountView.Hide();
         }
     }

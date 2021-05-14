@@ -2,7 +2,6 @@ using System;
 using System.Threading;
 using Common.Application;
 using Common.Presentation.Controller;
-using Common.Transition;
 using Cysharp.Threading.Tasks;
 using Game.Application;
 using Zenject;
