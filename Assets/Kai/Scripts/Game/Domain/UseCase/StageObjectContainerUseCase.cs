@@ -10,10 +10,10 @@ namespace Game.Domain.UseCase
 {
     public sealed class StageObjectContainerUseCase : IStageObjectContainerUseCase
     {
-        private readonly IPlayerContainer _playerContainer;
-        private readonly IFlagContainer _flagContainer;
+        private readonly IReadOnlyPlayerContainer _playerContainer;
+        private readonly IReadOnlyFlagContainer _flagContainer;
 
-        public StageObjectContainerUseCase(IPlayerContainer playerContainer, IFlagContainer flagContainer)
+        public StageObjectContainerUseCase(IReadOnlyPlayerContainer playerContainer, IReadOnlyFlagContainer flagContainer)
         {
             _playerContainer = playerContainer;
             _flagContainer = flagContainer;

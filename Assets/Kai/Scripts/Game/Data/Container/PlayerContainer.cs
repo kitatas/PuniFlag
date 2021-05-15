@@ -6,7 +6,7 @@ using Game.Presentation.View;
 
 namespace Game.Data.Container
 {
-    public sealed class PlayerContainer : IPlayerContainer
+    public sealed class PlayerContainer : IReadOnlyPlayerContainer, IWriteOnlyPlayerContainer
     {
         private readonly List<PlayerView> _playerViews;
 

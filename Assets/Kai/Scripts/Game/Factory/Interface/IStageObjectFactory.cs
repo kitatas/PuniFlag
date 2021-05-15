@@ -1,9 +1,10 @@
-using UnityEngine;
+using Game.Data.Entity;
+using Game.Presentation.View;
 
 namespace Game.Factory.Interface
 {
     public interface IStageObjectFactory
     {
-        GameObject GenerateStageObject(GameObject stageObject, Vector2 position, Quaternion quaternion);
+        void GenerateStageObject(StageObjectView stageObjectView, StageObject stageObject);
     }
 }

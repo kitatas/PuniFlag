@@ -4,10 +4,9 @@ using Game.Presentation.View;
 
 namespace Game.Data.Container.Interface
 {
-    public interface IFlagContainer
+    public interface IReadOnlyFlagContainer
     {
         IEnumerable<FlagView> flagViews { get; }
-        void Add(FlagView flagView);
         void RotateAll(InputType inputType);
     }
 }

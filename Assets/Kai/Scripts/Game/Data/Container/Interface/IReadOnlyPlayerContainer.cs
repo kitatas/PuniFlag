@@ -4,10 +4,9 @@ using Game.Presentation.View;
 
 namespace Game.Data.Container.Interface
 {
-    public interface IPlayerContainer
+    public interface IReadOnlyPlayerContainer
     {
         IEnumerable<PlayerView> playerViews { get; }
-        void Add(PlayerView playerView);
         void MoveAll(InputType inputType);
         void ActivateColliderAll(bool value);
         void RotateAll(InputType inputType);

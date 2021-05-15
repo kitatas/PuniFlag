@@ -5,7 +5,7 @@ using Game.Presentation.View;
 
 namespace Game.Data.Container
 {
-    public sealed class FlagContainer : IFlagContainer
+    public sealed class FlagContainer : IReadOnlyFlagContainer, IWriteOnlyFlagContainer
     {
         private readonly List<FlagView> _flagViews;
 
