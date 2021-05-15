@@ -17,7 +17,7 @@ namespace Game.Installer
     {
         [SerializeField] private ButtonController buttonController = default;
         [SerializeField] private StageView stageView = default;
-        [SerializeField] private ClearView clearView;
+        [SerializeField] private ClearView clearView = default;
 
         [SerializeField] private InputState inputState = default;
         [SerializeField] private MoveState moveState = default;

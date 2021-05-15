@@ -12,8 +12,6 @@ namespace Game.Presentation.View.State
 {
     public sealed class InputState : BaseState
     {
-        private ButtonController _buttonController;
-
         private ButtonActivator[] _buttonActivators;
 
         private ButtonActivator[] buttonActivators
@@ -29,22 +27,19 @@ namespace Game.Presentation.View.State
             }
         }
 
-        private StageView _stageView;
+        private ButtonController _buttonController;
         private IStepCountUseCase _stepCountUseCase;
         private IStageObjectContainerUseCase _stageObjectContainerUseCase;
+        private StageView _stageView;
 
         [Inject]
         private void Construct(ButtonController buttonController, IStepCountUseCase stepCountUseCase,
-            IStageObjectContainerUseCase stageObjectContainerUseCase)
+            IStageObjectContainerUseCase stageObjectContainerUseCase, StageView stageView)
         {
             _buttonController = buttonController;
             _stepCountUseCase = stepCountUseCase;
             _stageObjectContainerUseCase = stageObjectContainerUseCase;
-        }
-
-        private void Awake()
-        {
-            _stageView = FindObjectOfType<StageView>();
+            _stageView = stageView;
         }
 
         public override GameState GetState() => GameState.Input;
