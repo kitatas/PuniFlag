@@ -5,7 +5,7 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
-namespace Game.Presentation.View
+namespace Kai.Game.Presentation.View
 {
     public sealed class ClearView : MonoBehaviour
     {

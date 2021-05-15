@@ -1,9 +1,9 @@
-using Common.Application;
-using Common.Data.DataStore;
-using Common.Domain.Repository.Interface;
+using Kai.Common.Application;
+using Kai.Common.Data.DataStore;
+using Kai.Common.Domain.Repository.Interface;
 using UnityEngine;
 
-namespace Common.Domain.Repository
+namespace Kai.Common.Domain.Repository
 {
     public sealed class SoundRepository : ISoundRepository
     {

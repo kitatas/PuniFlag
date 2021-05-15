@@ -1,10 +1,10 @@
-using Common.Extension;
-using Game.Application;
-using Game.Domain.UseCase;
-using Game.Domain.UseCase.Interface;
+using Kai.Common.Extension;
+using Kai.Game.Application;
+using Kai.Game.Domain.UseCase;
+using Kai.Game.Domain.UseCase.Interface;
 using UnityEngine;
 
-namespace Game.Presentation.View
+namespace Kai.Game.Presentation.View
 {
     public sealed class FlagView : StageObjectView
     {

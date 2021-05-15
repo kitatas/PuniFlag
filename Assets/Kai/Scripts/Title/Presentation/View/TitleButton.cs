@@ -1,13 +1,13 @@
-using Common.Presentation.View;
+using Kai.Common.Presentation.View;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Result.View
+namespace Kai.Title.Presentation.View
 {
     [RequireComponent(typeof(ButtonActivator))]
     [RequireComponent(typeof(ButtonAnimator))]
-    public sealed class RankingButton : MonoBehaviour
+    public sealed class TitleButton : MonoBehaviour
     {
         private ButtonActivator _buttonActivator;
         private ButtonAnimator _buttonAnimator;
@@ -24,6 +24,11 @@ namespace Result.View
                 .OnClickAsObservable()
                 .Subscribe(_ => _buttonAnimator.Play())
                 .AddTo(this);
+        }
+
+        public void Activate(bool value)
+        {
+            _buttonActivator.Activate(value);
         }
     }
 }

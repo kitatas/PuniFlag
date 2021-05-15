@@ -1,8 +1,8 @@
-using Common.Domain.Model.Interface;
-using Common.Presentation.View;
+using Kai.Common.Domain.Model.Interface;
+using Kai.Common.Presentation.View;
 using UniRx;
 
-namespace Common.Presentation.Presenter
+namespace Kai.Common.Presentation.Presenter
 {
     public sealed class StepCountPresenter
     {

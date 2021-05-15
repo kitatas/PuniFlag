@@ -1,8 +1,8 @@
-using Common.Data.Entity.Interface;
-using Common.Domain.Model.Interface;
-using Common.Domain.UseCase.Interface;
+using Kai.Common.Data.Entity.Interface;
+using Kai.Common.Domain.Model.Interface;
+using Kai.Common.Domain.UseCase.Interface;
 
-namespace Common.Domain.UseCase
+namespace Kai.Common.Domain.UseCase
 {
     public sealed class StepCountUseCase : IStepCountUseCase
     {

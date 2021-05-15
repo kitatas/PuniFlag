@@ -1,10 +1,10 @@
-using Game.Application;
-using Game.Data.Entity.Interface;
-using Game.Domain.Model.Interface;
-using Game.Domain.UseCase.Interface;
+using Kai.Game.Application;
+using Kai.Game.Data.Entity.Interface;
+using Kai.Game.Domain.Model.Interface;
+using Kai.Game.Domain.UseCase.Interface;
 using UniRx;
 
-namespace Game.Domain.UseCase
+namespace Kai.Game.Domain.UseCase
 {
     public sealed class GameStateUseCase : IGameStateUseCase
     {

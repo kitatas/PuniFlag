@@ -1,7 +1,7 @@
-using Game.Domain.UseCase.Interface;
+using Kai.Game.Domain.UseCase.Interface;
 using UnityEngine;
 
-namespace Game.Domain.UseCase
+namespace Kai.Game.Domain.UseCase
 {
     public sealed class InputUseCase : IInputUseCase
     {

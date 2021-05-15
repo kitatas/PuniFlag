@@ -1,9 +1,9 @@
-using Common.Application;
 using DG.Tweening;
+using Kai.Common.Application;
 using TMPro;
 using UnityEngine;
 
-namespace Common.Presentation.View
+namespace Kai.Common.Presentation.View
 {
     public sealed class StepCountView : MonoBehaviour
     {

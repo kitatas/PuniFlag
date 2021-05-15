@@ -1,14 +1,13 @@
 using System;
 using System.Threading;
-using Common.Application;
-using Common.Domain.Model;
-using Common.Domain.UseCase.Interface;
-using Common.Presentation.View;
 using Cysharp.Threading.Tasks;
+using Kai.Common.Application;
+using Kai.Common.Domain.UseCase.Interface;
+using Kai.Common.Presentation.View;
 using UnityEngine.SceneManagement;
 using Zenject;
 
-namespace Common.Presentation.Controller
+namespace Kai.Common.Presentation.Controller
 {
     public sealed class SceneLoader
     {

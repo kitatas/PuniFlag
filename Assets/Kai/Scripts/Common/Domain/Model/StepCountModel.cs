@@ -1,7 +1,7 @@
-using Common.Domain.Model.Interface;
+using Kai.Common.Domain.Model.Interface;
 using UniRx;
 
-namespace Common.Domain.Model
+namespace Kai.Common.Domain.Model
 {
     public sealed class StepCountModel : IStepCountModel
     {

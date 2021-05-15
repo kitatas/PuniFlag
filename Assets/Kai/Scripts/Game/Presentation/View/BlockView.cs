@@ -1,7 +1,7 @@
-using Game.Application;
+using Kai.Game.Application;
 using UnityEngine;
 
-namespace Game.Presentation.View
+namespace Kai.Game.Presentation.View
 {
     public sealed class BlockView : StageObjectView
     {

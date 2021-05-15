@@ -1,8 +1,8 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Game.Application;
+using Kai.Game.Application;
 
-namespace Game.Domain.UseCase.Interface
+namespace Kai.Game.Domain.UseCase.Interface
 {
     public interface IStageObjectContainerUseCase
     {

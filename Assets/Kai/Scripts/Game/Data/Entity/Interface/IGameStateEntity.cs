@@ -1,6 +1,6 @@
-using Game.Application;
+using Kai.Game.Application;
 
-namespace Game.Data.Entity.Interface
+namespace Kai.Game.Data.Entity.Interface
 {
     public interface IGameStateEntity
     {

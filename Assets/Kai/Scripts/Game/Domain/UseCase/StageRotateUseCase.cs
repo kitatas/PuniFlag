@@ -1,10 +1,10 @@
 using System;
 using DG.Tweening;
-using Game.Application;
-using Game.Domain.UseCase.Interface;
+using Kai.Game.Application;
+using Kai.Game.Domain.UseCase.Interface;
 using UnityEngine;
 
-namespace Game.Domain.UseCase
+namespace Kai.Game.Domain.UseCase
 {
     public sealed class StageRotateUseCase : IStageRotateUseCase
     {

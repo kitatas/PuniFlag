@@ -1,7 +1,7 @@
-using Common.Application;
+using Kai.Common.Application;
 using UnityEngine;
 
-namespace Common.Domain.UseCase.Interface
+namespace Kai.Common.Domain.UseCase.Interface
 {
     public interface ISeUseCase
     {

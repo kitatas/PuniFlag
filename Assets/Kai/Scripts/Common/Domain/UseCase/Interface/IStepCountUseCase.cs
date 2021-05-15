@@ -1,4 +1,4 @@
-namespace Common.Domain.UseCase.Interface
+namespace Kai.Common.Domain.UseCase.Interface
 {
     public interface IStepCountUseCase
     {

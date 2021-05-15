@@ -1,11 +1,11 @@
 using System;
 using System.Threading;
-using Common.Application;
-using Common.Domain.UseCase.Interface;
 using Cysharp.Threading.Tasks;
+using Kai.Common.Application;
+using Kai.Common.Domain.UseCase.Interface;
 using Zenject;
 
-namespace Common.Presentation.Controller
+namespace Kai.Common.Presentation.Controller
 {
     public sealed class SeController : BaseAudioSource
     {

@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Game.Application;
-using Game.Domain.UseCase.Interface;
-using Game.Presentation.View.State;
+using Kai.Game.Application;
+using Kai.Game.Domain.UseCase.Interface;
+using Kai.Game.Presentation.View.State;
 using UniRx;
 
-namespace Game.Presentation.Presenter
+namespace Kai.Game.Presentation.Presenter
 {
     public sealed class StatePresenter
     {

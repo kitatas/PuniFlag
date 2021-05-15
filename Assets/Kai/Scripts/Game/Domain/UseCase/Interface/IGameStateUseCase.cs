@@ -1,7 +1,7 @@
-using Game.Application;
+using Kai.Game.Application;
 using UniRx;
 
-namespace Game.Domain.UseCase.Interface
+namespace Kai.Game.Domain.UseCase.Interface
 {
     public interface IGameStateUseCase
     {

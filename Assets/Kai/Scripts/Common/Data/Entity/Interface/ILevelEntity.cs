@@ -1,4 +1,4 @@
-namespace Common.Data.Entity.Interface
+namespace Kai.Common.Data.Entity.Interface
 {
     public interface ILevelEntity
     {

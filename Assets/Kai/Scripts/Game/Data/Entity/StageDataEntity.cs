@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Game.Application;
+using Kai.Game.Application;
 using UnityEngine;
 
-namespace Game.Data.Entity
+namespace Kai.Game.Data.Entity
 {
     public sealed class StageDataEntity
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Common.Extension
+namespace Kai.Common.Extension
 {
     public static class TransformExtension
     {

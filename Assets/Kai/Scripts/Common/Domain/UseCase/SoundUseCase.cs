@@ -1,10 +1,10 @@
 using System;
-using Common.Application;
-using Common.Domain.Repository.Interface;
-using Common.Domain.UseCase.Interface;
+using Kai.Common.Application;
+using Kai.Common.Domain.Repository.Interface;
+using Kai.Common.Domain.UseCase.Interface;
 using UnityEngine;
 
-namespace Common.Domain.UseCase
+namespace Kai.Common.Domain.UseCase
 {
     public sealed class SoundUseCase : IBgmUseCase, ISeUseCase
     {

@@ -1,17 +1,17 @@
-using Game.Data.Container;
-using Game.Data.Entity;
-using Game.Domain.Model;
-using Game.Domain.Repository;
-using Game.Domain.UseCase;
-using Game.Factory;
-using Game.Presentation.Controller;
-using Game.Presentation.Presenter;
-using Game.Presentation.View;
-using Game.Presentation.View.State;
+using Kai.Game.Data.Container;
+using Kai.Game.Data.Entity;
+using Kai.Game.Domain.Model;
+using Kai.Game.Domain.Repository;
+using Kai.Game.Domain.UseCase;
+using Kai.Game.Factory;
+using Kai.Game.Presentation.Controller;
+using Kai.Game.Presentation.Presenter;
+using Kai.Game.Presentation.View;
+using Kai.Game.Presentation.View.State;
 using UnityEngine;
 using Zenject;
 
-namespace Game.Installer
+namespace Kai.Game.Installer
 {
     public sealed class GameInstaller : MonoInstaller
     {

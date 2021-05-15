@@ -1,10 +1,10 @@
-using Common.Data.Entity.Interface;
-using Game.Data.Entity;
-using Game.Domain.Repository.Interface;
-using Game.Factory.Interface;
+using Kai.Common.Data.Entity.Interface;
+using Kai.Game.Data.Entity;
+using Kai.Game.Domain.Repository.Interface;
+using Kai.Game.Factory.Interface;
 using UnityEngine;
 
-namespace Game.Domain.UseCase
+namespace Kai.Game.Domain.UseCase
 {
     public sealed class StageDataUseCase
     {

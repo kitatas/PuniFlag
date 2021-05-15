@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.Data.DataStore
+namespace Kai.Game.Data.DataStore
 {
     [CreateAssetMenu(fileName = "StageDataTable", menuName = "DataTable/StageDataTable", order = 0)]
     public sealed class StageDataTable : ScriptableObject

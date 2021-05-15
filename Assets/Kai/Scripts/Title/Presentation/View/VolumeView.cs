@@ -1,13 +1,13 @@
-using Common.Application;
-using Common.Presentation.Controller;
-using Common.Presentation.Controller.Interface;
+using Kai.Common.Application;
+using Kai.Common.Presentation.Controller;
+using Kai.Common.Presentation.Controller.Interface;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Title.View
+namespace Kai.Title.Presentation.View
 {
     public sealed class VolumeView : MonoBehaviour
     {

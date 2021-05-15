@@ -1,8 +1,8 @@
-using Game.Data.DataStore;
+using Kai.Game.Data.DataStore;
 using UnityEngine;
 using Zenject;
 
-namespace Game.Installer
+namespace Kai.Game.Installer
 {
     [CreateAssetMenu(fileName = "GameTableInstaller", menuName = "Installers/GameTableInstaller")]
     public sealed class GameTableInstaller : ScriptableObjectInstaller<GameTableInstaller>

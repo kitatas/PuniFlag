@@ -1,8 +1,8 @@
-using Common.Application;
+using Kai.Common.Application;
 using UnityEngine;
 using Zenject;
 
-namespace Common.Presentation.Controller
+namespace Kai.Common.Presentation.Controller
 {
     public sealed class BgmPlayer : MonoBehaviour
     {

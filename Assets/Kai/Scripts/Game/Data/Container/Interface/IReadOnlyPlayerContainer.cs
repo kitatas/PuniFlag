@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using Game.Application;
-using Game.Presentation.View;
+using Kai.Game.Application;
+using Kai.Game.Presentation.View;
 
-namespace Game.Data.Container.Interface
+namespace Kai.Game.Data.Container.Interface
 {
     public interface IReadOnlyPlayerContainer
     {

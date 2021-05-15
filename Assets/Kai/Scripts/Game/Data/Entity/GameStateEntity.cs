@@ -1,7 +1,7 @@
-using Game.Application;
-using Game.Data.Entity.Interface;
+using Kai.Game.Application;
+using Kai.Game.Data.Entity.Interface;
 
-namespace Game.Data.Entity
+namespace Kai.Game.Data.Entity
 {
     public sealed class GameStateEntity : IGameStateEntity
     {

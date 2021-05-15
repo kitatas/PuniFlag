@@ -1,14 +1,14 @@
 using System;
 using System.Threading;
-using Common.Domain.UseCase.Interface;
-using Common.Presentation.View;
 using Cysharp.Threading.Tasks;
-using Game.Application;
-using Game.Domain.UseCase.Interface;
-using Game.Presentation.Controller;
+using Kai.Common.Domain.UseCase.Interface;
+using Kai.Common.Presentation.View;
+using Kai.Game.Application;
+using Kai.Game.Domain.UseCase.Interface;
+using Kai.Game.Presentation.Controller;
 using Zenject;
 
-namespace Game.Presentation.View.State
+namespace Kai.Game.Presentation.View.State
 {
     public sealed class InputState : BaseState
     {

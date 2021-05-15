@@ -1,12 +1,12 @@
 using System.Threading;
-using Common.Application;
-using Common.Presentation.Controller;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using Kai.Common.Application;
+using Kai.Common.Presentation.Controller;
 using UnityEngine;
 using Zenject;
 
-namespace Common.Presentation.View
+namespace Kai.Common.Presentation.View
 {
     public sealed class TransitionMaskView : MonoBehaviour
     {

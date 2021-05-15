@@ -1,12 +1,12 @@
 using System;
 using System.Threading;
-using Common.Application;
-using Common.Presentation.Controller;
 using Cysharp.Threading.Tasks;
-using Game.Application;
+using Kai.Common.Application;
+using Kai.Common.Presentation.Controller;
+using Kai.Game.Application;
 using Zenject;
 
-namespace Game.Presentation.View.State
+namespace Kai.Game.Presentation.View.State
 {
     public sealed class ClearState : BaseState
     {

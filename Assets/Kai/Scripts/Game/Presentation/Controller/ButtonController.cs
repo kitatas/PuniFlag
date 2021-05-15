@@ -1,15 +1,15 @@
 using System;
-using Common.Application;
-using Common.Presentation.Controller;
-using Game.Application;
-using Game.Domain.UseCase.Interface;
-using Game.Presentation.View;
+using Kai.Common.Application;
+using Kai.Common.Presentation.Controller;
+using Kai.Game.Application;
+using Kai.Game.Domain.UseCase.Interface;
+using Kai.Game.Presentation.View;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
 using Zenject;
 
-namespace Game.Presentation.Controller
+namespace Kai.Game.Presentation.Controller
 {
     public sealed class ButtonController : MonoBehaviour
     {

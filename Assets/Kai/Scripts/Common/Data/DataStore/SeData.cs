@@ -1,7 +1,7 @@
-using Common.Application;
+using Kai.Common.Application;
 using UnityEngine;
 
-namespace Common.Data.DataStore
+namespace Kai.Common.Data.DataStore
 {
     [CreateAssetMenu(fileName = "SeData", menuName = "DataTable/SeData", order = 0)]
     public sealed class SeData : ScriptableObject

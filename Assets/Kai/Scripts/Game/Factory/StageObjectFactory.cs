@@ -1,14 +1,14 @@
 using System;
-using Game.Application;
-using Game.Data.Container.Interface;
-using Game.Data.Entity;
-using Game.Factory.Interface;
-using Game.Presentation.View;
+using Kai.Game.Application;
+using Kai.Game.Data.Container.Interface;
+using Kai.Game.Data.Entity;
+using Kai.Game.Factory.Interface;
+using Kai.Game.Presentation.View;
 using UnityEngine;
 using Zenject;
 using Object = UnityEngine.Object;
 
-namespace Game.Factory
+namespace Kai.Game.Factory
 {
     public sealed class StageObjectFactory : IStageObjectFactory
     {

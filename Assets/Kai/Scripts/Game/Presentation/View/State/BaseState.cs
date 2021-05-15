@@ -1,9 +1,9 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Game.Application;
+using Kai.Game.Application;
 using UnityEngine;
 
-namespace Game.Presentation.View.State
+namespace Kai.Game.Presentation.View.State
 {
     public abstract class BaseState : MonoBehaviour
     {

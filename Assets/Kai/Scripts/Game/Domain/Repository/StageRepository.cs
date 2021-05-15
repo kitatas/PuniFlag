@@ -1,10 +1,10 @@
-using Game.Application;
-using Game.Data.DataStore;
-using Game.Domain.Repository.Interface;
-using Game.Presentation.View;
+using Kai.Game.Application;
+using Kai.Game.Data.DataStore;
+using Kai.Game.Domain.Repository.Interface;
+using Kai.Game.Presentation.View;
 using UnityEngine;
 
-namespace Game.Domain.Repository
+namespace Kai.Game.Domain.Repository
 {
     public sealed class StageRepository : IStageRepository
     {

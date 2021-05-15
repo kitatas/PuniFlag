@@ -1,6 +1,6 @@
 using UniRx;
 
-namespace Common.Domain.Model.Interface
+namespace Kai.Common.Domain.Model.Interface
 {
     public interface ILevelModel
     {

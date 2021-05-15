@@ -1,9 +1,9 @@
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
-using Game.Application;
+using Kai.Game.Application;
 using UnityEngine;
 
-namespace Game.Domain.UseCase.Interface
+namespace Kai.Game.Domain.UseCase.Interface
 {
     public interface IPlayerMoveUseCase
     {

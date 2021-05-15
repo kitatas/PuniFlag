@@ -1,7 +1,7 @@
-using Common.Presentation.Controller.Interface;
+using Kai.Common.Presentation.Controller.Interface;
 using UnityEngine;
 
-namespace Common.Presentation.Controller
+namespace Kai.Common.Presentation.Controller
 {
     [RequireComponent(typeof(AudioSource))]
     public abstract class BaseAudioSource : MonoBehaviour, IVolumeUseCase

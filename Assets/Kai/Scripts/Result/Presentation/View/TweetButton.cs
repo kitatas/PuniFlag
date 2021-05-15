@@ -1,11 +1,11 @@
-using Common.Domain.UseCase.Interface;
-using Common.Presentation.View;
+using Kai.Common.Domain.UseCase.Interface;
+using Kai.Common.Presentation.View;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Result.View
+namespace Kai.Result.Presentation.View
 {
     [RequireComponent(typeof(ButtonActivator))]
     [RequireComponent(typeof(ButtonAnimator))]

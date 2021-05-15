@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Common.Data.DataStore
+namespace Kai.Common.Data.DataStore
 {
     [CreateAssetMenu(fileName = "SeTable", menuName = "DataTable/SeTable", order = 0)]
     public sealed class SeTable : ScriptableObject

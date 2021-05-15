@@ -1,6 +1,6 @@
-using Common.Data.Entity.Interface;
+using Kai.Common.Data.Entity.Interface;
 
-namespace Common.Data.Entity
+namespace Kai.Common.Data.Entity
 {
     public sealed class StepCountEntity : IStepCountEntity
     {

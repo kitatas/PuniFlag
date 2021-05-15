@@ -1,7 +1,7 @@
-using Game.Data.Entity;
-using Game.Presentation.View;
+using Kai.Game.Data.Entity;
+using Kai.Game.Presentation.View;
 
-namespace Game.Factory.Interface
+namespace Kai.Game.Factory.Interface
 {
     public interface IStageObjectFactory
     {

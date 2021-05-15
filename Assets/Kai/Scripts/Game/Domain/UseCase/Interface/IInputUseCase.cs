@@ -1,4 +1,4 @@
-namespace Game.Domain.UseCase.Interface
+namespace Kai.Game.Domain.UseCase.Interface
 {
     public interface IInputUseCase
     {

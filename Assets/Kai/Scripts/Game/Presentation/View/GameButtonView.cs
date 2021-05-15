@@ -1,9 +1,9 @@
 using System;
-using Common.Presentation.View;
+using Kai.Common.Presentation.View;
 using UniRx;
 using UnityEngine;
 
-namespace Game.Presentation.View
+namespace Kai.Game.Presentation.View
 {
     [RequireComponent(typeof(ButtonActivator))]
     [RequireComponent(typeof(ButtonAnimator))]

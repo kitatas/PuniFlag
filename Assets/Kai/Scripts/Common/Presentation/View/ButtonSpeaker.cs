@@ -1,11 +1,11 @@
-using Common.Application;
-using Common.Presentation.Controller;
+using Kai.Common.Application;
+using Kai.Common.Presentation.Controller;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Common.Presentation.View
+namespace Kai.Common.Presentation.View
 {
     [RequireComponent(typeof(Button))]
     public sealed class ButtonSpeaker : MonoBehaviour

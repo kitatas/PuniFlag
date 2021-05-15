@@ -1,7 +1,7 @@
-using Common.Application;
+using Kai.Common.Application;
 using UnityEngine;
 
-namespace Common.Domain.Repository.Interface
+namespace Kai.Common.Domain.Repository.Interface
 {
     public interface ISoundRepository
     {

@@ -1,11 +1,11 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Game.Application;
-using Game.Domain.UseCase.Interface;
+using Kai.Game.Application;
+using Kai.Game.Domain.UseCase.Interface;
 using Zenject;
 
-namespace Game.Presentation.View.State
+namespace Kai.Game.Presentation.View.State
 {
     public sealed class MoveState : BaseState
     {

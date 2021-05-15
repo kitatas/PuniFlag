@@ -1,4 +1,4 @@
-namespace Common.Application
+namespace Kai.Common.Application
 {
     public sealed class CommonViewConfig
     {

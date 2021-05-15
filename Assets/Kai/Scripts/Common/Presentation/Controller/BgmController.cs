@@ -1,8 +1,8 @@
-using Common.Application;
-using Common.Domain.UseCase.Interface;
+using Kai.Common.Application;
+using Kai.Common.Domain.UseCase.Interface;
 using Zenject;
 
-namespace Common.Presentation.Controller
+namespace Kai.Common.Presentation.Controller
 {
     public sealed class BgmController : BaseAudioSource
     {

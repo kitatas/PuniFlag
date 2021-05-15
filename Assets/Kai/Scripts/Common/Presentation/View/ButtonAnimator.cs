@@ -1,9 +1,9 @@
-using Common.Application;
 using DG.Tweening;
+using Kai.Common.Application;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Common.Presentation.View
+namespace Kai.Common.Presentation.View
 {
     [RequireComponent(typeof(Button))]
     public sealed class ButtonAnimator : MonoBehaviour

@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
-using Game.Application;
-using Game.Data.Container.Interface;
-using Game.Presentation.View;
+using Kai.Game.Application;
+using Kai.Game.Data.Container.Interface;
+using Kai.Game.Presentation.View;
 
-namespace Game.Data.Container
+namespace Kai.Game.Data.Container
 {
     public sealed class PlayerContainer : IReadOnlyPlayerContainer, IWriteOnlyPlayerContainer
     {

@@ -1,8 +1,8 @@
-using Common.Data.DataStore;
+using Kai.Common.Data.DataStore;
 using UnityEngine;
 using Zenject;
 
-namespace Common.Installer
+namespace Kai.Common.Installer
 {
     [CreateAssetMenu(fileName = "ProjectTableInstaller", menuName = "Installers/ProjectTableInstaller")]
     public sealed class ProjectTableInstaller : ScriptableObjectInstaller<ProjectTableInstaller>

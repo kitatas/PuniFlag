@@ -1,14 +1,14 @@
-using Common.Data.Entity;
-using Common.Domain.Model;
-using Common.Domain.Repository;
-using Common.Domain.UseCase;
-using Common.Presentation.Controller;
-using Common.Presentation.Presenter;
-using Common.Presentation.View;
+using Kai.Common.Data.Entity;
+using Kai.Common.Domain.Model;
+using Kai.Common.Domain.Repository;
+using Kai.Common.Domain.UseCase;
+using Kai.Common.Presentation.Controller;
+using Kai.Common.Presentation.Presenter;
+using Kai.Common.Presentation.View;
 using UnityEngine;
 using Zenject;
 
-namespace Common.Installer
+namespace Kai.Common.Installer
 {
     public sealed class ProjectInstaller : MonoInstaller
     {

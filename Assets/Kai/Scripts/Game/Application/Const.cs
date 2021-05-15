@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Game.Application
+namespace Kai.Game.Application
 {
     public sealed class InGameConfig
     {

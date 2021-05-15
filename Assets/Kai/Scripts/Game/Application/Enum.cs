@@ -1,4 +1,4 @@
-namespace Game.Application
+namespace Kai.Game.Application
 {
     public enum StageObjectType
     {

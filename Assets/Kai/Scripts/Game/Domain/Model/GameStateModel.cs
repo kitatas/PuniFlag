@@ -1,8 +1,8 @@
-using Game.Application;
-using Game.Domain.Model.Interface;
+using Kai.Game.Application;
+using Kai.Game.Domain.Model.Interface;
 using UniRx;
 
-namespace Game.Domain.Model
+namespace Kai.Game.Domain.Model
 {
     public sealed class GameStateModel : IGameStateModel
     {

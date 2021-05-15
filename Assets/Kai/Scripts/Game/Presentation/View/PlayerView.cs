@@ -1,15 +1,15 @@
-using Common.Extension;
 using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
-using Game.Application;
-using Game.Domain.UseCase;
-using Game.Domain.UseCase.Interface;
+using Kai.Common.Extension;
+using Kai.Game.Application;
+using Kai.Game.Domain.UseCase;
+using Kai.Game.Domain.UseCase.Interface;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
 
-namespace Game.Presentation.View
+namespace Kai.Game.Presentation.View
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(PlayerSpriteView))]

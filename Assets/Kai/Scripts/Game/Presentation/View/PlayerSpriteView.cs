@@ -1,9 +1,9 @@
 using System;
-using Game.Application;
+using Kai.Game.Application;
 using UniRx;
 using UnityEngine;
 
-namespace Game.Presentation.View
+namespace Kai.Game.Presentation.View
 {
     [RequireComponent(typeof(SpriteRenderer))]
     public sealed class PlayerSpriteView : MonoBehaviour
