@@ -57,25 +57,26 @@ namespace Kai.Game.Presentation.View.State
             // ボタン入力待ち
             var input = await _buttonController.PushButton().ToUniTask(true, token);
 
+            ActivateButton(false);
+            _stepCountUseCase.CountUp();
+
             switch (input)
             {
                 case InputType.MoveLeft:
                 case InputType.MoveRight:
-                    _stageObjectContainerUseCase.Move(input);
+                    await _stageObjectContainerUseCase.MoveAsync(input, token);
                     break;
                 case InputType.RotateLeft:
                 case InputType.RotateRight:
-                    _stageObjectContainerUseCase.Rotate(input);
-                    _stageView.Rotate(input);
+                    await (
+                        _stageObjectContainerUseCase.RotateAsync(input, token),
+                        _stageView.RotateAsync(input, token)
+                    );
                     break;
                 case InputType.None:
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-
-            _stepCountUseCase.CountUp();
-
-            ActivateButton(false);
 
             return GameState.Move;
         }

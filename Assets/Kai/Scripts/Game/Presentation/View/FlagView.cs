@@ -1,3 +1,5 @@
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using Kai.Common.Extension;
 using Kai.Game.Application;
 using Kai.Game.Domain.UseCase;
@@ -17,9 +19,9 @@ namespace Kai.Game.Presentation.View
             _stageObjectRotateUseCase = new StageObjectRotateUseCase(transform);
         }
 
-        public void Rotate(InputType inputType)
+        public async UniTask RotateAsync(InputType inputType, CancellationToken token)
         {
-            _stageObjectRotateUseCase.Rotate(inputType);
+            await _stageObjectRotateUseCase.RotateAsync(inputType, token);
         }
 
         public bool EqualPosition(Vector3 playerPosition) => transform.RoundPosition() == playerPosition;

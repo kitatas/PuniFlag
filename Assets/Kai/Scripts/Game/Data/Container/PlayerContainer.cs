@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using Kai.Game.Application;
 using Kai.Game.Data.Container.Interface;
 using Kai.Game.Presentation.View;
@@ -23,12 +25,11 @@ namespace Kai.Game.Data.Container
             _playerViews.Add(playerView);
         }
 
-        public void MoveAll(InputType inputType)
+        public async UniTask MoveAllAsync(InputType inputType, CancellationToken token)
         {
-            foreach (var playerView in playerViews)
-            {
-                playerView.Move(inputType);
-            }
+            await Enumerable
+                .Select(playerViews, playerView => playerView.MoveAsync(inputType, token))
+                .ToList();
         }
 
         public void ActivateColliderAll(bool value)
@@ -39,12 +40,11 @@ namespace Kai.Game.Data.Container
             }
         }
 
-        public void RotateAll(InputType inputType)
+        public async UniTask RotateAllAsync(InputType inputType, CancellationToken token)
         {
-            foreach (var playerView in playerViews)
-            {
-                playerView.Rotate(inputType);
-            }
+            await Enumerable
+                .Select(playerViews, playerView => playerView.RotateAsync(inputType, token))
+                .ToList();
         }
 
         public void SetGravityAll(bool value)

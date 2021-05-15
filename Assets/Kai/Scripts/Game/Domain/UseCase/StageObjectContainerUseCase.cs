@@ -19,16 +19,19 @@ namespace Kai.Game.Domain.UseCase
             _flagContainer = flagContainer;
         }
 
-        public void Move(InputType inputType)
+        public async UniTask MoveAsync(InputType inputType, CancellationToken token)
         {
-            _playerContainer.MoveAll(inputType);
+            await _playerContainer.MoveAllAsync(inputType, token);
         }
 
-        public void Rotate(InputType inputType)
+        public async UniTask RotateAsync(InputType inputType, CancellationToken token)
         {
             _playerContainer.ActivateColliderAll(false);
-            _playerContainer.RotateAll(inputType);
-            _flagContainer.RotateAll(inputType);
+
+            await (
+                _playerContainer.RotateAllAsync(inputType, token),
+                _flagContainer.RotateAllAsync(inputType, token)
+            );
         }
 
         public async UniTask<bool> IsAllGoalAsync(CancellationToken token)

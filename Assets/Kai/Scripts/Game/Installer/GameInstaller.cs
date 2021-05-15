@@ -20,7 +20,7 @@ namespace Kai.Game.Installer
         [SerializeField] private ClearView clearView = default;
 
         [SerializeField] private InputState inputState = default;
-        [SerializeField] private MoveState moveState = default;
+        [SerializeField] private JudgeState judgeState = default;
         [SerializeField] private ClearState clearState = default;
 
 
@@ -109,8 +109,8 @@ namespace Kai.Game.Installer
                 .AsCached();
 
             Container
-                .Bind<MoveState>()
-                .FromInstance(moveState)
+                .Bind<JudgeState>()
+                .FromInstance(judgeState)
                 .AsCached();
 
             Container

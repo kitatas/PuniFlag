@@ -1,3 +1,6 @@
+using System;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
@@ -63,15 +66,17 @@ namespace Kai.Game.Presentation.View
             collider2d.enabled = value;
         }
 
-        public void Move(InputType inputType)
+        public async UniTask MoveAsync(InputType inputType, CancellationToken token)
         {
             _tween = _playerMoveUseCase.Move(inputType);
             playerSpriteView.Flip(inputType);
+
+            await UniTask.Delay(TimeSpan.FromSeconds(StageObjectConfig.MOVE_SPEED), cancellationToken: token);
         }
 
-        public void Rotate(InputType inputType)
+        public async UniTask RotateAsync(InputType inputType, CancellationToken token)
         {
-            _stageObjectRotateUseCase.Rotate(inputType);
+            await _stageObjectRotateUseCase.RotateAsync(inputType, token);
         }
 
         public override StageObjectType type => StageObjectType.Player;

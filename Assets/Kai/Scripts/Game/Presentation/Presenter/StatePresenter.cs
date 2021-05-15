@@ -16,7 +16,7 @@ namespace Kai.Game.Presentation.Presenter
         private readonly List<BaseState> _states;
         private readonly IGameStateUseCase _gameStateUseCase;
 
-        public StatePresenter(IGameStateUseCase gameStateUseCase, InputState inputState, MoveState moveState,
+        public StatePresenter(IGameStateUseCase gameStateUseCase, InputState inputState, JudgeState judgeState,
             ClearState clearState)
         {
             _disposable = new CompositeDisposable();
@@ -24,7 +24,7 @@ namespace Kai.Game.Presentation.Presenter
             _states = new List<BaseState>
             {
                 inputState,
-                moveState,
+                judgeState,
                 clearState,
             };
             _gameStateUseCase = gameStateUseCase;

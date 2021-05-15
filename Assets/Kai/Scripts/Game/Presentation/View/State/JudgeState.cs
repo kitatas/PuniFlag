@@ -1,4 +1,3 @@
-using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Kai.Game.Application;
@@ -7,7 +6,7 @@ using Zenject;
 
 namespace Kai.Game.Presentation.View.State
 {
-    public sealed class MoveState : BaseState
+    public sealed class JudgeState : BaseState
     {
         private IStageObjectContainerUseCase _stageObjectContainerUseCase;
 
@@ -26,9 +25,6 @@ namespace Kai.Game.Presentation.View.State
 
         public override async UniTask<GameState> TickAsync(CancellationToken token)
         {
-            // 移動・回転待ち
-            await UniTask.Delay(TimeSpan.FromSeconds(StageObjectConfig.ROTATE_SPEED), cancellationToken: token);
-
             var isClear = await _stageObjectContainerUseCase.IsAllGoalAsync(token);
 
             if (isClear)

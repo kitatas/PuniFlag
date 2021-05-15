@@ -1,3 +1,5 @@
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using Kai.Game.Application;
 using Kai.Game.Domain.UseCase;
 using Kai.Game.Domain.UseCase.Interface;
@@ -14,9 +16,9 @@ namespace Kai.Game.Presentation.View
             _stageRotateUseCase = new StageRotateUseCase(transform);
         }
 
-        public void Rotate(InputType inputType)
+        public async UniTask RotateAsync(InputType inputType, CancellationToken token)
         {
-            _stageRotateUseCase.Rotate(inputType);
+            await _stageRotateUseCase.RotateAsync(inputType, token);
         }
     }
 }

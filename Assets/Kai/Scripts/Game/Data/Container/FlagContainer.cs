@@ -1,4 +1,7 @@
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using Kai.Game.Application;
 using Kai.Game.Data.Container.Interface;
 using Kai.Game.Presentation.View;
@@ -22,12 +25,11 @@ namespace Kai.Game.Data.Container
             _flagViews.Add(flagView);
         }
 
-        public void RotateAll(InputType inputType)
+        public async UniTask RotateAllAsync(InputType inputType, CancellationToken token)
         {
-            foreach (var flagView in flagViews)
-            {
-                flagView.Rotate(inputType);
-            }
+            await Enumerable
+                .Select(flagViews, flagView => flagView.RotateAsync(inputType, token))
+                .ToList();
         }
     }
 }

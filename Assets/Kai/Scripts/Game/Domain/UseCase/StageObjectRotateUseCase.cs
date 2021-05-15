@@ -1,4 +1,6 @@
 using System;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Kai.Game.Application;
 using Kai.Game.Domain.UseCase.Interface;
@@ -18,11 +20,12 @@ namespace Kai.Game.Domain.UseCase
             _currentVector = transform.eulerAngles;
         }
 
-        public void Rotate(InputType inputType)
+        public async UniTask RotateAsync(InputType inputType, CancellationToken token)
         {
             _currentVector = GetRotateVector(inputType);
-            _transform
-                .DOLocalRotate(_currentVector, StageObjectConfig.ROTATE_SPEED);
+            await _transform
+                .DOLocalRotate(_currentVector, StageObjectConfig.ROTATE_SPEED)
+                .WithCancellation(token);
         }
 
         private Vector3 GetRotateVector(InputType inputType)

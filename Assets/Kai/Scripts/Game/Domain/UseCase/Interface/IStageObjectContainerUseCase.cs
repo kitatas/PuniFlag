@@ -6,8 +6,8 @@ namespace Kai.Game.Domain.UseCase.Interface
 {
     public interface IStageObjectContainerUseCase
     {
-        void Move(InputType inputType);
-        void Rotate(InputType inputType);
+        UniTask MoveAsync(InputType inputType, CancellationToken token);
+        UniTask RotateAsync(InputType inputType, CancellationToken token);
         UniTask<bool> IsAllGoalAsync(CancellationToken token);
     }
 }
