@@ -1,5 +1,5 @@
+using Common.Domain.UseCase.Interface;
 using Common.Presentation.View;
-using Game.StepCount;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,14 +15,14 @@ namespace Result.View
         private const string HASH_TAG1 = "unityroom";
         private const string HASH_TAG2 = "unity1week";
 
-        private StepCountModel _stepCountModel;
+        private IStepCountUseCase _stepCountUseCase;
         private ButtonActivator _buttonActivator;
         private ButtonAnimator _buttonAnimator;
 
         [Inject]
-        private void Construct(StepCountModel stepCountModel)
+        private void Construct(IStepCountUseCase stepCountUseCase)
         {
-            _stepCountModel = stepCountModel;
+            _stepCountUseCase = stepCountUseCase;
             _buttonActivator = GetComponent<ButtonActivator>();
             _buttonAnimator = GetComponent<ButtonAnimator>();
         }
@@ -34,7 +34,7 @@ namespace Result.View
                 .Subscribe(_ =>
                 {
                     _buttonAnimator.Play();
-                    var tweetText = $"{_stepCountModel.GetStepCount()}回でクリア！\n";
+                    var tweetText = $"{_stepCountUseCase.GetStepCount()}回でクリア！\n";
                     tweetText += $"#{HASH_TAG1} #{HASH_TAG2} #{GAME_ID}\n";
                     UnityRoomTweet.Tweet(GAME_ID, tweetText);
                 })

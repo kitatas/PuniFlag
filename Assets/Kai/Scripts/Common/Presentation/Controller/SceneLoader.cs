@@ -1,10 +1,10 @@
 using System;
 using System.Threading;
 using Common.Application;
+using Common.Domain.UseCase.Interface;
 using Common.Presentation.View;
 using Cysharp.Threading.Tasks;
 using Game.Stage.Level;
-using Game.StepCount;
 using UnityEngine.SceneManagement;
 using Zenject;
 
@@ -15,18 +15,18 @@ namespace Common.Presentation.Controller
         private readonly CancellationTokenSource _tokenSource;
         private readonly ZenjectSceneLoader _zenjectSceneLoader;
         private readonly TransitionMaskView _transitionMaskView;
-        private readonly StepCountModel _stepCountModel;
+        private readonly IStepCountUseCase _stepCountUseCase;
         private readonly StepCountView _stepCountView;
         private readonly LevelModel _levelModel;
         private readonly LevelView _levelView;
 
         public SceneLoader(ZenjectSceneLoader zenjectSceneLoader, TransitionMaskView transitionMaskView,
-            StepCountModel stepCountModel, StepCountView stepCountView, LevelModel levelModel, LevelView levelView)
+            IStepCountUseCase stepCountUseCase, StepCountView stepCountView, LevelModel levelModel, LevelView levelView)
         {
             _tokenSource = new CancellationTokenSource();
             _zenjectSceneLoader = zenjectSceneLoader;
             _transitionMaskView = transitionMaskView;
-            _stepCountModel = stepCountModel;
+            _stepCountUseCase = stepCountUseCase;
             _stepCountView = stepCountView;
             _levelModel = levelModel;
             _levelView = levelView;
@@ -58,6 +58,7 @@ namespace Common.Presentation.Controller
                     }
                     break;
                 case LoadType.Reload:
+                    _stepCountUseCase.CountUp();
                     LoadScene(sceneName, _levelModel.GetLevel());
                     break;
                 default:
@@ -95,7 +96,7 @@ namespace Common.Presentation.Controller
                 case SceneName.Title:
                     _stepCountView.Hide(CommonViewConfig.UI_ANIMATION_TIME);
                     await _transitionMaskView.FadeOutAllAsync(token);
-                    _stepCountModel.ResetStepCount();
+                    _stepCountUseCase.ResetStepCount();
                     _levelModel.ResetLevel();
                     _levelView.Show();
                     break;

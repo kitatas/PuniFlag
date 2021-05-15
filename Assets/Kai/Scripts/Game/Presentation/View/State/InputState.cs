@@ -1,11 +1,11 @@
 using System;
 using System.Threading;
+using Common.Domain.UseCase.Interface;
 using Common.Presentation.View;
 using Cysharp.Threading.Tasks;
 using Game.Application;
 using Game.Domain.UseCase.Interface;
 using Game.Presentation.Controller;
-using Game.StepCount;
 using Zenject;
 
 namespace Game.Presentation.View.State
@@ -13,7 +13,6 @@ namespace Game.Presentation.View.State
     public sealed class InputState : BaseState
     {
         private ButtonController _buttonController;
-        private StepCountModel _stepCountModel;
 
         private ButtonActivator[] _buttonActivators;
 
@@ -31,14 +30,15 @@ namespace Game.Presentation.View.State
         }
 
         private StageView _stageView;
+        private IStepCountUseCase _stepCountUseCase;
         private IStageObjectContainerUseCase _stageObjectContainerUseCase;
 
         [Inject]
-        private void Construct(ButtonController buttonController, StepCountModel stepCountModel,
+        private void Construct(ButtonController buttonController, IStepCountUseCase stepCountUseCase,
             IStageObjectContainerUseCase stageObjectContainerUseCase)
         {
             _buttonController = buttonController;
-            _stepCountModel = stepCountModel;
+            _stepCountUseCase = stepCountUseCase;
             _stageObjectContainerUseCase = stageObjectContainerUseCase;
         }
 
@@ -78,7 +78,7 @@ namespace Game.Presentation.View.State
                     throw new ArgumentOutOfRangeException();
             }
 
-            _stepCountModel.CountUp();
+            _stepCountUseCase.CountUp();
 
             ActivateButton(false);
 

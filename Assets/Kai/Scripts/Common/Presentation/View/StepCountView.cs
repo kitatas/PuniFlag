@@ -3,7 +3,7 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
-namespace Game.StepCount
+namespace Common.Presentation.View
 {
     public sealed class StepCountView : MonoBehaviour
     {

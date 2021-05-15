@@ -1,9 +1,11 @@
+using Common.Data.Entity;
+using Common.Domain.Model;
 using Common.Domain.Repository;
 using Common.Domain.UseCase;
 using Common.Presentation.Controller;
+using Common.Presentation.Presenter;
 using Common.Presentation.View;
 using Game.Stage.Level;
-using Game.StepCount;
 using UnityEngine;
 using Zenject;
 
@@ -19,7 +21,21 @@ namespace Common.Installer
 
         public override void InstallBindings()
         {
-            #region Domain
+            #region Entity
+
+            Container
+                .BindInterfacesTo<StepCountEntity>()
+                .AsCached();
+
+            #endregion
+
+            #region Model
+
+            Container
+                .BindInterfacesTo<StepCountModel>()
+                .AsCached();
+
+            #endregion
 
             #region Repository
 
@@ -35,12 +51,11 @@ namespace Common.Installer
                 .BindInterfacesTo<SoundUseCase>()
                 .AsCached();
 
-            #endregion
+            Container
+                .BindInterfacesTo<StepCountUseCase>()
+                .AsCached();
 
             #endregion
-
-
-            #region Presentation
 
             #region Controller
 
@@ -54,39 +69,32 @@ namespace Common.Installer
                 .FromInstance(seController)
                 .AsCached();
 
-            #endregion
-
-            #endregion
-
-
-            #region Transition
-
             Container
                 .Bind<SceneLoader>()
                 .AsCached();
+
+            #endregion
+
+            #region Presenter
+
+            Container
+                .Bind<StepCountPresenter>()
+                .AsCached()
+                .NonLazy();
+
+            #endregion
+
+            #region View
 
             Container
                 .Bind<TransitionMaskView>()
                 .FromInstance(transitionMaskView)
                 .AsCached();
 
-            #endregion
-
-            #region MoveCount
-
-            Container
-                .Bind<StepCountModel>()
-                .AsCached();
-
             Container
                 .Bind<StepCountView>()
                 .FromInstance(stepCountView)
                 .AsCached();
-
-            Container
-                .Bind<StepCountPresenter>()
-                .AsCached()
-                .NonLazy();
 
             #endregion
 

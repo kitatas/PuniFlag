@@ -4,7 +4,6 @@ using Common.Presentation.Controller;
 using Game.Application;
 using Game.Domain.UseCase.Interface;
 using Game.Presentation.View;
-using Game.StepCount;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
@@ -28,7 +27,7 @@ namespace Game.Presentation.Controller
         private SceneLoader _sceneLoader;
 
         [Inject]
-        private void Construct(IInputUseCase inputUseCase, StepCountModel stepCountModel, SceneLoader sceneLoader)
+        private void Construct(IInputUseCase inputUseCase, SceneLoader sceneLoader)
         {
             _inputUseCase = inputUseCase;
             _sceneLoader = sceneLoader;
@@ -98,7 +97,7 @@ namespace Game.Presentation.Controller
                 .Subscribe(_ =>
                 {
                     resetStage.Push();
-                    _sceneLoader.LoadScene(SceneName.Main);
+                    _sceneLoader.LoadScene(SceneName.Main, LoadType.Reload);
                 })
                 .AddTo(this);
         }
