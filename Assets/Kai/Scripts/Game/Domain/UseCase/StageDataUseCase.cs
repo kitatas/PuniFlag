@@ -1,17 +1,17 @@
+using Common.Data.Entity.Interface;
 using Game.Data.Entity;
 using Game.Domain.Repository.Interface;
 using Game.Factory.Interface;
-using Game.Stage.Level;
 using UnityEngine;
 
 namespace Game.Domain.UseCase
 {
     public sealed class StageDataUseCase
     {
-        public StageDataUseCase(LevelModel levelModel, IStageRepository stageRepository,
+        public StageDataUseCase(ILevelEntity levelEntity, IStageRepository stageRepository,
             IStageObjectFactory stageObjectFactory)
         {
-            var level = levelModel.GetLevel();
+            var level = levelEntity.GetLevel();
             var stageData = stageRepository.GetStageData(level).ToString();
             var stageDataEntity = JsonUtility.FromJson<StageDataEntity>(stageData);
 

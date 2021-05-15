@@ -1,10 +1,10 @@
 using System;
 using System.Threading;
 using Common.Application;
+using Common.Domain.Model;
 using Common.Domain.UseCase.Interface;
 using Common.Presentation.View;
 using Cysharp.Threading.Tasks;
-using Game.Stage.Level;
 using UnityEngine.SceneManagement;
 using Zenject;
 
@@ -17,18 +17,19 @@ namespace Common.Presentation.Controller
         private readonly TransitionMaskView _transitionMaskView;
         private readonly IStepCountUseCase _stepCountUseCase;
         private readonly StepCountView _stepCountView;
-        private readonly LevelModel _levelModel;
+        private readonly ILevelUseCase _levelUseCase;
         private readonly LevelView _levelView;
 
         public SceneLoader(ZenjectSceneLoader zenjectSceneLoader, TransitionMaskView transitionMaskView,
-            IStepCountUseCase stepCountUseCase, StepCountView stepCountView, LevelModel levelModel, LevelView levelView)
+            IStepCountUseCase stepCountUseCase, StepCountView stepCountView, 
+            ILevelUseCase levelUseCase, LevelView levelView)
         {
             _tokenSource = new CancellationTokenSource();
             _zenjectSceneLoader = zenjectSceneLoader;
             _transitionMaskView = transitionMaskView;
             _stepCountUseCase = stepCountUseCase;
             _stepCountView = stepCountView;
-            _levelModel = levelModel;
+            _levelUseCase = levelUseCase;
             _levelView = levelView;
         }
 
@@ -46,8 +47,8 @@ namespace Common.Presentation.Controller
                     LoadScene(sceneName);
                     break;
                 case LoadType.Next:
-                    _levelModel.LevelUp();
-                    var level = _levelModel.GetLevel();
+                    _levelUseCase.CountUp();
+                    var level = _levelUseCase.GetLevel();
                     if (level < GameConfig.STAGE_COUNT)
                     {
                         LoadScene(sceneName, level);
@@ -59,7 +60,7 @@ namespace Common.Presentation.Controller
                     break;
                 case LoadType.Reload:
                     _stepCountUseCase.CountUp();
-                    LoadScene(sceneName, _levelModel.GetLevel());
+                    LoadScene(sceneName, _levelUseCase.GetLevel());
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -97,7 +98,7 @@ namespace Common.Presentation.Controller
                     _stepCountView.Hide(CommonViewConfig.UI_ANIMATION_TIME);
                     await _transitionMaskView.FadeOutAllAsync(token);
                     _stepCountUseCase.ResetStepCount();
-                    _levelModel.ResetLevel();
+                    _levelUseCase.ResetLevel();
                     _levelView.Show();
                     break;
                 case SceneName.Main:

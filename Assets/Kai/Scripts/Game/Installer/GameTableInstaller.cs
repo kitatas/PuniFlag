@@ -1,5 +1,4 @@
 using Game.Data.DataStore;
-using Game.Stage;
 using UnityEngine;
 using Zenject;
 
@@ -13,21 +12,17 @@ namespace Game.Installer
 
         public override void InstallBindings()
         {
-            #region Data
-
             #region DataStore
 
             Container
                 .Bind<StageDataTable>()
                 .FromInstance(stageDataTable)
                 .AsCached();
-            
+
             Container
                 .Bind<StageObjectTable>()
                 .FromInstance(stageObjectTable)
                 .AsCached();
-
-            #endregion
 
             #endregion
         }

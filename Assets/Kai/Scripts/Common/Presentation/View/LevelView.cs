@@ -8,7 +8,7 @@ using TMPro;
 using UnityEngine;
 using Zenject;
 
-namespace Game.Stage.Level
+namespace Common.Presentation.View
 {
     public sealed class LevelView : MonoBehaviour
     {

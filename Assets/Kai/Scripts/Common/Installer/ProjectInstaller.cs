@@ -5,7 +5,6 @@ using Common.Domain.UseCase;
 using Common.Presentation.Controller;
 using Common.Presentation.Presenter;
 using Common.Presentation.View;
-using Game.Stage.Level;
 using UnityEngine;
 using Zenject;
 
@@ -24,12 +23,20 @@ namespace Common.Installer
             #region Entity
 
             Container
+                .BindInterfacesTo<LevelEntity>()
+                .AsCached();
+
+            Container
                 .BindInterfacesTo<StepCountEntity>()
                 .AsCached();
 
             #endregion
 
             #region Model
+
+            Container
+                .BindInterfacesTo<LevelModel>()
+                .AsCached();
 
             Container
                 .BindInterfacesTo<StepCountModel>()
@@ -46,6 +53,10 @@ namespace Common.Installer
             #endregion
 
             #region UseCase
+
+            Container
+                .BindInterfacesTo<LevelUseCase>()
+                .AsCached();
 
             Container
                 .BindInterfacesTo<SoundUseCase>()
@@ -78,6 +89,11 @@ namespace Common.Installer
             #region Presenter
 
             Container
+                .Bind<LevelPresenter>()
+                .AsCached()
+                .NonLazy();
+
+            Container
                 .Bind<StepCountPresenter>()
                 .AsCached()
                 .NonLazy();
@@ -92,27 +108,14 @@ namespace Common.Installer
                 .AsCached();
 
             Container
-                .Bind<StepCountView>()
-                .FromInstance(stepCountView)
-                .AsCached();
-
-            #endregion
-
-            #region Level
-
-            Container
-                .Bind<LevelModel>()
-                .AsCached();
-
-            Container
                 .Bind<LevelView>()
                 .FromInstance(levelView)
                 .AsCached();
 
             Container
-                .Bind<LevelPresenter>()
-                .AsCached()
-                .NonLazy();
+                .Bind<StepCountView>()
+                .FromInstance(stepCountView)
+                .AsCached();
 
             #endregion
         }

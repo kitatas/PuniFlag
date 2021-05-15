@@ -1,10 +1,12 @@
+using Common.Domain.Model.Interface;
+using Common.Presentation.View;
 using UniRx;
 
-namespace Game.Stage.Level
+namespace Common.Presentation.Presenter
 {
     public sealed class LevelPresenter
     {
-        public LevelPresenter(LevelModel levelModel, LevelView levelView)
+        public LevelPresenter(ILevelModel levelModel, LevelView levelView)
         {
             levelModel.level
                 .Subscribe(levelView.DisplayLevel)
