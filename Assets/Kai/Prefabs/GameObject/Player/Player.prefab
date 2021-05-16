@@ -145,8 +145,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b6f033216fe4d1993410983e11409dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerType: 1
-  flag: {fileID: 0}
+  colorType: 0
+  collider2d: {fileID: 281205662857965130}
+  rigidbody2d: {fileID: 281205662857965131}
+  playerSpriteView: {fileID: 1106674330096366366}
   isGround: 0
 --- !u!114 &1106674330096366366
 MonoBehaviour:
@@ -157,8 +159,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 281205662857965142}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ab621f3a7214225a669dbc0b5f6871a, type: 3}
+  m_Script: {fileID: 11500000, guid: fe90a507110d64babb0009302c7dd6e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 281205662857965128}
   normal: {fileID: 0}
   movement: {fileID: 0}
