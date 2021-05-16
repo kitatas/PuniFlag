@@ -1121,6 +1121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60576b9972f744149680f1d70376b5ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSubscribe: 1
   buttonType: 0
 --- !u!114 &746549624
 MonoBehaviour:
@@ -1682,6 +1683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60576b9972f744149680f1d70376b5ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSubscribe: 1
   buttonType: 0
 --- !u!114 &1326599023
 MonoBehaviour:
@@ -3589,6 +3591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60576b9972f744149680f1d70376b5ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSubscribe: 1
   buttonType: 0
 --- !u!114 &2095884785
 MonoBehaviour:
