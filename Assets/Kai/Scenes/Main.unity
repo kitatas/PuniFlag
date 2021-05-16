@@ -121,56 +121,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &31814440
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 31814443}
-  - component: {fileID: 31814442}
-  m_Layer: 0
-  m_Name: PlayerController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &31814442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 31814440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac00cadf1d8c4c189e3e56bc84d63c54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveLeft: {fileID: 1726728227}
-  moveRight: {fileID: 136265403}
-  rotateLeft: {fileID: 906077639}
-  rotateRight: {fileID: 1802161020}
-  resetButton: {fileID: 1822354034}
-  homeButton: {fileID: 539991361}
-  clearView: {fileID: 426227178}
---- !u!4 &31814443
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 31814440}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &136265398
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,6 +135,7 @@ GameObject:
   - component: {fileID: 136265400}
   - component: {fileID: 136265405}
   - component: {fileID: 136265404}
+  - component: {fileID: 136265406}
   - component: {fileID: 136265403}
   m_Layer: 5
   m_Name: Button - MoveRight
@@ -305,7 +256,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1682f618b0084b1ca65307d3ed2f0896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonType: 0
 --- !u!114 &136265404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,6 +280,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb86c580b298400098b4bd05bd84bf84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &136265406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136265398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60576b9972f744149680f1d70376b5ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSubscribe: 0
+  buttonType: 0
 --- !u!1 &202011640
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,6 +379,10 @@ GameObject:
   - component: {fileID: 245235378}
   - component: {fileID: 245235377}
   - component: {fileID: 245235379}
+  - component: {fileID: 245235383}
+  - component: {fileID: 245235382}
+  - component: {fileID: 245235381}
+  - component: {fileID: 245235380}
   m_Layer: 0
   m_Name: SceneContext
   m_TagString: Untagged
@@ -481,7 +449,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bc11fe90ebfd4606afd5732c24b2a86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 31814442}
+  buttonController: {fileID: 245235383}
+  stageView: {fileID: 729075449}
+  clearView: {fileID: 426227178}
+  inputState: {fileID: 245235382}
+  judgeState: {fileID: 245235381}
+  clearState: {fileID: 245235380}
+--- !u!114 &245235380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245235376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d0d618f6a448f8a4e08bb93b873d55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &245235381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245235376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43699871996e46eeb4acc7feecde87cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &245235382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245235376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5812bbc5c18340e4a8096f8fd2b97eb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &245235383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245235376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac00cadf1d8c4c189e3e56bc84d63c54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveLeft: {fileID: 1726728227}
+  moveRight: {fileID: 136265403}
+  rotateLeft: {fileID: 906077639}
+  rotateRight: {fileID: 1802161020}
+  loadTitle: {fileID: 539991361}
+  resetStage: {fileID: 1822354034}
 --- !u!1 &377469799
 GameObject:
   m_ObjectHideFlags: 0
@@ -942,6 +969,7 @@ GameObject:
   - component: {fileID: 539991365}
   - component: {fileID: 539991364}
   - component: {fileID: 539991363}
+  - component: {fileID: 539991362}
   - component: {fileID: 539991361}
   m_Layer: 5
   m_Name: Button - Home
@@ -963,7 +991,7 @@ RectTransform:
   m_Children:
   - {fileID: 1344921003}
   m_Father: {fileID: 1724825425}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -982,6 +1010,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1682f618b0084b1ca65307d3ed2f0896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &539991362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539991359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60576b9972f744149680f1d70376b5ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSubscribe: 0
   buttonType: 1
 --- !u!114 &539991363
 MonoBehaviour:
@@ -1087,6 +1128,87 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 539991359}
   m_CullTransparentMesh: 0
+--- !u!1001 &729075448
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3488939821037084268, guid: 75f4ceef144d94ab39ec36f7a1b78801,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3488939821037084268, guid: 75f4ceef144d94ab39ec36f7a1b78801,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3488939821037084268, guid: 75f4ceef144d94ab39ec36f7a1b78801,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3488939821037084268, guid: 75f4ceef144d94ab39ec36f7a1b78801,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3488939821037084268, guid: 75f4ceef144d94ab39ec36f7a1b78801,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3488939821037084268, guid: 75f4ceef144d94ab39ec36f7a1b78801,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3488939821037084268, guid: 75f4ceef144d94ab39ec36f7a1b78801,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3488939821037084268, guid: 75f4ceef144d94ab39ec36f7a1b78801,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3488939821037084268, guid: 75f4ceef144d94ab39ec36f7a1b78801,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3488939821037084268, guid: 75f4ceef144d94ab39ec36f7a1b78801,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3488939821037084268, guid: 75f4ceef144d94ab39ec36f7a1b78801,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3488939821037084274, guid: 75f4ceef144d94ab39ec36f7a1b78801,
+        type: 3}
+      propertyPath: m_Name
+      value: Stage
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 75f4ceef144d94ab39ec36f7a1b78801, type: 3}
+--- !u!114 &729075449 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2517415147963632703, guid: 75f4ceef144d94ab39ec36f7a1b78801,
+    type: 3}
+  m_PrefabInstance: {fileID: 729075448}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a84e4742f4b43a19e7792b019ee380e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &830381601
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,6 +1289,7 @@ GameObject:
   - component: {fileID: 906077636}
   - component: {fileID: 906077641}
   - component: {fileID: 906077640}
+  - component: {fileID: 906077642}
   - component: {fileID: 906077639}
   m_Layer: 5
   m_Name: Button - RotateLeft
@@ -1287,7 +1410,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1682f618b0084b1ca65307d3ed2f0896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonType: 0
 --- !u!114 &906077640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1312,6 +1434,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb86c580b298400098b4bd05bd84bf84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &906077642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906077634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60576b9972f744149680f1d70376b5ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSubscribe: 0
+  buttonType: 0
 --- !u!1 &1316897919
 GameObject:
   m_ObjectHideFlags: 0
@@ -1491,8 +1627,8 @@ RectTransform:
   - {fileID: 1802161024}
   - {fileID: 1726728223}
   - {fileID: 136265399}
-  - {fileID: 1822354033}
   - {fileID: 539991360}
+  - {fileID: 1822354033}
   - {fileID: 426227176}
   - {fileID: 377469800}
   m_Father: {fileID: 1850740670}
@@ -1517,6 +1653,7 @@ GameObject:
   - component: {fileID: 1726728224}
   - component: {fileID: 1726728229}
   - component: {fileID: 1726728228}
+  - component: {fileID: 1726728230}
   - component: {fileID: 1726728227}
   m_Layer: 5
   m_Name: Button - MoveLeft
@@ -1637,7 +1774,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1682f618b0084b1ca65307d3ed2f0896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonType: 0
 --- !u!114 &1726728228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1662,6 +1798,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb86c580b298400098b4bd05bd84bf84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1726728230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726728222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60576b9972f744149680f1d70376b5ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSubscribe: 0
+  buttonType: 0
 --- !u!1 &1802161019
 GameObject:
   m_ObjectHideFlags: 0
@@ -1676,6 +1826,7 @@ GameObject:
   - component: {fileID: 1802161021}
   - component: {fileID: 1802161026}
   - component: {fileID: 1802161025}
+  - component: {fileID: 1802161027}
   - component: {fileID: 1802161020}
   m_Layer: 5
   m_Name: Button - RotateRight
@@ -1696,7 +1847,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1682f618b0084b1ca65307d3ed2f0896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonType: 0
 --- !u!114 &1802161021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1821,6 +1971,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb86c580b298400098b4bd05bd84bf84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1802161027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802161019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60576b9972f744149680f1d70376b5ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSubscribe: 0
+  buttonType: 0
 --- !u!1 &1822354032
 GameObject:
   m_ObjectHideFlags: 0
@@ -1835,6 +1999,7 @@ GameObject:
   - component: {fileID: 1822354038}
   - component: {fileID: 1822354037}
   - component: {fileID: 1822354036}
+  - component: {fileID: 1822354035}
   - component: {fileID: 1822354034}
   m_Layer: 5
   m_Name: Button - Reset
@@ -1856,7 +2021,7 @@ RectTransform:
   m_Children:
   - {fileID: 2000755154}
   m_Father: {fileID: 1724825425}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1875,6 +2040,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1682f618b0084b1ca65307d3ed2f0896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1822354035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822354032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60576b9972f744149680f1d70376b5ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSubscribe: 0
   buttonType: 0
 --- !u!114 &1822354036
 MonoBehaviour:
@@ -2419,7 +2597,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &297970156324444550
 PrefabInstance:
