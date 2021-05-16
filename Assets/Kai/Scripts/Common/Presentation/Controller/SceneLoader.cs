@@ -18,10 +18,11 @@ namespace Kai.Common.Presentation.Controller
         private readonly StepCountView _stepCountView;
         private readonly ILevelUseCase _levelUseCase;
         private readonly LevelView _levelView;
+        private readonly IButtonContainerUseCase _buttonContainerUseCase;
 
         public SceneLoader(ZenjectSceneLoader zenjectSceneLoader, TransitionMaskView transitionMaskView,
-            IStepCountUseCase stepCountUseCase, StepCountView stepCountView, 
-            ILevelUseCase levelUseCase, LevelView levelView)
+            IStepCountUseCase stepCountUseCase, StepCountView stepCountView,
+            ILevelUseCase levelUseCase, LevelView levelView, IButtonContainerUseCase buttonContainerUseCase)
         {
             _tokenSource = new CancellationTokenSource();
             _zenjectSceneLoader = zenjectSceneLoader;
@@ -30,6 +31,7 @@ namespace Kai.Common.Presentation.Controller
             _stepCountView = stepCountView;
             _levelUseCase = levelUseCase;
             _levelView = levelView;
+            _buttonContainerUseCase = buttonContainerUseCase;
         }
 
         ~SceneLoader()
@@ -73,6 +75,9 @@ namespace Kai.Common.Presentation.Controller
 
         private async UniTaskVoid LoadSceneAsync(SceneName sceneName, int level, CancellationToken token)
         {
+            // シーン遷移中にボタンを押下させない
+            _buttonContainerUseCase.ActivateButton(false, true);
+
             if (sceneName == SceneName.Title)
             {
                 _levelView.Hide();
@@ -88,6 +93,9 @@ namespace Kai.Common.Presentation.Controller
             {
                 container.BindInstance(level);
             });
+
+            // トランジションが完了するまでボタンを押下させない
+            _buttonContainerUseCase.ActivateButton(false);
 
             await UniTask.Delay(TimeSpan.FromSeconds(CommonViewConfig.LOAD_INTERVAL), cancellationToken: token);
 
@@ -107,6 +115,8 @@ namespace Kai.Common.Presentation.Controller
                 default:
                     throw new ArgumentOutOfRangeException(nameof(sceneName), sceneName, null);
             }
+
+            _buttonContainerUseCase.ActivateButton(true);
         }
 
         public void LoadResult()

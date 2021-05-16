@@ -2,7 +2,6 @@ using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Kai.Common.Domain.UseCase.Interface;
-using Kai.Common.Presentation.View;
 using Kai.Game.Application;
 using Kai.Game.Domain.UseCase.Interface;
 using Kai.Game.Presentation.Controller;
@@ -12,33 +11,21 @@ namespace Kai.Game.Presentation.View.State
 {
     public sealed class InputState : BaseState
     {
-        private ButtonActivator[] _buttonActivators;
-
-        private ButtonActivator[] buttonActivators
-        {
-            get
-            {
-                if (_buttonActivators == null)
-                {
-                    _buttonActivators = FindObjectsOfType<ButtonActivator>();
-                }
-
-                return _buttonActivators;
-            }
-        }
-
         private ButtonController _buttonController;
         private IStepCountUseCase _stepCountUseCase;
         private IStageObjectContainerUseCase _stageObjectContainerUseCase;
+        private IButtonContainerUseCase _buttonContainerUseCase;
         private StageView _stageView;
 
         [Inject]
         private void Construct(ButtonController buttonController, IStepCountUseCase stepCountUseCase,
-            IStageObjectContainerUseCase stageObjectContainerUseCase, StageView stageView)
+            IStageObjectContainerUseCase stageObjectContainerUseCase, IButtonContainerUseCase buttonContainerUseCase,
+            StageView stageView)
         {
             _buttonController = buttonController;
             _stepCountUseCase = stepCountUseCase;
             _stageObjectContainerUseCase = stageObjectContainerUseCase;
+            _buttonContainerUseCase = buttonContainerUseCase;
             _stageView = stageView;
         }
 
@@ -52,12 +39,12 @@ namespace Kai.Game.Presentation.View.State
 
         public override async UniTask<GameState> TickAsync(CancellationToken token)
         {
-            ActivateButton(true);
+            _buttonContainerUseCase.ActivateButton(true);
 
             // ボタン入力待ち
             var input = await _buttonController.PushButton().ToUniTask(true, token);
 
-            ActivateButton(false);
+            _buttonContainerUseCase.ActivateButton(false);
             _stepCountUseCase.CountUp();
 
             switch (input)
@@ -79,14 +66,6 @@ namespace Kai.Game.Presentation.View.State
             }
 
             return GameState.Move;
-        }
-
-        private void ActivateButton(bool value)
-        {
-            foreach (var buttonActivator in buttonActivators)
-            {
-                buttonActivator.Activate(value);
-            }
         }
     }
 }

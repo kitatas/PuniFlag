@@ -1,3 +1,4 @@
+using Kai.Common.Data.Container;
 using Kai.Common.Data.Entity;
 using Kai.Common.Domain.Model;
 using Kai.Common.Domain.Repository;
@@ -20,6 +21,14 @@ namespace Kai.Common.Installer
 
         public override void InstallBindings()
         {
+            #region Container
+
+            Container
+                .BindInterfacesTo<ButtonContainer>()
+                .AsCached();
+
+            #endregion
+
             #region Entity
 
             Container
@@ -53,6 +62,10 @@ namespace Kai.Common.Installer
             #endregion
 
             #region UseCase
+
+            Container
+                .BindInterfacesTo<ContainerUseCase>()
+                .AsCached();
 
             Container
                 .BindInterfacesTo<LevelUseCase>()
