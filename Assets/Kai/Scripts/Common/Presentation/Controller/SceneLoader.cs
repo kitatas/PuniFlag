@@ -126,16 +126,21 @@ namespace Kai.Common.Presentation.Controller
 
         private async UniTaskVoid LoadResultAsync(CancellationToken token)
         {
+            _buttonContainerUseCase.ActivateButton(false, true);
             _levelView.ShowClear();
             _stepCountView.TweenCenter();
             await _transitionMaskView.FadeInAsync(token);
 
             await _zenjectSceneLoader.LoadSceneAsync(SceneName.Ranking.ToString());
 
+            _buttonContainerUseCase.ActivateButton(false);
+
             await UniTask.Delay(TimeSpan.FromSeconds(CommonViewConfig.LOAD_INTERVAL), cancellationToken: token);
 
             await _transitionMaskView.FadeOutAllAsync(token);
             _stepCountView.Hide();
+
+            _buttonContainerUseCase.ActivateButton(true);
         }
     }
 }
