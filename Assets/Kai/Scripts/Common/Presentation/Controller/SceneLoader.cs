@@ -14,20 +14,18 @@ namespace Kai.Common.Presentation.Controller
         private readonly CancellationTokenSource _tokenSource;
         private readonly ZenjectSceneLoader _zenjectSceneLoader;
         private readonly TransitionMaskView _transitionMaskView;
-        private readonly IStepCountUseCase _stepCountUseCase;
         private readonly StepCountView _stepCountView;
         private readonly ILevelUseCase _levelUseCase;
         private readonly LevelView _levelView;
         private readonly IButtonContainerUseCase _buttonContainerUseCase;
 
         public SceneLoader(ZenjectSceneLoader zenjectSceneLoader, TransitionMaskView transitionMaskView,
-            IStepCountUseCase stepCountUseCase, StepCountView stepCountView,
+            StepCountView stepCountView,
             ILevelUseCase levelUseCase, LevelView levelView, IButtonContainerUseCase buttonContainerUseCase)
         {
             _tokenSource = new CancellationTokenSource();
             _zenjectSceneLoader = zenjectSceneLoader;
             _transitionMaskView = transitionMaskView;
-            _stepCountUseCase = stepCountUseCase;
             _stepCountView = stepCountView;
             _levelUseCase = levelUseCase;
             _levelView = levelView;
@@ -60,7 +58,6 @@ namespace Kai.Common.Presentation.Controller
                     }
                     break;
                 case LoadType.Reload:
-                    _stepCountUseCase.CountUp();
                     LoadScene(sceneName, _levelUseCase.GetLevel());
                     break;
                 default:
@@ -104,7 +101,6 @@ namespace Kai.Common.Presentation.Controller
                 case SceneName.Title:
                     _stepCountView.Hide(CommonViewConfig.UI_ANIMATION_TIME);
                     await _transitionMaskView.FadeOutAllAsync(token);
-                    _stepCountUseCase.ResetStepCount();
                     _levelUseCase.ResetLevel();
                     _levelView.Show();
                     break;

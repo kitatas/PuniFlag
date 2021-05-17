@@ -12,18 +12,15 @@ namespace Kai.Game.Presentation.View.State
     public sealed class InputState : BaseState
     {
         private ButtonController _buttonController;
-        private IStepCountUseCase _stepCountUseCase;
         private IStageObjectContainerUseCase _stageObjectContainerUseCase;
         private IButtonContainerUseCase _buttonContainerUseCase;
         private StageView _stageView;
 
         [Inject]
-        private void Construct(ButtonController buttonController, IStepCountUseCase stepCountUseCase,
-            IStageObjectContainerUseCase stageObjectContainerUseCase, IButtonContainerUseCase buttonContainerUseCase,
-            StageView stageView)
+        private void Construct(ButtonController buttonController, IButtonContainerUseCase buttonContainerUseCase,
+            IStageObjectContainerUseCase stageObjectContainerUseCase, StageView stageView)
         {
             _buttonController = buttonController;
-            _stepCountUseCase = stepCountUseCase;
             _stageObjectContainerUseCase = stageObjectContainerUseCase;
             _buttonContainerUseCase = buttonContainerUseCase;
             _stageView = stageView;
@@ -45,10 +42,11 @@ namespace Kai.Game.Presentation.View.State
             var input = await _buttonController.PushButton().ToUniTask(true, token);
 
             _buttonContainerUseCase.ActivateButton(false);
-            _stepCountUseCase.CountUp();
 
             switch (input)
             {
+                case InputType.None:
+                    return GameState.None;
                 case InputType.MoveLeft:
                 case InputType.MoveRight:
                     await _stageObjectContainerUseCase.MoveAsync(input, token);
@@ -60,7 +58,6 @@ namespace Kai.Game.Presentation.View.State
                         _stageView.RotateAsync(input, token)
                     );
                     break;
-                case InputType.None:
                 default:
                     throw new ArgumentOutOfRangeException();
             }

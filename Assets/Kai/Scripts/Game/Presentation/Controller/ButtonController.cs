@@ -1,5 +1,6 @@
 using System;
 using Kai.Common.Application;
+using Kai.Common.Domain.UseCase.Interface;
 using Kai.Common.Presentation.Controller;
 using Kai.Game.Application;
 using Kai.Game.Domain.UseCase.Interface;
@@ -24,12 +25,14 @@ namespace Kai.Game.Presentation.Controller
         public IObservable<InputType> PushButton() => _subject;
 
         private IInputUseCase _inputUseCase;
+        private IStepCountUseCase _stepCountUseCase;
         private SceneLoader _sceneLoader;
 
         [Inject]
-        private void Construct(IInputUseCase inputUseCase, SceneLoader sceneLoader)
+        private void Construct(IInputUseCase inputUseCase, IStepCountUseCase stepCountUseCase, SceneLoader sceneLoader)
         {
             _inputUseCase = inputUseCase;
+            _stepCountUseCase = stepCountUseCase;
             _sceneLoader = sceneLoader;
         }
 
@@ -96,9 +99,14 @@ namespace Kai.Game.Presentation.Controller
                 .Merge(resetStage.OnPush())
                 .Subscribe(_ =>
                 {
+                    _subject.OnNext(InputType.None);
                     resetStage.Push();
                     _sceneLoader.LoadScene(SceneName.Main, LoadType.Reload);
                 })
+                .AddTo(this);
+
+            PushButton()
+                .Subscribe(_ => _stepCountUseCase.CountUp())
                 .AddTo(this);
         }
     }
