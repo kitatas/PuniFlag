@@ -11,6 +11,7 @@ namespace Kai.Common.Presentation.View
     [RequireComponent(typeof(ButtonAnimator))]
     public sealed class ButtonSceneLoader : MonoBehaviour
     {
+        [SerializeField] private GameType gameType = default;
         [SerializeField] private SceneName sceneName = default;
         [SerializeField] private LoadType loadType = default;
 
@@ -30,7 +31,7 @@ namespace Kai.Common.Presentation.View
                 .OnClickAsObservable()
                 .Subscribe(_ =>
                 {
-                    _sceneLoader.LoadScene(sceneName, loadType);
+                    _sceneLoader.LoadScene(gameType, sceneName, loadType);
                     _buttonAnimator.Play();
                 })
                 .AddTo(this);

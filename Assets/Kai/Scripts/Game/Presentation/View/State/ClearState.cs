@@ -10,13 +10,15 @@ namespace Kai.Game.Presentation.View.State
 {
     public sealed class ClearState : BaseState
     {
+        private GameType _gameType;
         private SeController _seController;
         private SceneLoader _sceneLoader;
         private ClearView _clearView;
 
         [Inject]
-        private void Construct(SeController seController, SceneLoader sceneLoader, ClearView clearView)
+        private void Construct(GameType gameType, SeController seController, SceneLoader sceneLoader, ClearView clearView)
         {
+            _gameType = gameType;
             _seController = seController;
             _sceneLoader = sceneLoader;
             _clearView = clearView;
@@ -38,7 +40,17 @@ namespace Kai.Game.Presentation.View.State
 
             await UniTask.Delay(TimeSpan.FromSeconds(CommonViewConfig.LOAD_INTERVAL), cancellationToken: token);
 
-            _sceneLoader.LoadScene(SceneName.Main, LoadType.Next);
+            switch (_gameType)
+            {
+                case GameType.ScoreAttack:
+                    _sceneLoader.LoadScene(_gameType, SceneName.Main, LoadType.Next);
+                    break;
+                case GameType.FreePlay:
+                    break;
+                case GameType.None:
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
 
             return GameState.None;
         }

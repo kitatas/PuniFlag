@@ -36,4 +36,11 @@ namespace Kai.Common.Application
         Main,
         Ranking,
     }
+
+    public enum GameType
+    {
+        None,
+        ScoreAttack,
+        FreePlay,
+    }
 }

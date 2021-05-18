@@ -24,13 +24,15 @@ namespace Kai.Game.Presentation.Controller
         private readonly Subject<InputType> _subject = new Subject<InputType>();
         public IObservable<InputType> PushButton() => _subject;
 
+        private GameType _gameType;
         private IInputUseCase _inputUseCase;
         private IStepCountUseCase _stepCountUseCase;
         private SceneLoader _sceneLoader;
 
         [Inject]
-        private void Construct(IInputUseCase inputUseCase, IStepCountUseCase stepCountUseCase, SceneLoader sceneLoader)
+        private void Construct(GameType gameType, IInputUseCase inputUseCase, IStepCountUseCase stepCountUseCase, SceneLoader sceneLoader)
         {
+            _gameType = gameType;
             _inputUseCase = inputUseCase;
             _stepCountUseCase = stepCountUseCase;
             _sceneLoader = sceneLoader;
@@ -90,7 +92,7 @@ namespace Kai.Game.Presentation.Controller
                 .Subscribe(_ =>
                 {
                     loadTitle.Push();
-                    _sceneLoader.LoadScene(SceneName.Title);
+                    _sceneLoader.LoadScene(_gameType, SceneName.Title, LoadType.Direct);
                 })
                 .AddTo(this);
 
@@ -101,7 +103,7 @@ namespace Kai.Game.Presentation.Controller
                 {
                     _subject.OnNext(InputType.None);
                     resetStage.Push();
-                    _sceneLoader.LoadScene(SceneName.Main, LoadType.Reload);
+                    _sceneLoader.LoadScene(_gameType, SceneName.Main, LoadType.Reload);
                 })
                 .AddTo(this);
 
