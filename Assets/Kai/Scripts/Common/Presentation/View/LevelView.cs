@@ -14,7 +14,10 @@ namespace Kai.Common.Presentation.View
     {
         [SerializeField] private TextMeshProUGUI stageText = default;
         [SerializeField] private TextMeshProUGUI stageLevelText = default;
+        [SerializeField] private TextMeshProUGUI stageMaxLevelText = default;
+        [SerializeField] private TextMeshProUGUI slash = default;
 
+        private bool _isPlayLevelUpSe;
         private CancellationToken _token;
         private SeController _seController;
 
@@ -25,6 +28,16 @@ namespace Kai.Common.Presentation.View
             _seController = seController;
         }
 
+        public void SetMaxStageCount(int value)
+        {
+            stageMaxLevelText.text = $"{value:00}";
+        }
+
+        public void SetPlayLevelUpSe(bool value)
+        {
+            _isPlayLevelUpSe = value;
+        }
+
         public void DisplayLevel(int level)
         {
             UpdateLevelAsync(level, _token).Forget();
@@ -32,7 +45,7 @@ namespace Kai.Common.Presentation.View
 
         private async UniTaskVoid UpdateLevelAsync(int level, CancellationToken token)
         {
-            if (level != 0 && level < GameConfig.STAGE_COUNT)
+            if (level != 0 && _isPlayLevelUpSe)
             {
                 await UniTask.Delay(TimeSpan.FromSeconds(CommonViewConfig.FADE_TIME), cancellationToken: token);
 
@@ -41,13 +54,13 @@ namespace Kai.Common.Presentation.View
                 _seController.PlaySe(SeType.LevelUp);
             }
 
-            stageLevelText.text = $"{level + 1:00} / {GameConfig.STAGE_COUNT:00}";
+            stageLevelText.text = $"{level + 1:00}";
         }
 
         public void ShowClear()
         {
             stageText.enabled = true;
-            stageLevelText.enabled = false;
+            ActivateLevelText(false);
             stageText.text = $"";
             DOTween.Sequence()
                 .AppendInterval(CommonViewConfig.FADE_TIME)
@@ -72,7 +85,14 @@ namespace Kai.Common.Presentation.View
         private void Activate(bool value)
         {
             stageText.enabled = value;
+            ActivateLevelText(value);
+        }
+
+        private void ActivateLevelText(bool value)
+        {
             stageLevelText.enabled = value;
+            stageMaxLevelText.enabled = value;
+            slash.enabled = value;
         }
     }
 }

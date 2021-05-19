@@ -10,5 +10,6 @@ namespace Kai.Common.Application
     public sealed class GameConfig
     {
         public const int STAGE_COUNT = 10;
+        public const int FREE_PLAY_COUNT = 50;
     }
 }

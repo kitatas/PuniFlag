@@ -38,7 +38,7 @@ namespace Kai.Common.Presentation.Controller
             _tokenSource?.Dispose();
         }
 
-        public void LoadScene(GameType gameType, SceneName sceneName, LoadType loadType)
+        public void LoadScene(GameType gameType, SceneName sceneName, LoadType loadType, int level = 0)
         {
             switch (gameType)
             {
@@ -46,6 +46,7 @@ namespace Kai.Common.Presentation.Controller
                     LoadScoreAttack(sceneName, loadType);
                     break;
                 case GameType.FreePlay:
+                    LoadFreePlay(sceneName, loadType, level);
                     break;
                 case GameType.None:
                 default:
@@ -55,6 +56,9 @@ namespace Kai.Common.Presentation.Controller
 
         private void LoadScoreAttack(SceneName sceneName, LoadType loadType)
         {
+            _levelView.SetMaxStageCount(GameConfig.STAGE_COUNT);
+            _levelView.SetPlayLevelUpSe(true);
+
             switch (loadType)
             {
                 case LoadType.Direct:
@@ -66,16 +70,55 @@ namespace Kai.Common.Presentation.Controller
                 }
                 case LoadType.Next:
                 {
-                    _levelUseCase.CountUp();
-                    var level = _levelUseCase.GetLevel();
-                    if (level < GameConfig.STAGE_COUNT)
+                    var nextLevel = _levelUseCase.GetLevel() + 1;
+                    if (nextLevel < GameConfig.STAGE_COUNT)
                     {
-                        LoadSceneAsync(GameType.ScoreAttack, sceneName, level, _tokenSource.Token).Forget();
+                        _levelUseCase.CountUp();
+                        LoadSceneAsync(GameType.ScoreAttack, sceneName, nextLevel, _tokenSource.Token).Forget();
                     }
                     else
                     {
-                        LoadSceneAsync(GameType.ScoreAttack, SceneName.Ranking, level, _tokenSource.Token).Forget();
+                        LoadSceneAsync(GameType.ScoreAttack, SceneName.Ranking, 0, _tokenSource.Token).Forget();
                     }
+                    break;
+                }
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(loadType), loadType, null);
+            }
+        }
+
+        private void LoadFreePlay(SceneName sceneName, LoadType loadType, int level)
+        {
+            _levelView.SetMaxStageCount(GameConfig.FREE_PLAY_COUNT);
+
+            switch (loadType)
+            {
+                case LoadType.Direct:
+                {
+                    _levelView.SetPlayLevelUpSe(false);
+                    _levelUseCase.SetLevel(level);
+                    LoadSceneAsync(GameType.FreePlay, sceneName, level, _tokenSource.Token).Forget();
+                    break;
+                }
+                case LoadType.Next:
+                {
+                    _levelView.SetPlayLevelUpSe(true);
+                    var nextLevel = _levelUseCase.GetLevel() + 1;
+                    if (nextLevel < GameConfig.FREE_PLAY_COUNT)
+                    {
+                        _levelUseCase.CountUp();
+                        LoadSceneAsync(GameType.FreePlay, sceneName, nextLevel, _tokenSource.Token).Forget();
+                    }
+                    else
+                    {
+                        LoadSceneAsync(GameType.FreePlay, SceneName.Title, 0, _tokenSource.Token).Forget();
+                    }
+                    break;
+                }
+                case LoadType.Reload:
+                {
+                    _levelView.SetPlayLevelUpSe(false);
+                    LoadSceneAsync(GameType.FreePlay, sceneName, _levelUseCase.GetLevel(), _tokenSource.Token).Forget();
                     break;
                 }
                 default:
@@ -88,7 +131,7 @@ namespace Kai.Common.Presentation.Controller
             // シーン遷移中にボタンを押下させない
             _buttonContainerUseCase.ActivateButton(false, true);
 
-            OnBeginTransition(sceneName);
+            OnBeginTransition(gameType, sceneName);
 
             await _transitionMaskView.FadeInAsync(token);
 
@@ -103,12 +146,12 @@ namespace Kai.Common.Presentation.Controller
 
             await UniTask.Delay(TimeSpan.FromSeconds(CommonViewConfig.LOAD_INTERVAL), cancellationToken: token);
 
-            await OnEndTransitionAsync(sceneName, token);
+            await OnEndTransitionAsync(gameType, sceneName, token);
 
             _buttonContainerUseCase.ActivateButton(true);
         }
 
-        private void OnBeginTransition(SceneName sceneName)
+        private void OnBeginTransition(GameType gameType, SceneName sceneName)
         {
             switch (sceneName)
             {
@@ -116,7 +159,10 @@ namespace Kai.Common.Presentation.Controller
                     _levelView.Hide();
                     break;
                 case SceneName.Main:
-                    _stepCountView.TweenCenter();
+                    if (gameType == GameType.ScoreAttack)
+                    {
+                        _stepCountView.TweenCenter();
+                    }
                     break;
                 case SceneName.Ranking:
                     _levelView.ShowClear();
@@ -127,7 +173,7 @@ namespace Kai.Common.Presentation.Controller
             }
         }
 
-        private async UniTask OnEndTransitionAsync(SceneName sceneName, CancellationToken token)
+        private async UniTask OnEndTransitionAsync(GameType gameType, SceneName sceneName, CancellationToken token)
         {
             switch (sceneName)
             {
@@ -138,7 +184,10 @@ namespace Kai.Common.Presentation.Controller
                     _levelView.Show();
                     break;
                 case SceneName.Main:
-                    _stepCountView.TweenTop();
+                    if (gameType == GameType.ScoreAttack)
+                    {
+                        _stepCountView.TweenTop();
+                    }
                     await _transitionMaskView.FadeOutAsync(token);
                     break;
                 case SceneName.Ranking:
