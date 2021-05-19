@@ -17,16 +17,20 @@ namespace Kai.Common.Domain.UseCase
 
         public int GetLevel() => _levelEntity.GetLevel();
 
+        public void SetLevel(int level)
+        {
+            _levelEntity.SetLevel(level);
+            _levelModel.SetLevel(GetLevel());
+        }
+
         public void CountUp()
         {
-            _levelEntity.LevelUp();
-            _levelModel.SetLevel(GetLevel());
+            SetLevel(GetLevel() + 1);
         }
 
         public void ResetLevel()
         {
-            _levelEntity.ResetLevel();
-            _levelModel.SetLevel(GetLevel());
+            SetLevel(0);
         }
     }
 }
