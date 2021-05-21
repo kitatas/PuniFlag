@@ -18,6 +18,7 @@ namespace Kai.Game.Installer
         [SerializeField] private ButtonController buttonController = default;
         [SerializeField] private StageView stageView = default;
         [SerializeField] private ClearView clearView = default;
+        [SerializeField] private FreePlayNextView freePlayNextView = default;
 
         [SerializeField] private InputState inputState = default;
         [SerializeField] private JudgeState judgeState = default;
@@ -126,6 +127,11 @@ namespace Kai.Game.Installer
             Container
                 .Bind<ClearView>()
                 .FromInstance(clearView)
+                .AsCached();
+
+            Container
+                .Bind<FreePlayNextView>()
+                .FromInstance(freePlayNextView)
                 .AsCached();
 
             #endregion

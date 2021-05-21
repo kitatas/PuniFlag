@@ -14,14 +14,17 @@ namespace Kai.Game.Presentation.View.State
         private SeController _seController;
         private SceneLoader _sceneLoader;
         private ClearView _clearView;
+        private FreePlayNextView _freePlayNextView;
 
         [Inject]
-        private void Construct(GameType gameType, SeController seController, SceneLoader sceneLoader, ClearView clearView)
+        private void Construct(GameType gameType, SeController seController, SceneLoader sceneLoader,
+            ClearView clearView, FreePlayNextView freePlayNextView)
         {
             _gameType = gameType;
             _seController = seController;
             _sceneLoader = sceneLoader;
             _clearView = clearView;
+            _freePlayNextView = freePlayNextView;
         }
 
         public override GameState GetState() => GameState.Clear;
@@ -29,6 +32,7 @@ namespace Kai.Game.Presentation.View.State
         public override UniTask InitAsync(CancellationToken token)
         {
             _clearView.Init();
+            _freePlayNextView.Init();
             return base.InitAsync(token);
         }
 
@@ -46,6 +50,7 @@ namespace Kai.Game.Presentation.View.State
                     _sceneLoader.LoadScene(_gameType, SceneName.Main, LoadType.Next);
                     break;
                 case GameType.FreePlay:
+                    _freePlayNextView.ShowAsync(token).Forget();
                     break;
                 case GameType.None:
                 default:
