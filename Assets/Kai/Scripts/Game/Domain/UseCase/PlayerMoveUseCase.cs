@@ -1,7 +1,5 @@
 using System;
 using DG.Tweening;
-using DG.Tweening.Core;
-using DG.Tweening.Plugins.Options;
 using Kai.Game.Application;
 using Kai.Game.Domain.UseCase.Interface;
 using UnityEngine;
@@ -34,7 +32,7 @@ namespace Kai.Game.Domain.UseCase
             _rigidbody2D.velocity = Vector2.zero;
         }
 
-        public TweenerCore<Vector3, Vector3, VectorOptions> Move(InputType inputType)
+        public Tween Move(InputType inputType)
         {
             switch (_colorType)
             {

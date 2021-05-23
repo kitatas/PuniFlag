@@ -1,6 +1,5 @@
 using System;
 using Kai.Game.Application;
-using UniRx;
 using UnityEngine;
 
 namespace Kai.Game.Presentation.View
@@ -38,12 +37,6 @@ namespace Kai.Game.Presentation.View
                 default:
                     throw new ArgumentOutOfRangeException(nameof(inputType), inputType, null);
             }
-
-            SetMovement();
-            Observable
-                .Timer(TimeSpan.FromSeconds(StageObjectConfig.MOVE_SPEED))
-                .Subscribe(_ => SetNormal())
-                .AddTo(this);
         }
     }
 }

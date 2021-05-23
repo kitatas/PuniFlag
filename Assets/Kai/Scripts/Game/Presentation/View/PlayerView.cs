@@ -2,8 +2,6 @@ using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using DG.Tweening.Core;
-using DG.Tweening.Plugins.Options;
 using Kai.Common.Extension;
 using Kai.Game.Application;
 using Kai.Game.Domain.UseCase;
@@ -23,7 +21,7 @@ namespace Kai.Game.Presentation.View
         [SerializeField] private Rigidbody2D rigidbody2d = default;
         [SerializeField] private PlayerSpriteView playerSpriteView = default;
         public bool isGround;
-        private TweenerCore<Vector3, Vector3, VectorOptions> _tween;
+        private Tween _tween;
 
         private IPlayerMoveUseCase _playerMoveUseCase;
         private IStageObjectRotateUseCase _stageObjectRotateUseCase;
@@ -70,8 +68,11 @@ namespace Kai.Game.Presentation.View
         {
             _tween = _playerMoveUseCase.Move(inputType);
             playerSpriteView.Flip(inputType);
+            playerSpriteView.SetMovement();
 
             await UniTask.Delay(TimeSpan.FromSeconds(StageObjectConfig.MOVE_SPEED), cancellationToken: token);
+
+            playerSpriteView.SetNormal();
         }
 
         public async UniTask RotateAsync(InputType inputType, CancellationToken token)
