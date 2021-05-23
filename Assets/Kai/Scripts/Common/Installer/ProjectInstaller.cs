@@ -56,6 +56,10 @@ namespace Kai.Common.Installer
             #region Repository
 
             Container
+                .BindInterfacesTo<SaveDataRepository>()
+                .AsCached();
+
+            Container
                 .BindInterfacesTo<SoundRepository>()
                 .AsCached();
 
@@ -69,6 +73,10 @@ namespace Kai.Common.Installer
 
             Container
                 .BindInterfacesTo<LevelUseCase>()
+                .AsCached();
+
+            Container
+                .BindInterfacesTo<SaveDataUseCase>()
                 .AsCached();
 
             Container
