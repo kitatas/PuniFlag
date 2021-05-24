@@ -1,3 +1,4 @@
+using Kai.Common.Application;
 using Kai.Common.Data.Entity;
 using Kai.Common.Domain.Repository.Interface;
 using UnityEngine;
@@ -16,6 +17,7 @@ namespace Kai.Common.Domain.Repository
             {
                 bgmVolume = 0.5f,
                 seVolume = 0.5f,
+                language = LanguageType.Japanese,
             };
             _defaultData = JsonUtility.ToJson(data);
         }

@@ -43,4 +43,10 @@ namespace Kai.Common.Application
         ScoreAttack,
         FreePlay,
     }
+
+    public enum LanguageType
+    {
+        Japanese,
+        English,
+    }
 }
