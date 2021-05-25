@@ -25,7 +25,7 @@ namespace Kai.Common.Installer
 
             Container
                 .BindInterfacesTo<ButtonContainer>()
-                .AsCached();
+                .AsSingle();
 
             #endregion
 
@@ -33,11 +33,11 @@ namespace Kai.Common.Installer
 
             Container
                 .BindInterfacesTo<LevelEntity>()
-                .AsCached();
+                .AsSingle();
 
             Container
                 .BindInterfacesTo<StepCountEntity>()
-                .AsCached();
+                .AsSingle();
 
             #endregion
 
@@ -45,23 +45,27 @@ namespace Kai.Common.Installer
 
             Container
                 .BindInterfacesTo<LevelModel>()
-                .AsCached();
+                .AsSingle();
 
             Container
                 .BindInterfacesTo<StepCountModel>()
-                .AsCached();
+                .AsSingle();
 
             #endregion
 
             #region Repository
 
             Container
+                .BindInterfacesTo<LanguageRepository>()
+                .AsSingle();
+
+            Container
                 .BindInterfacesTo<SaveDataRepository>()
-                .AsCached();
+                .AsSingle();
 
             Container
                 .BindInterfacesTo<SoundRepository>()
-                .AsCached();
+                .AsSingle();
 
             #endregion
 
@@ -69,23 +73,23 @@ namespace Kai.Common.Installer
 
             Container
                 .BindInterfacesTo<ContainerUseCase>()
-                .AsCached();
+                .AsSingle();
 
             Container
                 .BindInterfacesTo<LevelUseCase>()
-                .AsCached();
+                .AsSingle();
 
             Container
                 .BindInterfacesTo<SaveDataUseCase>()
-                .AsCached();
+                .AsSingle();
 
             Container
                 .BindInterfacesTo<SoundUseCase>()
-                .AsCached();
+                .AsSingle();
 
             Container
                 .BindInterfacesTo<StepCountUseCase>()
-                .AsCached();
+                .AsSingle();
 
             #endregion
 
@@ -94,16 +98,16 @@ namespace Kai.Common.Installer
             Container
                 .Bind<BgmController>()
                 .FromInstance(bgmController)
-                .AsCached();
+                .AsSingle();
 
             Container
                 .Bind<SeController>()
                 .FromInstance(seController)
-                .AsCached();
+                .AsSingle();
 
             Container
                 .Bind<SceneLoader>()
-                .AsCached();
+                .AsSingle();
 
             #endregion
 
@@ -111,12 +115,12 @@ namespace Kai.Common.Installer
 
             Container
                 .Bind<LevelPresenter>()
-                .AsCached()
+                .AsSingle()
                 .NonLazy();
 
             Container
                 .Bind<StepCountPresenter>()
-                .AsCached()
+                .AsSingle()
                 .NonLazy();
 
             #endregion
@@ -126,17 +130,17 @@ namespace Kai.Common.Installer
             Container
                 .Bind<TransitionMaskView>()
                 .FromInstance(transitionMaskView)
-                .AsCached();
+                .AsSingle();
 
             Container
                 .Bind<LevelView>()
                 .FromInstance(levelView)
-                .AsCached();
+                .AsSingle();
 
             Container
                 .Bind<StepCountView>()
                 .FromInstance(stepCountView)
-                .AsCached();
+                .AsSingle();
 
             #endregion
         }

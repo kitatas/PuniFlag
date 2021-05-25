@@ -49,4 +49,15 @@ namespace Kai.Common.Application
         Japanese,
         English,
     }
+
+    public enum ExplainType
+    {
+        None,
+        Gravity,
+        Rotate,
+        Move,
+        Reset,
+        Step,
+        Flag,
+    }
 }

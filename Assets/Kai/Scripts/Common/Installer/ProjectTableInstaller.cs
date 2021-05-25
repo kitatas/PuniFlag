@@ -9,11 +9,10 @@ namespace Kai.Common.Installer
     {
         [SerializeField] private BgmTable bgmTable = default;
         [SerializeField] private SeTable seTable = default;
+        [SerializeField] private LanguageTable languageTable = default;
 
         public override void InstallBindings()
         {
-            #region Data
-
             #region DataStore
 
             Container
@@ -26,7 +25,10 @@ namespace Kai.Common.Installer
                 .FromInstance(seTable)
                 .AsCached();
 
-            #endregion
+            Container
+                .Bind<LanguageTable>()
+                .FromInstance(languageTable)
+                .AsCached();
 
             #endregion
         }
