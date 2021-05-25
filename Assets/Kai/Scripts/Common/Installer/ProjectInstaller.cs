@@ -80,10 +80,6 @@ namespace Kai.Common.Installer
                 .AsSingle();
 
             Container
-                .BindInterfacesTo<SaveDataUseCase>()
-                .AsSingle();
-
-            Container
                 .BindInterfacesTo<SoundUseCase>()
                 .AsSingle();
 

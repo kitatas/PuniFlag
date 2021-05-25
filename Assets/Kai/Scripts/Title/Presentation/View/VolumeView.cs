@@ -1,7 +1,7 @@
 using Kai.Common.Application;
-using Kai.Common.Domain.UseCase.Interface;
 using Kai.Common.Presentation.Controller;
 using Kai.Common.Presentation.Controller.Interface;
+using Kai.Title.Domain.UseCase.Interface;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
@@ -16,14 +16,14 @@ namespace Kai.Title.Presentation.View
         [SerializeField] private Slider seSlider = default;
 
         [Inject]
-        private void Construct(BgmController bgmController, SeController seController, ISaveDataUseCase saveDataUseCase)
+        private void Construct(BgmController bgmController, SeController seController,
+            ISaveSoundUseCase saveSoundUseCase)
         {
             bgmSlider
                 .OnPointerUpAsObservable()
                 .Subscribe(_ =>
                 {
-                    saveDataUseCase.saveData.bgmVolume = bgmController.GetVolume();
-                    saveDataUseCase.Save();
+                    saveSoundUseCase.SaveBgmVolume(bgmController.GetVolume());
                 })
                 .AddTo(bgmSlider);
 
@@ -32,20 +32,18 @@ namespace Kai.Title.Presentation.View
                 .Subscribe(_ =>
                 {
                     seController.PlaySe(SeType.Decision);
-                    saveDataUseCase.saveData.seVolume = seController.GetVolume();
-                    saveDataUseCase.Save();
+                    saveSoundUseCase.SaveSeVolume(seController.GetVolume());
                 })
                 .AddTo(seSlider);
 
-            var saveData = saveDataUseCase.saveData;
-            bgmController.SetVolume(saveData.bgmVolume);
-            seController.SetVolume(saveData.seVolume);
-            SetVolume(bgmController, seController);
+            bgmController.SetVolume(saveSoundUseCase.bgmVolume);
+            seController.SetVolume(saveSoundUseCase.seVolume);
+            SetSliderVolume(bgmController, seController);
 
             UpdateVolume(bgmController, seController);
         }
 
-        private void SetVolume(IVolumeUseCase bgm, IVolumeUseCase se)
+        private void SetSliderVolume(IVolumeUseCase bgm, IVolumeUseCase se)
         {
             bgmSlider.value = bgm.GetVolume();
             seSlider.value = se.GetVolume();

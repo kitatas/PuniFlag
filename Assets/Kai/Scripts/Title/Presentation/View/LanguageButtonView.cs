@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Kai.Common.Application;
-using Kai.Common.Domain.UseCase.Interface;
 using Kai.Title.Domain.UseCase.Interface;
 using UniRx;
 using UnityEngine;
@@ -19,7 +18,7 @@ namespace Kai.Title.Presentation.View
         private Dictionary<LanguageType, Button> _languageButtons;
 
         [Inject]
-        private void Construct(ISaveDataUseCase saveDataUseCase, IWriteOnlyLanguageUseCase languageUseCase)
+        private void Construct(ISaveLanguageUseCase saveLanguageUseCase, IWriteOnlyLanguageUseCase languageUseCase)
         {
             _languageButtons = new Dictionary<LanguageType, Button>()
             {
@@ -27,7 +26,7 @@ namespace Kai.Title.Presentation.View
                 {LanguageType.English, english},
             };
 
-            ChangeSelectButton(saveDataUseCase.saveData.language);
+            ChangeSelectButton(saveLanguageUseCase.language);
 
             foreach (var languageButton in _languageButtons)
             {
@@ -35,13 +34,12 @@ namespace Kai.Title.Presentation.View
                 var button = languageButton.Value;
                 button
                     .OnClickAsObservable()
-                    .Where(_ => saveDataUseCase.saveData.language != language)
+                    .Where(_ => saveLanguageUseCase.language != language)
                     .Subscribe(_ =>
                     {
                         ChangeSelectButton(language);
                         languageUseCase.SetLanguage(language);
-                        saveDataUseCase.saveData.language = language;
-                        saveDataUseCase.Save();
+                        saveLanguageUseCase.SaveLanguage(language);
                     })
                     .AddTo(button);
             }

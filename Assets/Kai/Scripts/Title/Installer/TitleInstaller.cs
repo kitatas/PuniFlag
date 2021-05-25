@@ -18,6 +18,10 @@ namespace Kai.Title.Installer
                 .BindInterfacesTo<LanguageUseCase>()
                 .AsCached();
 
+            Container
+                .BindInterfacesTo<SaveDataUseCase>()
+                .AsCached();
+
             #endregion
 
             #region Presenter
