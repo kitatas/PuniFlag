@@ -1,66 +1,51 @@
-using System.Collections.Generic;
+using System;
 using Kai.Common.Application;
-using Kai.Title.Domain.UseCase.Interface;
+using Kai.Common.Presentation.View;
 using UniRx;
 using UnityEngine;
-using UnityEngine.UI;
-using Zenject;
 
 namespace Kai.Title.Presentation.View
 {
+    [RequireComponent(typeof(ButtonActivator))]
     public sealed class LanguageButtonView : MonoBehaviour
     {
-        [SerializeField] private Sprite validImage = default;
-        [SerializeField] private Sprite invalidImage = default;
+        [SerializeField] private LanguageType languageType = default;
 
-        [SerializeField] private Button japanese = default;
-        [SerializeField] private Button english = default;
-        private Dictionary<LanguageType, Button> _languageButtons;
+        private ButtonActivator _buttonActivator;
 
-        [Inject]
-        private void Construct(ISaveLanguageUseCase saveLanguageUseCase, IWriteOnlyLanguageUseCase languageUseCase)
+        private ButtonActivator buttonActivator
         {
-            _languageButtons = new Dictionary<LanguageType, Button>()
+            get
             {
-                {LanguageType.Japanese, japanese},
-                {LanguageType.English, english},
-            };
+                if (_buttonActivator == null)
+                {
+                    _buttonActivator = GetComponent<ButtonActivator>();
+                }
 
-            ChangeSelectButton(saveLanguageUseCase.language);
-
-            foreach (var languageButton in _languageButtons)
-            {
-                var language = languageButton.Key;
-                var button = languageButton.Value;
-                button
-                    .OnClickAsObservable()
-                    .Where(_ => saveLanguageUseCase.language != language)
-                    .Subscribe(_ =>
-                    {
-                        ChangeSelectButton(language);
-                        languageUseCase.SetLanguage(language);
-                        saveLanguageUseCase.SaveLanguage(language);
-                    })
-                    .AddTo(button);
+                return _buttonActivator;
             }
         }
 
-        private void ChangeSelectButton(LanguageType languageType)
+        public IObservable<LanguageType> OnClickLanguageAsObservable()
         {
-            foreach (var languageButton in _languageButtons)
-            {
-                var button = languageButton.Value;
-                if (languageButton.Key == languageType)
-                {
-                    button.enabled = false;
-                    button.image.sprite = invalidImage;
-                }
-                else
-                {
-                    button.enabled = true;
-                    button.image.sprite = validImage;
-                }
-            }
+            return buttonActivator.button
+                .OnClickAsObservable()
+                .Select(_ => languageType);
+        }
+
+        public bool IsEqualLanguage(LanguageType language)
+        {
+            return languageType == language;
+        }
+
+        public void SetButtonImage(Sprite sprite)
+        {
+            buttonActivator.button.image.sprite = sprite;
+        }
+
+        public void ActivateButton(bool value)
+        {
+            buttonActivator.Activate(value);
         }
     }
 }
