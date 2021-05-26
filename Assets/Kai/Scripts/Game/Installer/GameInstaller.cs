@@ -66,6 +66,10 @@ namespace Kai.Game.Installer
             #region UseCase
 
             Container
+                .BindInterfacesTo<ClearDataUseCase>()
+                .AsCached();
+
+            Container
                 .BindInterfacesTo<GameStateUseCase>()
                 .AsCached();
 

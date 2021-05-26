@@ -9,22 +9,26 @@ namespace Kai.Common.Domain.Repository
     {
         private const string SAVE_KEY = "SaveKey";
 
-        private readonly string _defaultData;
-
-        public SaveDataRepository()
+        private static SaveData CreateNewData()
         {
-            var data = new SaveData
+            return new SaveData
             {
                 bgmVolume = 0.5f,
                 seVolume = 0.5f,
                 language = LanguageType.Japanese,
+                clearData = new bool[GameConfig.FREE_PLAY_COUNT],
             };
-            _defaultData = JsonUtility.ToJson(data);
         }
 
         public SaveData Load()
         {
-            var data = ES3.Load(SAVE_KEY, defaultValue: _defaultData);
+            var data = ES3.Load(SAVE_KEY, defaultValue: "");
+
+            if (string.IsNullOrEmpty(data))
+            {
+                return CreateNewData();
+            }
+
             return JsonUtility.FromJson<SaveData>(data);
         }
 

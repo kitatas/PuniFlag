@@ -4,6 +4,7 @@ using Cysharp.Threading.Tasks;
 using Kai.Common.Application;
 using Kai.Common.Presentation.Controller;
 using Kai.Game.Application;
+using Kai.Game.Domain.UseCase.Interface;
 using Zenject;
 
 namespace Kai.Game.Presentation.View.State
@@ -15,16 +16,18 @@ namespace Kai.Game.Presentation.View.State
         private SceneLoader _sceneLoader;
         private ClearView _clearView;
         private FreePlayNextView _freePlayNextView;
+        private IClearDataUseCase _clearDataUseCase;
 
         [Inject]
         private void Construct(GameType gameType, SeController seController, SceneLoader sceneLoader,
-            ClearView clearView, FreePlayNextView freePlayNextView)
+            ClearView clearView, FreePlayNextView freePlayNextView, IClearDataUseCase clearDataUseCase)
         {
             _gameType = gameType;
             _seController = seController;
             _sceneLoader = sceneLoader;
             _clearView = clearView;
             _freePlayNextView = freePlayNextView;
+            _clearDataUseCase = clearDataUseCase;
         }
 
         public override GameState GetState() => GameState.Clear;
@@ -50,6 +53,7 @@ namespace Kai.Game.Presentation.View.State
                     _sceneLoader.LoadScene(_gameType, SceneName.Main, LoadType.Next);
                     break;
                 case GameType.FreePlay:
+                    _clearDataUseCase.SaveFreePlayClearData();
                     _freePlayNextView.ShowAsync(token).Forget();
                     break;
                 case GameType.None:
