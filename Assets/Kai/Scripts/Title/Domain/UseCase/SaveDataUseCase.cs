@@ -16,12 +16,17 @@ namespace Kai.Title.Domain.UseCase
             _saveData = _saveDataRepository.Load();
         }
 
+        private void Save()
+        {
+            _saveDataRepository.Save(_saveData);
+        }
+
         public LanguageType language => _saveData.language;
 
         public void SaveLanguage(LanguageType languageType)
         {
             _saveData.language = languageType;
-            _saveDataRepository.Save(_saveData);
+            Save();
         }
 
         public float bgmVolume => _saveData.bgmVolume;
@@ -29,7 +34,7 @@ namespace Kai.Title.Domain.UseCase
         public void SaveBgmVolume(float bgmVolumeValue)
         {
             _saveData.bgmVolume = bgmVolumeValue;
-            _saveDataRepository.Save(_saveData);
+            Save();
         }
 
         public float seVolume => _saveData.seVolume;
@@ -37,7 +42,7 @@ namespace Kai.Title.Domain.UseCase
         public void SaveSeVolume(float seVolumeValue)
         {
             _saveData.seVolume = seVolumeValue;
-            _saveDataRepository.Save(_saveData);
+            Save();
         }
     }
 }

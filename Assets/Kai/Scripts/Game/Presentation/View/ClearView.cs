@@ -22,7 +22,8 @@ namespace Kai.Game.Presentation.View
         {
             await clearText
                 .DOText($"clear", _animationTime)
-                .SetEase(Ease.Linear);
+                .SetEase(Ease.Linear)
+                .WithCancellation(token);
 
             await UniTask.Delay(TimeSpan.FromSeconds(_animationTime), cancellationToken: token);
         }

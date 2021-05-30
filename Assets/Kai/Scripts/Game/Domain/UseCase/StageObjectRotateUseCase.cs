@@ -24,7 +24,7 @@ namespace Kai.Game.Domain.UseCase
         {
             _currentVector = GetRotateVector(inputType);
             await _transform
-                .DOLocalRotate(_currentVector, StageObjectConfig.ROTATE_SPEED)
+                .DOLocalRotate(_currentVector, StageObjectConfig.ROTATE_SPEED, RotateMode.FastBeyond360)
                 .WithCancellation(token);
         }
 
