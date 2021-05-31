@@ -1,5 +1,5 @@
 using Kai.Common.Application;
-using Kai.Common.Data.DataStore;
+using Kai.Common.Data.Entity;
 
 namespace Kai.Common.Domain.Repository.Interface
 {

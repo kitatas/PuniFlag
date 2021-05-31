@@ -46,18 +46,7 @@ namespace Kai.Common.Application
 
     public enum LanguageType
     {
-        Japanese,
-        English,
-    }
-
-    public enum ExplainType
-    {
-        None,
-        Gravity,
-        Rotate,
-        Move,
-        Reset,
-        Step,
-        Flag,
+        English = 1,
+        Japanese = 2,
     }
 }

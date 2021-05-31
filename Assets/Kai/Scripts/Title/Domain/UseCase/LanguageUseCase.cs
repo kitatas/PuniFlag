@@ -1,5 +1,5 @@
 using Kai.Common.Application;
-using Kai.Common.Data.DataStore;
+using Kai.Common.Data.Entity;
 using Kai.Common.Domain.Repository.Interface;
 using Kai.Title.Domain.UseCase.Interface;
 using UniRx;

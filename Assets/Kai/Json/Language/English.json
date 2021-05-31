@@ -1,0 +1,45 @@
+{
+  "type": 1,
+  "data": {
+    "titleName": "PuniFlag",
+    "infoTitle": {
+      "credit": "CREDIT",
+      "license": "LICENSE",
+      "externalSite": "EXTERNAL SITE"
+    },
+    "subTitle": {
+      "language": "Language",
+      "volume": "Sound Volume",
+      "developer": "Developer",
+      "sound": "Sound",
+      "font": "Font",
+      "privacyPolicy": "Privacy Policy"
+    },
+    "explain": {
+      "gravity": {
+        "title": "Puni's Gravity",
+        "detail": "The direction of gravity is different for each Puni."
+      },
+      "rotate": {
+        "title": "Stage Rotation",
+        "detail": "Puni and the flag rotate with the stage."
+      },
+      "move": {
+        "title": "Puni's Movement",
+        "detail": "The direction of movement is different for each Puni."
+      },
+      "reset": {
+        "title": "Stage Reset",
+        "detail": "Redo the current stage."
+      },
+      "step": {
+        "title": "Number of Operations",
+        "detail": "Increases when rotation, movement, or reset."
+      },
+      "flag": {
+        "title": "The Flag",
+        "detail": "Let's take Puni to the flag of the same color."
+      }
+    }
+  }
+}

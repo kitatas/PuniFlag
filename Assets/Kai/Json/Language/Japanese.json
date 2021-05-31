@@ -1,0 +1,45 @@
+{
+  "type": 2,
+  "data": {
+    "titleName": "ぷにフラ",
+    "infoTitle": {
+      "credit": "クレジット",
+      "license": "ライセンス",
+      "externalSite": "がいぶサイト"
+    },
+    "subTitle": {
+      "language": "げんご",
+      "volume": "おんりょう",
+      "developer": "かいはつしゃ",
+      "sound": "サウンド",
+      "font": "フォント",
+      "privacyPolicy": "プライバシーポリシー"
+    },
+    "explain": {
+      "gravity": {
+        "title": "ぷに の じゅうりょく",
+        "detail": "ぷに ごとに じゅうりょく ほうこうが ことなります"
+      },
+      "rotate": {
+        "title": "ステージ かいてん",
+        "detail": "ステージと ともに ぷにと フラッグも かいてんします"
+      },
+      "move": {
+        "title": "ぷに の いどう",
+        "detail": "ぷに ごとに いどう ほうこうが ことなります"
+      },
+      "reset": {
+        "title": "ステージ リセット",
+        "detail": "げんざいの ステージを やりなおします"
+      },
+      "step": {
+        "title": "そうさ かいすう",
+        "detail": "かいてん・いどう・リセットを おこなうと ぞうかします"
+      },
+      "flag": {
+        "title": "フラッグ",
+        "detail": "ぷにを おなじいろの フラッグまで つれていこう"
+      }
+    }
+  }
+}
