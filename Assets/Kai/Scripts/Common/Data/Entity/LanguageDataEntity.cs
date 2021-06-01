@@ -12,34 +12,43 @@ namespace Kai.Common.Data.Entity
     [Serializable]
     public sealed class LanguageData
     {
-        public string titleName;
-        public InfoTitle infoTitle;
-        public SubTitle subTitle;
-        public Explain explain;
+        public TitleScreen titleScreen;
+        public MenuScreen menuScreen;
+        public ConfigScreen configScreen;
+        public ExplainScreen explainScreen;
+        public InformationScreen informationScreen;
     }
 
     [Serializable]
-    public sealed class InfoTitle
+    public sealed class TitleScreen
     {
-        public string credit;
-        public string license;
-        public string externalSite;
+        public TextData title;
+        public TextData subTitle;
+        public TextData tap;
     }
 
     [Serializable]
-    public sealed class SubTitle
+    public sealed class MenuScreen
     {
-        public string language;
-        public string volume;
-        public string developer;
-        public string sound;
-        public string font;
-        public string privacyPolicy;
+        public TextData freePlay;
+        public TextData scoreAttack;
+        public TextData config;
+        public TextData explain;
+        public TextData information;
     }
 
     [Serializable]
-    public sealed class Explain
+    public sealed class ConfigScreen
     {
+        public TextData title;
+        public TextData language;
+        public TextData volume;
+    }
+
+    [Serializable]
+    public sealed class ExplainScreen
+    {
+        public TextData title;
         public ExplainData gravity;
         public ExplainData rotate;
         public ExplainData move;
@@ -51,7 +60,27 @@ namespace Kai.Common.Data.Entity
     [Serializable]
     public sealed class ExplainData
     {
-        public string title;
-        public string detail;
+        public TextData title;
+        public TextData detail;
+    }
+
+    [Serializable]
+    public sealed class InformationScreen
+    {
+        public TextData title;
+        public TextData credit;
+        public TextData developer;
+        public TextData sound;
+        public TextData font;
+        public TextData license;
+        public TextData externalSite;
+        public TextData privacyPolicy;
+    }
+
+    [Serializable]
+    public sealed class TextData
+    {
+        public string text;
+        public float fontSize;
     }
 }
