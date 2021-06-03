@@ -11,6 +11,7 @@ namespace Kai.Title.Presentation.View
         [SerializeField] private ConfigScreenView configScreenView = default;
         [SerializeField] private ExplainScreenView explainScreenView = default;
         [SerializeField] private InformationScreenView informationScreenView = default;
+        [SerializeField] private PolicyScreenView policyScreenView = default;
 
         public void Show(LanguageData languageData)
         {
@@ -19,6 +20,7 @@ namespace Kai.Title.Presentation.View
             configScreenView.Show(languageData.configScreen);
             explainScreenView.Show(languageData.explainScreen);
             informationScreenView.Show(languageData.informationScreen);
+            policyScreenView.Show(languageData.policyScreen);
         }
     }
 }

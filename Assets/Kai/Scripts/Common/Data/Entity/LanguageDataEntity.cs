@@ -17,6 +17,7 @@ namespace Kai.Common.Data.Entity
         public ConfigScreen configScreen;
         public ExplainScreen explainScreen;
         public InformationScreen informationScreen;
+        public PolicyScreen policyScreen;
     }
 
     [Serializable]
@@ -75,6 +76,16 @@ namespace Kai.Common.Data.Entity
         public TextData license;
         public TextData externalSite;
         public TextData privacyPolicy;
+        public TextData openPrivacyPolicy;
+    }
+
+    [Serializable]
+    public sealed class PolicyScreen
+    {
+        public TextData title;
+        public TextData body;
+        public TextData yes;
+        public TextData no;
     }
 
     [Serializable]

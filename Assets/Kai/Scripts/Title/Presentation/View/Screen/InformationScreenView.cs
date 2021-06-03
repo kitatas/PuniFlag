@@ -15,6 +15,7 @@ namespace Kai.Title.Presentation.View.Screen
         [SerializeField] private TextMeshProUGUI sound = default;
         [SerializeField] private TextMeshProUGUI font = default;
         [SerializeField] private TextMeshProUGUI privacy = default;
+        [SerializeField] private TextMeshProUGUI openPrivacy = default;
 
         public void Show(InformationScreen informationScreen)
         {
@@ -26,6 +27,7 @@ namespace Kai.Title.Presentation.View.Screen
             sound.SetTextData(informationScreen.sound);
             font.SetTextData(informationScreen.font);
             privacy.SetTextData(informationScreen.privacyPolicy);
+            openPrivacy.SetTextData(informationScreen.openPrivacyPolicy);
         }
     }
 }
