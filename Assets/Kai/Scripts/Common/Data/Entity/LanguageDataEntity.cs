@@ -18,6 +18,7 @@ namespace Kai.Common.Data.Entity
         public ExplainScreen explainScreen;
         public InformationScreen informationScreen;
         public PolicyScreen policyScreen;
+        public RankingScreen rankingScreen;
     }
 
     [Serializable]
@@ -86,6 +87,19 @@ namespace Kai.Common.Data.Entity
         public TextData body;
         public TextData yes;
         public TextData no;
+    }
+
+    [Serializable]
+    public sealed class RankingScreen
+    {
+        public TextData ranking;
+        public TextData score;
+        public TextData highScore;
+        public TextData tweet;
+        public TextData input;
+        public TextData notice;
+        public TextData send;
+        public TextData back;
     }
 
     [Serializable]
