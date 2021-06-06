@@ -12,11 +12,14 @@ namespace Kai.Game.Domain.UseCase
     {
         private readonly IReadOnlyPlayerContainer _playerContainer;
         private readonly IReadOnlyFlagContainer _flagContainer;
+        private readonly IReadOnlyColorBlockContainer _colorBlockContainer;
 
-        public StageObjectContainerUseCase(IReadOnlyPlayerContainer playerContainer, IReadOnlyFlagContainer flagContainer)
+        public StageObjectContainerUseCase(IReadOnlyPlayerContainer playerContainer,
+            IReadOnlyFlagContainer flagContainer, IReadOnlyColorBlockContainer colorBlockContainer)
         {
             _playerContainer = playerContainer;
             _flagContainer = flagContainer;
+            _colorBlockContainer = colorBlockContainer;
         }
 
         public async UniTask MoveAsync(InputType inputType, CancellationToken token)
@@ -27,10 +30,12 @@ namespace Kai.Game.Domain.UseCase
         public async UniTask RotateAsync(InputType inputType, CancellationToken token)
         {
             _playerContainer.ActivateColliderAll(false);
+            _colorBlockContainer.ActivateColliderAll(false);
 
             await (
                 _playerContainer.RotateAllAsync(inputType, token),
-                _flagContainer.RotateAllAsync(inputType, token)
+                _flagContainer.RotateAllAsync(inputType, token),
+                _colorBlockContainer.RotateAllAsync(inputType, token)
             );
         }
 
@@ -39,7 +44,11 @@ namespace Kai.Game.Domain.UseCase
             _playerContainer.ActivateColliderAll(true);
             _playerContainer.SetGravityAll(false);
 
-            await UniTask.WaitUntil(_playerContainer.IsGroundAll, cancellationToken: token);
+            _colorBlockContainer.ActivateColliderAll(true);
+            _colorBlockContainer.SetGravityAll(false);
+
+            await UniTask.WaitUntil(() => _playerContainer.IsGroundAll() && _colorBlockContainer.IsGroundAll(),
+                cancellationToken: token);
 
             return _flagContainer.flagViews.All(flagView =>
                 _playerContainer.playerViews

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Kai.Game.Presentation.View
 {
-    public sealed class BlockView : StageObjectView
+    public class BlockView : StageObjectView
     {
         [SerializeField] private ColorType colorType = default;
 

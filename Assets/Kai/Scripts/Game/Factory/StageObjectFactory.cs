@@ -14,14 +14,16 @@ namespace Kai.Game.Factory
     {
         private IWriteOnlyPlayerContainer _playerContainer;
         private IWriteOnlyFlagContainer _flagContainer;
+        private IWriteOnlyColorBlockContainer _colorBlockContainer;
         private StageView _stageView;
 
         [Inject]
         private void Construct(IWriteOnlyPlayerContainer playerContainer, IWriteOnlyFlagContainer flagContainer,
-            StageView stageView)
+            IWriteOnlyColorBlockContainer colorBlockContainer, StageView stageView)
         {
             _playerContainer = playerContainer;
             _flagContainer = flagContainer;
+            _colorBlockContainer = colorBlockContainer;
             _stageView = stageView;
         }
 
@@ -53,6 +55,10 @@ namespace Kai.Game.Factory
                     }
                     break;
                 case StageObjectType.Block:
+                    if (instance is ColorBlockView colorBlockView)
+                    {
+                        _colorBlockContainer.Add(colorBlockView);
+                    }
                     break;
                 case StageObjectType.None:
                 default:

@@ -37,6 +37,10 @@ namespace Kai.Game.Installer
                 .BindInterfacesTo<FlagContainer>()
                 .AsCached();
 
+            Container
+                .BindInterfacesTo<ColorBlockContainer>()
+                .AsCached();
+
             #endregion
 
             #region Entity
