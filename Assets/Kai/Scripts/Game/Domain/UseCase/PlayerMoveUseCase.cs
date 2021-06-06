@@ -9,27 +9,12 @@ namespace Kai.Game.Domain.UseCase
     public sealed class PlayerMoveUseCase : IPlayerMoveUseCase
     {
         private readonly ColorType _colorType;
-        private readonly Rigidbody2D _rigidbody2D;
         private readonly Transform _transform;
-        private readonly Vector3 _gravity;
-        private readonly float _rate = 49.0f;
 
-        public PlayerMoveUseCase(ColorType colorType, Rigidbody2D rigidbody2D, Transform transform)
+        public PlayerMoveUseCase(ColorType colorType, Transform transform)
         {
             _colorType = colorType;
-            _rigidbody2D = rigidbody2D;
             _transform = transform;
-            _gravity = GetGravity(_colorType) * _rate;
-        }
-
-        public void UpdateGravity()
-        {
-            _rigidbody2D.AddForce(_gravity, ForceMode2D.Force);
-        }
-
-        public void ResetVelocity()
-        {
-            _rigidbody2D.velocity = Vector2.zero;
         }
 
         public Tween Move(InputType inputType)
@@ -64,22 +49,6 @@ namespace Kai.Game.Domain.UseCase
                 case InputType.RotateRight:
                 default:
                     throw new ArgumentOutOfRangeException(nameof(inputType), inputType, null);
-            }
-        }
-
-        private static Vector3 GetGravity(ColorType colorType)
-        {
-            switch (colorType)
-            {
-                case ColorType.Red:
-                    return Vector3.right;
-                case ColorType.Green:
-                    return Vector3.left;
-                case ColorType.Blue:
-                    return Vector3.down;
-                case ColorType.None:
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(colorType), colorType, null);
             }
         }
     }

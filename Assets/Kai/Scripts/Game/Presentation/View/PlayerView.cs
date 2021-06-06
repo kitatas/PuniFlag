@@ -24,12 +24,14 @@ namespace Kai.Game.Presentation.View
         private Tween _tween;
 
         private IPlayerMoveUseCase _playerMoveUseCase;
+        private IStageObjectDropUseCase _stageObjectDropUseCase;
         private IStageObjectRotateUseCase _stageObjectRotateUseCase;
 
         public void Init()
         {
             isGround = false;
-            _playerMoveUseCase = new PlayerMoveUseCase(color, rigidbody2d, transform);
+            _playerMoveUseCase = new PlayerMoveUseCase(color, transform);
+            _stageObjectDropUseCase = new StageObjectDropUseCase(rigidbody2d);
             _stageObjectRotateUseCase = new StageObjectRotateUseCase(transform);
 
             // 落下
@@ -37,7 +39,7 @@ namespace Kai.Game.Presentation.View
                 .Where(_ => isGround == false)
                 .Subscribe(_ =>
                 {
-                    _playerMoveUseCase.UpdateGravity();
+                    _stageObjectDropUseCase.UpdateGravity(color);
                 })
                 .AddTo(this);
 
@@ -53,7 +55,7 @@ namespace Kai.Game.Presentation.View
                         .OnComplete(() =>
                         {
                             isGround = true;
-                            _playerMoveUseCase.ResetVelocity();
+                            _stageObjectDropUseCase.ResetVelocity();
                         });
                 })
                 .AddTo(this);
