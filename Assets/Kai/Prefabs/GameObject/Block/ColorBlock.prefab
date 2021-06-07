@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 830781188749132308}
   - component: {fileID: 889369014154362312}
   - component: {fileID: 1443144489517862015}
-  - component: {fileID: 5203704309826231964}
+  - component: {fileID: 2434017270814035083}
+  - component: {fileID: 6116669612745439207}
   m_Layer: 9
-  m_Name: Block
+  m_Name: ColorBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,9 +109,30 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 16, y: 16}
+  m_Size: {x: 15, y: 15}
   m_EdgeRadius: 0
---- !u!114 &5203704309826231964
+--- !u!50 &2434017270814035083
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6343225149184780635}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &6116669612745439207
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,7 +141,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6343225149184780635}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbb936917d734be48eabd24a030d1ee1, type: 3}
+  m_Script: {fileID: 11500000, guid: fcd998a24dca4a5e85193b5d9f06253b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   colorType: 0
+  collider2d: {fileID: 1443144489517862015}
+  rigidbody2d: {fileID: 2434017270814035083}
+  isGround: 0

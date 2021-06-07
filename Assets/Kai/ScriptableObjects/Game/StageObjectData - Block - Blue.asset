@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17e2a8d3f7354ce5a3efb8fa1ea5a0b9, type: 3}
+  m_Name: StageObjectData - Block - Blue
+  m_EditorClassIdentifier: 
+  stageObjectPrefab: {fileID: 8696506086208000726, guid: ba02b2af0334b4f70b1d7eba28b15787,
+    type: 3}
+  stageObjectType: 3
+  colorType: 3
