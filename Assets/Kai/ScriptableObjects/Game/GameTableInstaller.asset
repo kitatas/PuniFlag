@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83b68a24cddbd425c872f4addc94c123, type: 3}
   m_Name: GameTableInstaller
   m_EditorClassIdentifier: 
-  stageDataTable: {fileID: 11400000, guid: 0082e6478af094da09927de333e65976, type: 2}
+  scoreAttackStageDataTable: {fileID: 11400000, guid: 0082e6478af094da09927de333e65976,
+    type: 2}
+  freePlayStageDataTable: {fileID: 11400000, guid: 585383b752c5f4e44bbfc0b5096d34f2,
+    type: 2}
   stageObjectTable: {fileID: 11400000, guid: 4dc1fba8eb52e43cf9f8940c0b9088c4, type: 2}

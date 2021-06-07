@@ -1,0 +1,7 @@
+{
+  "targetCount": 2,
+  "stageObjects": [
+    {"type": 1, "color": 1, "x": 5, "y": 2},
+    {"type": 2, "color": 1, "x": 5, "y": 4}
+  ]
+}

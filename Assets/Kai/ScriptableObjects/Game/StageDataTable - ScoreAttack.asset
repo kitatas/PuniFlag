@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de4ea39d127f4767ad9e29c2e5babc07, type: 3}
+  m_Name: StageDataTable - ScoreAttack
+  m_EditorClassIdentifier: 
+  stageData:
+  - {fileID: 4900000, guid: 0c72b5688838c49a19ba3fa88efddcf6, type: 3}
+  - {fileID: 4900000, guid: 76dffafd3a42a4312a05606004810adf, type: 3}
+  - {fileID: 4900000, guid: cf0e2f66037b14d558199ecdeeafcff1, type: 3}
+  - {fileID: 4900000, guid: b3defb28bb90b45859a0dfe193c0f3de, type: 3}
+  - {fileID: 4900000, guid: 87f7955a73f3e44168a6424928a496b3, type: 3}
+  - {fileID: 4900000, guid: b631ae67dde224b03b75c1191fa85226, type: 3}
+  - {fileID: 4900000, guid: 3ed6b87ac95ea423499442dd9b58ba80, type: 3}
+  - {fileID: 4900000, guid: 754b8944ed4ce4c18ab69b6147031d2f, type: 3}
+  - {fileID: 4900000, guid: 3616349b8440143d99a799a7846a1fe5, type: 3}
+  - {fileID: 4900000, guid: 48e13537b815d4f9884081c2503e7a3f, type: 3}
