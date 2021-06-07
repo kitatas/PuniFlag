@@ -39,6 +39,7 @@ namespace Kai.Game.Presentation.View
             foreach (var nextButtonView in _nextButtonViews)
             {
                 nextButtonView.Init();
+                nextButtonView.SetInteractable(false);
                 nextButtonView.FadeIn();
             }
         }
@@ -63,6 +64,7 @@ namespace Kai.Game.Presentation.View
 
             foreach (var nextButtonView in _nextButtonViews)
             {
+                nextButtonView.SetInteractable(true);
                 nextButtonView.FadeOut();
                 await UniTask.Delay(TimeSpan.FromSeconds(0.1f), cancellationToken: token);
             }

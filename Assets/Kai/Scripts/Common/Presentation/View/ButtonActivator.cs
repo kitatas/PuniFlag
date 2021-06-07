@@ -25,5 +25,10 @@ namespace Kai.Common.Presentation.View
         {
             button.enabled = value;
         }
+
+        public void SetInteractable(bool value)
+        {
+            button.interactable = value;
+        }
     }
 }

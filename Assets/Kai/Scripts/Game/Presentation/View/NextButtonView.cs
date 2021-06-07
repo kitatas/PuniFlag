@@ -19,6 +19,11 @@ namespace Kai.Game.Presentation.View
             buttonActivator.Activate(value);
         }
 
+        public void SetInteractable(bool value)
+        {
+            buttonActivator.SetInteractable(value);
+        }
+
         public void FadeIn()
         {
             buttonFader.FadeIn();
