@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using Kai.Game.Application;
 using Kai.Game.Data.DataStore;
+using Kai.Game.Data.Entity;
 using Kai.Game.Domain.Repository.Interface;
 using Kai.Game.Presentation.View;
 using UnityEngine;
@@ -24,6 +26,10 @@ namespace Kai.Game.Domain.Repository
                 .stageObject;
         }
 
-        public TextAsset GetStageData(int stageLevel) => _stageDataTable.stageDataList[stageLevel];
+        public IEnumerable<StageObject> GetStageObjectDataList(int stageLevel)
+        {
+            var stageData = _stageDataTable.stageDataList[stageLevel];
+            return JsonUtility.FromJson<StageDataEntity>(stageData.ToString()).stageObjects;
+        }
     }
 }

@@ -5,20 +5,18 @@ using Kai.Game.Data.Entity;
 using Kai.Game.Factory.Interface;
 using Kai.Game.Presentation.View;
 using UnityEngine;
-using Zenject;
 using Object = UnityEngine.Object;
 
 namespace Kai.Game.Factory
 {
     public sealed class StageObjectFactory : IStageObjectFactory
     {
-        private IWriteOnlyPlayerContainer _playerContainer;
-        private IWriteOnlyFlagContainer _flagContainer;
-        private IWriteOnlyColorBlockContainer _colorBlockContainer;
-        private StageView _stageView;
+        private readonly IWriteOnlyPlayerContainer _playerContainer;
+        private readonly IWriteOnlyFlagContainer _flagContainer;
+        private readonly IWriteOnlyColorBlockContainer _colorBlockContainer;
+        private readonly StageView _stageView;
 
-        [Inject]
-        private void Construct(IWriteOnlyPlayerContainer playerContainer, IWriteOnlyFlagContainer flagContainer,
+        public StageObjectFactory(IWriteOnlyPlayerContainer playerContainer, IWriteOnlyFlagContainer flagContainer,
             IWriteOnlyColorBlockContainer colorBlockContainer, StageView stageView)
         {
             _playerContainer = playerContainer;

@@ -1,8 +1,6 @@
 using Kai.Common.Data.Entity.Interface;
-using Kai.Game.Data.Entity;
 using Kai.Game.Domain.Repository.Interface;
 using Kai.Game.Factory.Interface;
-using UnityEngine;
 
 namespace Kai.Game.Domain.UseCase
 {
@@ -12,10 +10,9 @@ namespace Kai.Game.Domain.UseCase
             IStageObjectFactory stageObjectFactory)
         {
             var level = levelEntity.GetLevel();
-            var stageData = stageRepository.GetStageData(level).ToString();
-            var stageDataEntity = JsonUtility.FromJson<StageDataEntity>(stageData);
+            var stageObjects = stageRepository.GetStageObjectDataList(level);
 
-            foreach (var data in stageDataEntity.stageObjects)
+            foreach (var data in stageObjects)
             {
                 var stageObject = stageRepository.GetStageObject(data.type, data.color);
                 stageObjectFactory.GenerateStageObject(stageObject, data);
