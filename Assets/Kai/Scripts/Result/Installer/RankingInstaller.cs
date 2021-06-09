@@ -9,6 +9,7 @@ namespace Kai.Result.Installer
     public sealed class RankingInstaller : MonoInstaller
     {
         [SerializeField] private RankingScreenView rankingScreenView = default;
+        [SerializeField] private TweetButton tweetButton = default;
 
         public override void InstallBindings()
         {
@@ -34,6 +35,11 @@ namespace Kai.Result.Installer
             Container
                 .Bind<RankingScreenView>()
                 .FromInstance(rankingScreenView)
+                .AsCached();
+
+            Container
+                .Bind<TweetButton>()
+                .FromInstance(tweetButton)
                 .AsCached();
 
             #endregion

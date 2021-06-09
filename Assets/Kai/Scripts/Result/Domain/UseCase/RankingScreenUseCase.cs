@@ -1,3 +1,4 @@
+using Kai.Common.Application;
 using Kai.Common.Data.Entity;
 using Kai.Common.Domain.Repository.Interface;
 using Kai.Result.Domain.UseCase.Interface;
@@ -10,9 +11,11 @@ namespace Kai.Result.Domain.UseCase
 
         public RankingScreenUseCase(ISaveDataRepository saveDataRepository, ILanguageRepository languageRepository)
         {
-            var language = saveDataRepository.Load().language;
+            language = saveDataRepository.Load().language;
             _languageData = languageRepository.Find(language);
         }
+
+        public LanguageType language { get; }
 
         public RankingScreen rankingScreen => _languageData.rankingScreen;
     }
