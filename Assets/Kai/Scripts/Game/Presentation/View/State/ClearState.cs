@@ -50,6 +50,7 @@ namespace Kai.Game.Presentation.View.State
             switch (_gameType)
             {
                 case GameType.ScoreAttack:
+                    _clearDataUseCase.SaveScoreAttackData();
                     _sceneLoader.LoadScene(_gameType, SceneName.Main, LoadType.Next);
                     break;
                 case GameType.FreePlay:

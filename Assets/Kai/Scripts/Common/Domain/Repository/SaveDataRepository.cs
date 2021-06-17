@@ -15,7 +15,8 @@ namespace Kai.Common.Domain.Repository
             {
                 bgmVolume = 0.5f,
                 seVolume = 0.5f,
-                language = LanguageType.Japanese,
+                language = LanguageType.English,
+                rankData = new bool[GameConfig.STAGE_COUNT],
                 clearData = new bool[GameConfig.FREE_PLAY_COUNT],
             };
         }

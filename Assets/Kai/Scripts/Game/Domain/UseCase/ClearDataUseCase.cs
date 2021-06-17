@@ -18,7 +18,28 @@ namespace Kai.Game.Domain.UseCase
         public void SaveFreePlayClearData()
         {
             var saveData = _saveDataRepository.Load();
+
+            // クリア済みの場合
+            if (saveData.clearData[_levelEntity.GetLevel()])
+            {
+                return;
+            }
+
             saveData.clearData[_levelEntity.GetLevel()] = true;
+            _saveDataRepository.Save(saveData);
+        }
+
+        public void SaveScoreAttackData()
+        {
+            var saveData = _saveDataRepository.Load();
+
+            // クリア済みの場合
+            if (saveData.rankData[_levelEntity.GetLevel()])
+            {
+                return;
+            }
+
+            saveData.rankData[_levelEntity.GetLevel()] = true;
             _saveDataRepository.Save(saveData);
         }
     }

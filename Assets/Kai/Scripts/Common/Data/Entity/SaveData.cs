@@ -7,6 +7,7 @@ namespace Kai.Common.Data.Entity
         public float bgmVolume;
         public float seVolume;
         public LanguageType language;
+        public bool[] rankData;
         public bool[] clearData;
     }
 }
