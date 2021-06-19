@@ -5,7 +5,7 @@ using Kai.Title.Domain.UseCase.Interface;
 
 namespace Kai.Title.Domain.UseCase
 {
-    public sealed class SaveDataUseCase : ISaveLanguageUseCase, ISaveSoundUseCase
+    public sealed class SaveDataUseCase : ISaveLanguageUseCase, ISaveSoundUseCase, IClearDataUseCase
     {
         private readonly SaveData _saveData;
         private readonly ISaveDataRepository _saveDataRepository;
@@ -44,5 +44,9 @@ namespace Kai.Title.Domain.UseCase
             _saveData.seVolume = seVolumeValue;
             Save();
         }
+
+        public bool[] rankData => _saveData.rankData;
+
+        public bool[] clearData => _saveData.clearData;
     }
 }
