@@ -70,7 +70,7 @@ namespace Kai.Common.Presentation.Controller
                 }
                 case LoadType.Next:
                 {
-                    var nextLevel = _levelUseCase.GetLevel() + 1;
+                    var nextLevel = _levelUseCase.GetNextLevel();
                     if (nextLevel < GameConfig.STAGE_COUNT)
                     {
                         _levelUseCase.CountUp();
@@ -103,7 +103,7 @@ namespace Kai.Common.Presentation.Controller
                 case LoadType.Next:
                 {
                     _levelView.SetPlayLevelUpSe(true);
-                    var nextLevel = _levelUseCase.GetLevel() + 1;
+                    var nextLevel = _levelUseCase.GetNextLevel();
                     if (nextLevel < GameConfig.FREE_PLAY_COUNT)
                     {
                         _levelUseCase.CountUp();

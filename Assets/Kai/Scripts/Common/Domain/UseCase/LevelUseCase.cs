@@ -25,12 +25,17 @@ namespace Kai.Common.Domain.UseCase
 
         public void CountUp()
         {
-            SetLevel(GetLevel() + 1);
+            SetLevel(GetNextLevel());
         }
 
         public void ResetLevel()
         {
             SetLevel(0);
+        }
+
+        public int GetNextLevel()
+        {
+            return GetLevel() + 1;
         }
     }
 }

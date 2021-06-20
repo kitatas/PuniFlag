@@ -32,6 +32,7 @@ namespace Kai.Game.Presentation.Presenter
             Init();
 
             _gameStateUseCase.gameState
+                .Where(x => x != GameState.None)
                 .Subscribe(state =>
                 {
                     // 
@@ -57,11 +58,6 @@ namespace Kai.Game.Presentation.Presenter
 
         private async UniTask TickAsync(GameState state, CancellationToken token)
         {
-            if (state == GameState.None)
-            {
-                return;
-            }
-
             var currentState = _states.Find(x => x.GetState() == state);
             var nextState = await currentState.TickAsync(token);
             _gameStateUseCase.SetState(nextState);

@@ -6,5 +6,6 @@ namespace Kai.Common.Domain.UseCase.Interface
         void SetLevel(int level);
         void CountUp();
         void ResetLevel();
+        int GetNextLevel();
     }
 }
