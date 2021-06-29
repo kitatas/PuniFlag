@@ -12,9 +12,14 @@ namespace Kai.Common.Domain.UseCase
             _buttonContainer = buttonContainer;
         }
 
-        public void ActivateButton(bool value, bool isClear = false)
+        public void ActivateButton(bool value)
         {
-            _buttonContainer.ActivateAll(value, isClear);
+            _buttonContainer.ActivateAll(value);
+        }
+
+        public void ClearAllButton()
+        {
+            _buttonContainer.ClearAll();
         }
     }
 }

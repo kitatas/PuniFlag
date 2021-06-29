@@ -129,7 +129,8 @@ namespace Kai.Common.Presentation.Controller
         private async UniTaskVoid LoadSceneAsync(GameType gameType, SceneName sceneName, int level, CancellationToken token)
         {
             // シーン遷移中にボタンを押下させない
-            _buttonContainerUseCase.ActivateButton(false, true);
+            _buttonContainerUseCase.ActivateButton(false);
+            _buttonContainerUseCase.ClearAllButton();
 
             OnBeginTransition(gameType, sceneName);
 
