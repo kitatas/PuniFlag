@@ -12,6 +12,7 @@ https://unityroom.com/games/puni_flag
 |:--|:--|
 |[DOTween Pro](https://assetstore.unity.com/packages/tools/visual-scripting/dotween-pro-32416)|1.0.244|
 |[DoozyUI: Complete UI Management System](https://assetstore.unity.com/packages/tools/gui/doozyui-complete-ui-management-system-138361)|3.1.3|
+|[Easy Save - The Complete Save Data & Serialization Asset](https://assetstore.unity.com/packages/tools/utilities/easy-save-the-complete-save-data-serialization-asset-768)|3.3.2f3|
 |[Extenject](https://assetstore.unity.com/packages/tools/utilities/extenject-dependency-injection-ioc-157735)|9.2.0|
 |[Modern Procedural UI Kit](https://assetstore.unity.com/packages/tools/gui/modern-procedural-ui-kit-163041)|0.96|
 |[ncmb_unity](https://github.com/NIFCLOUD-mbaas/ncmb_unity)|4.0.3|
