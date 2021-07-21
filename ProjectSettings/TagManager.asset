@@ -41,11 +41,17 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 3076930403
+    locked: 0
   - name: Stage
     uniqueID: 2647490055
     locked: 0
   - name: Flag
     uniqueID: 3594626027
+    locked: 0
+  - name: ColorBlock
+    uniqueID: 3460343675
     locked: 0
   - name: Player
     uniqueID: 1940792411
