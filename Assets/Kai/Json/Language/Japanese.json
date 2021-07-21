@@ -13,6 +13,14 @@
       "tap": {
         "text": "タップスタート",
         "fontSize": 15
+      },
+      "puni": {
+        "text": "ぷに",
+        "fontSize": 1
+      },
+      "flag": {
+        "text": "フラッグ",
+        "fontSize": 1
       }
     },
     "menuScreen": {
@@ -112,7 +120,7 @@
           "fontSize": 150
         },
         "detail": {
-          "text": "ぷにを おなじいろの フラッグまで つれていこう",
+          "text": "ぷにを おなじいろの フラッグまで つれていこう!",
           "fontSize": 115
         }
       }
@@ -149,6 +157,62 @@
       "privacyPolicy": {
         "text": "プライバシーポリシー",
         "fontSize": 90
+      },
+      "openPrivacyPolicy": {
+        "text": "ひらく",
+        "fontSize": 90
+      }
+    },
+    "policyScreen": {
+      "title": {
+        "text": "プライバシーポリシー",
+        "fontSize": 230
+      },
+      "body": {
+        "text": "がいぶのサイトにいどうします。\nよろしいですか?",
+        "fontSize": 150
+      },
+      "yes": {
+        "text": "はい",
+        "fontSize": 90
+      },
+      "no": {
+        "text": "いいえ",
+        "fontSize": 90
+      }
+    },
+    "rankingScreen": {
+      "ranking": {
+        "text": "ランキング",
+        "fontSize": 200
+      },
+      "score": {
+        "text": "スコア",
+        "fontSize": 200
+      },
+      "highScore": {
+        "text": "ハイスコア",
+        "fontSize": 200
+      },
+      "tweet": {
+        "text": "ツイート",
+        "fontSize": 100
+      },
+      "input": {
+        "text": "なまえを にゅうりょく...",
+        "fontSize": 60
+      },
+      "notice": {
+        "text": ":: アルファベットのみ にゅうりょくできます",
+        "fontSize": 100
+      },
+      "send": {
+        "text": "そうしん",
+        "fontSize": 100
+      },
+      "back": {
+        "text": "もどる",
+        "fontSize": 100
       }
     }
   }

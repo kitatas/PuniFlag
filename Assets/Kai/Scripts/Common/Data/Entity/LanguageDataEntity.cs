@@ -27,6 +27,8 @@ namespace Kai.Common.Data.Entity
         public TextData title;
         public TextData subTitle;
         public TextData tap;
+        public TextData puni;
+        public TextData flag;
     }
 
     [Serializable]

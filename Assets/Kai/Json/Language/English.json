@@ -3,7 +3,7 @@
   "data": {
     "titleScreen": {
       "title": {
-        "text": "PuniFla",
+        "text": "PuniFlag",
         "fontSize": 65
       },
       "subTitle": {
@@ -13,6 +13,14 @@
       "tap": {
         "text": "TAP TO START",
         "fontSize": 10
+      },
+      "puni": {
+        "text": "Puni",
+        "fontSize": 0.75
+      },
+      "flag": {
+        "text": "Flag",
+        "fontSize": 0.75
       }
     },
     "menuScreen": {
@@ -112,7 +120,7 @@
           "fontSize": 120
         },
         "detail": {
-          "text": "Let's take Puni to the flag of the same color.",
+          "text": "Let's take Puni to the flag of the same color!",
           "fontSize": 85
         }
       }
@@ -149,6 +157,62 @@
       "privacyPolicy": {
         "text": "Privacy Policy",
         "fontSize": 60
+      },
+      "openPrivacyPolicy": {
+        "text": "Open",
+        "fontSize": 60
+      }
+    },
+    "policyScreen": {
+      "title": {
+        "text": "Privacy Policy",
+        "fontSize": 150
+      },
+      "body": {
+        "text": "Go to an external site.\nIs it OK?",
+        "fontSize": 120
+      },
+      "yes": {
+        "text": "YES",
+        "fontSize": 60
+      },
+      "no": {
+        "text": "NO",
+        "fontSize": 60
+      }
+    },
+    "rankingScreen": {
+      "ranking": {
+        "text": "RANKING",
+        "fontSize": 125
+      },
+      "score": {
+        "text": "SCORE",
+        "fontSize": 125
+      },
+      "highScore": {
+        "text": "HIGH\nSCORE",
+        "fontSize": 125
+      },
+      "tweet": {
+        "text": "TWEET",
+        "fontSize": 75
+      },
+      "input": {
+        "text": "ENTER NAME...",
+        "fontSize": 60
+      },
+      "notice": {
+        "text": ":: Only alphabets can be entered.",
+        "fontSize": 75
+      },
+      "send": {
+        "text": "SEND",
+        "fontSize": 75
+      },
+      "back": {
+        "text": "BACK",
+        "fontSize": 75
       }
     }
   }

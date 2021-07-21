@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgmTable: {fileID: 11400000, guid: cb94378e327c04b639ed6c00a01bc608, type: 2}
   seTable: {fileID: 11400000, guid: c95b041a504d54ecf868cb7ef298760e, type: 2}
+  languageTable: {fileID: 11400000, guid: 5321c312e39464b75a551e2abb35fa48, type: 2}
