@@ -78,7 +78,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgmController: {fileID: 6998768148098974779}
   seController: {fileID: 6480125205096463373}
-  transitionMask: {fileID: 4043104238195746050}
+  transitionMaskView: {fileID: 4043104238195746050}
   stepCountView: {fileID: 8612937770787757474}
   levelView: {fileID: 2189500095909937556}
 --- !u!1001 &599225401980916128
