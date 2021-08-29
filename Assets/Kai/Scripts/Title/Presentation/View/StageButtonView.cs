@@ -17,7 +17,7 @@ namespace Kai.Title.Presentation.View
 
         public void Init(SceneLoader sceneLoader, bool isClear)
         {
-            levelText.text = $"{level}";
+            levelText.text = $"{level.ToString()}";
 
             var buttonAnimator = GetComponent<ButtonAnimator>();
             buttonAnimator.button

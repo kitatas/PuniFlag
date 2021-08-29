@@ -36,7 +36,7 @@ namespace Kai.Common.Presentation.View
 
         public void Display(int stepCount)
         {
-            stepCountText.text = $"{stepCount}";
+            stepCountText.text = $"{stepCount.ToString()}";
         }
     }
 }

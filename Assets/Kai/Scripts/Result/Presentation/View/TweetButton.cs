@@ -34,9 +34,9 @@ namespace Kai.Result.Presentation.View
             switch (languageType)
             {
                 case LanguageType.English:
-                    return $"Clear in {stepCount} times!";
+                    return $"Clear in {stepCount.ToString()} times!";
                 case LanguageType.Japanese:
-                    return $"{stepCount}回でクリア！";
+                    return $"{stepCount.ToString()}回でクリア！";
                 default:
                     throw new ArgumentOutOfRangeException(nameof(languageType), languageType, null);
             }
