@@ -2,31 +2,15 @@ using Kai.Common.Application;
 using Kai.Common.Presentation.Controller;
 using UniRx;
 using UnityEngine;
-using UnityEngine.UI;
 using Zenject;
 
 namespace Kai.Common.Presentation.View
 {
-    [RequireComponent(typeof(Button))]
+    [RequireComponent(typeof(ButtonActivator))]
     public sealed class ButtonSpeaker : MonoBehaviour
     {
         [SerializeField] private bool isSubscribe = default;
         [SerializeField] private ButtonType buttonType = default;
-
-        private Button _button;
-
-        public Button button
-        {
-            get
-            {
-                if (_button == null)
-                {
-                    _button = GetComponent<Button>();
-                }
-
-                return _button;
-            }
-        }
 
         private SeController _seController;
 
@@ -40,7 +24,7 @@ namespace Kai.Common.Presentation.View
         {
             if (isSubscribe)
             {
-                button
+                GetComponent<ButtonActivator>().button
                     .OnClickAsObservable()
                     .Subscribe(_ => Play())
                     .AddTo(this);

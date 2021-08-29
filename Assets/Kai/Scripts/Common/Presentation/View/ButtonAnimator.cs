@@ -5,26 +5,15 @@ using UnityEngine.UI;
 
 namespace Kai.Common.Presentation.View
 {
-    [RequireComponent(typeof(Button))]
+    [RequireComponent(typeof(ButtonActivator))]
     public sealed class ButtonAnimator : MonoBehaviour
     {
         private Vector3 _currentScale;
         private readonly float _rate = 0.85f;
 
+        private ButtonActivator _buttonActivator;
         private Button _button;
-
-        public Button button
-        {
-            get
-            {
-                if (_button == null)
-                {
-                    _button = GetComponent<Button>();
-                }
-
-                return _button;
-            }
-        }
+        public Button button => _button ??= (_buttonActivator ??= GetComponent<ButtonActivator>()).button;
 
         private void Awake()
         {

@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace Kai.Title.Presentation.View
 {
+    [RequireComponent(typeof(ButtonAnimator))]
     public sealed class StageButtonView : MonoBehaviour
     {
         [SerializeField] private int level = default;

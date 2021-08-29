@@ -12,19 +12,7 @@ namespace Kai.Title.Presentation.View
         [SerializeField] private LanguageType languageType = default;
 
         private ButtonActivator _buttonActivator;
-
-        private ButtonActivator buttonActivator
-        {
-            get
-            {
-                if (_buttonActivator == null)
-                {
-                    _buttonActivator = GetComponent<ButtonActivator>();
-                }
-
-                return _buttonActivator;
-            }
-        }
+        private ButtonActivator buttonActivator => _buttonActivator ??= GetComponent<ButtonActivator>();
 
         public IObservable<LanguageType> OnClickLanguageAsObservable()
         {

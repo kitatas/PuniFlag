@@ -7,19 +7,7 @@ namespace Kai.Common.Presentation.View
     public sealed class ButtonActivator : MonoBehaviour
     {
         private Button _button;
-
-        public Button button
-        {
-            get
-            {
-                if (_button == null)
-                {
-                    _button = GetComponent<Button>();
-                }
-
-                return _button;
-            }
-        }
+        public Button button => _button ??= GetComponent<Button>();
 
         public void Activate(bool value)
         {

@@ -6,13 +6,14 @@ using UnityEngine.UI;
 
 namespace Kai.Common.Presentation.View
 {
+    [RequireComponent(typeof(ButtonActivator))]
     public sealed class ScrollRectResetView : MonoBehaviour
     {
         [SerializeField] private ScrollRect scrollRect = default;
 
         private void Start()
         {
-            GetComponent<Button>()
+            GetComponent<ButtonActivator>().button
                 .OnClickAsObservable()
                 .Subscribe(_ =>
                 {
