@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6f76889dbbc4354a91d01e119adbf0c, type: 3}
+  m_Name: StageData - FreePlay - 033
+  m_EditorClassIdentifier: 
+  lockTexture: {fileID: -7529743479455789458, guid: aa2fad912cb1a4c028311128b1f523c5,
+    type: 3}
+  clearTexture: {fileID: -8977891376928732423, guid: aa2fad912cb1a4c028311128b1f523c5,
+    type: 3}
+  stageJsonData: {fileID: 4900000, guid: 4b56aabda3cba41aebc093baf558a786, type: 3}
