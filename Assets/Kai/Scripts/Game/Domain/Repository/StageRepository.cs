@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Kai.Common.Data.DataStore;
 using Kai.Game.Application;
 using Kai.Game.Data.DataStore;
 using Kai.Game.Data.Entity;
@@ -28,7 +29,7 @@ namespace Kai.Game.Domain.Repository
 
         public IEnumerable<StageObject> GetStageObjectDataList(int stageLevel)
         {
-            var stageData = _stageDataTable.stageDataList[stageLevel];
+            var stageData = _stageDataTable.stageDataList[stageLevel].stageData;
             return JsonUtility.FromJson<StageDataEntity>(stageData.ToString()).stageObjects;
         }
     }

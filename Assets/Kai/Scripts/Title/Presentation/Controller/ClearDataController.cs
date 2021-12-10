@@ -16,17 +16,17 @@ namespace Kai.Title.Presentation.Controller
         [SerializeField] private GameObject green = default;
 
         [Inject]
-        private void Construct(IClearDataUseCase clearDataUseCase, SceneLoader sceneLoader)
+        private void Construct(IStageDataUseCase stageDataUseCase, IClearDataUseCase clearDataUseCase, SceneLoader sceneLoader)
         {
             for (int i = 0; i < clearDataUseCase.clearData.Length; i++)
             {
-                var view = stageButtonViews
-                    .Find(x => x.stageIndex == i);
-
-                if (view != null)
+                var index = i;
+                var stageData = stageDataUseCase.GetStageData(index);
+                var isClear = clearDataUseCase.clearData[index];
+                stageButtonViews[index].Init(index + 1, stageData.GetButtonTexture(isClear), () =>
                 {
-                    view.Init(sceneLoader, clearDataUseCase.clearData[i]);
-                }
+                    sceneLoader.LoadScene(GameType.FreePlay, SceneName.Main, LoadType.Direct, index);
+                });
             }
 
             // FreePlay全クリア

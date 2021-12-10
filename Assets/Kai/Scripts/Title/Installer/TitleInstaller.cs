@@ -1,3 +1,4 @@
+using Kai.Title.Domain.Repository;
 using Kai.Title.Domain.UseCase;
 using Kai.Title.Presentation.Presenter;
 using Kai.Title.Presentation.View;
@@ -12,6 +13,14 @@ namespace Kai.Title.Installer
 
         public override void InstallBindings()
         {
+            #region Repository
+
+            Container
+                .BindInterfacesTo<StageDataRepository>()
+                .AsCached();
+
+            #endregion
+            
             #region UseCase
 
             Container
@@ -20,6 +29,10 @@ namespace Kai.Title.Installer
 
             Container
                 .BindInterfacesTo<SaveDataUseCase>()
+                .AsCached();
+
+            Container
+                .BindInterfacesTo<StageDataUseCase>()
                 .AsCached();
 
             #endregion

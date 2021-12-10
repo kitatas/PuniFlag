@@ -1,5 +1,4 @@
-using Kai.Common.Application;
-using Kai.Common.Presentation.Controller;
+using System;
 using Kai.Common.Presentation.View;
 using TMPro;
 using UniRx;
@@ -10,28 +9,22 @@ namespace Kai.Title.Presentation.View
     [RequireComponent(typeof(ButtonAnimator))]
     public sealed class StageButtonView : MonoBehaviour
     {
-        [SerializeField] private int level = default;
         [SerializeField] private TextMeshProUGUI levelText = default;
-        [SerializeField] private Sprite lockIcon = default;
-        [SerializeField] private Sprite clearIcon = default;
 
-        public void Init(SceneLoader sceneLoader, bool isClear)
+        public void Init(int level, Sprite sprite, Action action)
         {
             levelText.text = $"{level.ToString()}";
 
             var buttonAnimator = GetComponent<ButtonAnimator>();
+            buttonAnimator.button.image.sprite = sprite;
             buttonAnimator.button
                 .OnClickAsObservable()
                 .Subscribe(_ =>
                 {
                     buttonAnimator.Play();
-                    sceneLoader.LoadScene(GameType.FreePlay, SceneName.Main, LoadType.Direct, stageIndex);
+                    action?.Invoke();
                 })
                 .AddTo(this);
-
-            buttonAnimator.button.image.sprite = isClear ? clearIcon : lockIcon;
         }
-
-        public int stageIndex => level - 1;
     }
 }

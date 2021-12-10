@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Kai.Game.Data.DataStore
+namespace Kai.Common.Data.DataStore
 {
     [CreateAssetMenu(fileName = "StageDataTable", menuName = "DataTable/StageDataTable", order = 0)]
     public sealed class StageDataTable : ScriptableObject
     {
-        [SerializeField] private List<TextAsset> stageData = default;
+        [SerializeField] private List<StageData> stageData = default;
 
-        public List<TextAsset> stageDataList => stageData;
+        public List<StageData> stageDataList => stageData;
     }
 }

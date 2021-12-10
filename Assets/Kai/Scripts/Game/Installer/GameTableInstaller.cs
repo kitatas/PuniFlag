@@ -1,5 +1,6 @@
 using System;
 using Kai.Common.Application;
+using Kai.Common.Data.DataStore;
 using Kai.Game.Data.DataStore;
 using UnityEngine;
 using Zenject;
