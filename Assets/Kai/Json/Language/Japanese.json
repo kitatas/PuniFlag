@@ -3,216 +3,93 @@
   "data": {
     "titleScreen": {
       "title": {
-        "text": "ぷにフラ",
-        "fontSize": 75
+        "text": "ぷにフラ"
       },
       "subTitle": {
-        "text": "~ ぷにをフラッグまでつれてって ~",
-        "fontSize": 18
-      },
-      "tap": {
-        "text": "タップスタート",
-        "fontSize": 15
+        "text": "~ ぷにをフラッグまでつれてって ~"
       },
       "puni": {
-        "text": "ぷに",
-        "fontSize": 1
+        "text": "ぷに"
       },
       "flag": {
-        "text": "フラッグ",
-        "fontSize": 1
-      }
-    },
-    "menuScreen": {
-      "freePlay": {
-        "text": "フリープレイ",
-        "fontSize": 230
-      },
-      "scoreAttack": {
-        "text": "スコアアタック",
-        "fontSize": 230
-      },
-      "config": {
-        "text": "せってい",
-        "fontSize": 100
-      },
-      "explain": {
-        "text": "あそびかた",
-        "fontSize": 100
-      },
-      "information": {
-        "text": "じょうほう",
-        "fontSize": 100
+        "text": "フラッグ"
       }
     },
     "configScreen": {
-      "title": {
-        "text": "せってい",
-        "fontSize": 230
-      },
       "language": {
-        "text": "げんご",
-        "fontSize": 90
+        "text": "げんご"
       },
       "volume": {
-        "text": "おんりょう",
-        "fontSize": 90
+        "text": "おんりょう"
       }
     },
     "explainScreen": {
-      "title": {
-        "text": "あそびかた",
-        "fontSize": 230
-      },
       "gravity": {
         "title": {
-          "text": "ぷに の じゅうりょく",
-          "fontSize": 150
+          "text": "ぷに の じゅうりょく"
         },
         "detail": {
-          "text": "ぷに ごとに じゅうりょく ほうこうが ことなります",
-          "fontSize": 115
+          "text": "ぷに ごとに じゅうりょく ほうこうが ことなります"
         }
       },
       "rotate": {
         "title": {
-          "text": "ステージ かいてん",
-          "fontSize": 150
+          "text": "ステージ かいてん"
         },
         "detail": {
-          "text": "ステージと ともに ぷにと フラッグも かいてんします",
-          "fontSize": 115
+          "text": "ステージと ともに ぷにと フラッグも かいてんします"
         }
       },
       "move": {
         "title": {
-          "text": "ぷに の いどう",
-          "fontSize": 150
+          "text": "ぷに の いどう"
         },
         "detail": {
-          "text": "ぷに ごとに いどう ほうこうが ことなります",
-          "fontSize": 115
+          "text": "ぷに ごとに いどう ほうこうが ことなります"
         }
       },
       "reset": {
         "title": {
-          "text": "ステージ リセット",
-          "fontSize": 150
+          "text": "ステージ リセット"
         },
         "detail": {
-          "text": "げんざいの ステージを やりなおします",
-          "fontSize": 115
+          "text": "げんざいの ステージを やりなおします"
         }
       },
       "step": {
         "title": {
-          "text": "そうさ かいすう",
-          "fontSize": 150
+          "text": "そうさ かいすう"
         },
         "detail": {
-          "text": "かいてん・いどう・リセットを おこなうと ぞうかします",
-          "fontSize": 115
+          "text": "かいてん・いどう・リセットを おこなうと ぞうかします"
         }
       },
       "flag": {
         "title": {
-          "text": "フラッグ",
-          "fontSize": 150
+          "text": "フラッグ"
         },
         "detail": {
-          "text": "ぷにを おなじいろの フラッグまで つれていこう!",
-          "fontSize": 115
+          "text": "ぷにを おなじいろの フラッグまで つれていこう!"
         }
       }
     },
     "informationScreen": {
-      "title": {
-        "text": "じょうほう",
-        "fontSize": 230
-      },
       "credit": {
-        "text": "+++ クレジット +++",
-        "fontSize": 120
-      },
-      "developer": {
-        "text": "かいはつしゃ",
-        "fontSize": 90
-      },
-      "sound": {
-        "text": "サウンド",
-        "fontSize": 90
-      },
-      "font": {
-        "text": "フォント",
-        "fontSize": 90
+        "text": "クレジット"
       },
       "license": {
-        "text": "+++ ライセンス +++",
-        "fontSize": 120
-      },
-      "externalSite": {
-        "text": "+++ がいぶサイト +++",
-        "fontSize": 120
+        "text": "ライセンス"
       },
       "privacyPolicy": {
-        "text": "プライバシーポリシー",
-        "fontSize": 90
-      },
-      "openPrivacyPolicy": {
-        "text": "ひらく",
-        "fontSize": 90
-      }
-    },
-    "policyScreen": {
-      "title": {
-        "text": "プライバシーポリシー",
-        "fontSize": 230
-      },
-      "body": {
-        "text": "がいぶのサイトにいどうします。\nよろしいですか?",
-        "fontSize": 150
-      },
-      "yes": {
-        "text": "はい",
-        "fontSize": 90
-      },
-      "no": {
-        "text": "いいえ",
-        "fontSize": 90
+        "text": "プライバシーポリシー"
       }
     },
     "rankingScreen": {
-      "ranking": {
-        "text": "ランキング",
-        "fontSize": 200
-      },
-      "score": {
-        "text": "スコア",
-        "fontSize": 200
-      },
-      "highScore": {
-        "text": "ハイスコア",
-        "fontSize": 200
-      },
-      "tweet": {
-        "text": "ツイート",
-        "fontSize": 100
-      },
       "input": {
-        "text": "なまえを にゅうりょく...",
-        "fontSize": 60
+        "text": "なまえを にゅうりょく..."
       },
       "notice": {
-        "text": ":: アルファベットのみ にゅうりょくできます",
-        "fontSize": 100
-      },
-      "send": {
-        "text": "そうしん",
-        "fontSize": 100
-      },
-      "back": {
-        "text": "もどる",
-        "fontSize": 100
+        "text": "* アルファベットのみ にゅうりょくできます"
       }
     }
   }

@@ -7,7 +7,6 @@ namespace Kai.Title.Presentation.View.Screen
 {
     public sealed class ExplainScreenView : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI title = default;
         [SerializeField] private TextMeshProUGUI gravityTitle = default;
         [SerializeField] private TextMeshProUGUI gravityDetail = default;
         [SerializeField] private TextMeshProUGUI rotateTitle = default;
@@ -23,7 +22,6 @@ namespace Kai.Title.Presentation.View.Screen
 
         public void Show(ExplainScreen explainScreen)
         {
-            title.SetTextData(explainScreen.title);
             gravityTitle.SetTextData(explainScreen.gravity.title);
             gravityDetail.SetTextData(explainScreen.gravity.detail);
             rotateTitle.SetTextData(explainScreen.rotate.title);

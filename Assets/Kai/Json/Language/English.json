@@ -3,216 +3,93 @@
   "data": {
     "titleScreen": {
       "title": {
-        "text": "PuniFlag",
-        "fontSize": 65
+        "text": "PuniFlag"
       },
       "subTitle": {
-        "text": "~ Take Puni to The Flag ~",
-        "fontSize": 15
-      },
-      "tap": {
-        "text": "TAP TO START",
-        "fontSize": 10
+        "text": "~ Take Puni to The Flag ~"
       },
       "puni": {
-        "text": "Puni",
-        "fontSize": 0.75
+        "text": "Puni"
       },
       "flag": {
-        "text": "Flag",
-        "fontSize": 0.75
-      }
-    },
-    "menuScreen": {
-      "freePlay": {
-        "text": "FREE PLAY",
-        "fontSize": 150
-      },
-      "scoreAttack": {
-        "text": "SCORE ATTACK",
-        "fontSize": 150
-      },
-      "config": {
-        "text": "CONFIG",
-        "fontSize": 70
-      },
-      "explain": {
-        "text": "HOW TO PLAY",
-        "fontSize": 70
-      },
-      "information": {
-        "text": "INFORMATION",
-        "fontSize": 70
+        "text": "Flag"
       }
     },
     "configScreen": {
-      "title": {
-        "text": "CONFIG",
-        "fontSize": 150
-      },
       "language": {
-        "text": "Language",
-        "fontSize": 60
+        "text": "Language"
       },
       "volume": {
-        "text": "Sound Volume",
-        "fontSize": 60
+        "text": "Sound Volume"
       }
     },
     "explainScreen": {
-      "title": {
-        "text": "HOW TO PLAY",
-        "fontSize": 150
-      },
       "gravity": {
         "title": {
-          "text": "Puni's Gravity",
-          "fontSize": 120
+          "text": "Puni's Gravity"
         },
         "detail": {
-          "text": "The direction of gravity is different for each Puni.",
-          "fontSize": 85
+          "text": "The direction of gravity is different for each Puni."
         }
       },
       "rotate": {
         "title": {
-          "text": "Stage Rotation",
-          "fontSize": 120
+          "text": "Stage Rotation"
         },
         "detail": {
-          "text": "Puni and the flag rotate with the stage.",
-          "fontSize": 85
+          "text": "Puni and the flag rotate with the stage."
         }
       },
       "move": {
         "title": {
-          "text": "Puni's Movement",
-          "fontSize": 120
+          "text": "Puni's Movement"
         },
         "detail": {
-          "text": "The direction of movement is different for each Puni.",
-          "fontSize": 85
+          "text": "The direction of movement is different for each Puni."
         }
       },
       "reset": {
         "title": {
-          "text": "Stage Reset",
-          "fontSize": 120
+          "text": "Stage Reset"
         },
         "detail": {
-          "text": "Redo the current stage.",
-          "fontSize": 85
+          "text": "Redo the current stage."
         }
       },
       "step": {
         "title": {
-          "text": "Number of Operations",
-          "fontSize": 120
+          "text": "Number of Operations"
         },
         "detail": {
-          "text": "Increases when rotation, movement, or reset.",
-          "fontSize": 85
+          "text": "Increases when rotation, movement, or reset."
         }
       },
       "flag": {
         "title": {
-          "text": "The Flag",
-          "fontSize": 120
+          "text": "The Flag"
         },
         "detail": {
-          "text": "Let's take Puni to the flag of the same color!",
-          "fontSize": 85
+          "text": "Let's take Puni to the flag of the same color!"
         }
       }
     },
     "informationScreen": {
-      "title": {
-        "text": "INFORMATION",
-        "fontSize": 150
-      },
       "credit": {
-        "text": "+++ CREDIT +++",
-        "fontSize": 100
-      },
-      "developer": {
-        "text": "Developer",
-        "fontSize": 60
-      },
-      "sound": {
-        "text": "Sound",
-        "fontSize": 60
-      },
-      "font": {
-        "text": "Font",
-        "fontSize": 60
+        "text": "Credit"
       },
       "license": {
-        "text": "+++ LICENSE +++",
-        "fontSize": 100
-      },
-      "externalSite": {
-        "text": "+++ EXTERNAL SITE +++",
-        "fontSize": 100
+        "text": "License"
       },
       "privacyPolicy": {
-        "text": "Privacy Policy",
-        "fontSize": 60
-      },
-      "openPrivacyPolicy": {
-        "text": "Open",
-        "fontSize": 60
-      }
-    },
-    "policyScreen": {
-      "title": {
-        "text": "Privacy Policy",
-        "fontSize": 150
-      },
-      "body": {
-        "text": "Go to an external site.\nIs it OK?",
-        "fontSize": 120
-      },
-      "yes": {
-        "text": "YES",
-        "fontSize": 60
-      },
-      "no": {
-        "text": "NO",
-        "fontSize": 60
+        "text": "Privacy Policy"
       }
     },
     "rankingScreen": {
-      "ranking": {
-        "text": "RANKING",
-        "fontSize": 125
-      },
-      "score": {
-        "text": "SCORE",
-        "fontSize": 125
-      },
-      "highScore": {
-        "text": "HIGH\nSCORE",
-        "fontSize": 125
-      },
-      "tweet": {
-        "text": "TWEET",
-        "fontSize": 75
-      },
       "input": {
-        "text": "ENTER NAME...",
-        "fontSize": 60
+        "text": "ENTER NAME..."
       },
       "notice": {
-        "text": ":: Only alphabets can be entered.",
-        "fontSize": 75
-      },
-      "send": {
-        "text": "SEND",
-        "fontSize": 75
-      },
-      "back": {
-        "text": "BACK",
-        "fontSize": 75
+        "text": "* Only alphabets can be entered."
       }
     }
   }
