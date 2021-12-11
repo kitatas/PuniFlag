@@ -22,15 +22,25 @@ namespace Kai.Game.Domain.UseCase
             switch (_colorType)
             {
                 case ColorType.Red:
-                    var redValue = GetMoveValue(inputType) + _transform.position.y;
-                    return _transform.DOMoveY(redValue, StageObjectConfig.MOVE_SPEED);
+                {
+                    var value = GetMoveValue(inputType) + _transform.position.y;
+                    return _transform.DOMoveY(value, StageObjectConfig.MOVE_SPEED);
+                }
                 case ColorType.Green:
-                    var greenValue = -GetMoveValue(inputType) + _transform.position.y;
-                    return _transform.DOMoveY(greenValue, StageObjectConfig.MOVE_SPEED);
+                {
+                    var value = -GetMoveValue(inputType) + _transform.position.y;
+                    return _transform.DOMoveY(value, StageObjectConfig.MOVE_SPEED);   
+                }
                 case ColorType.Blue:
-                    var blueValue = GetMoveValue(inputType) + _transform.position.x;
-                    return _transform.DOMoveX(blueValue, StageObjectConfig.MOVE_SPEED);
-                case ColorType.None:
+                {
+                    var value = GetMoveValue(inputType) + _transform.position.x;
+                    return _transform.DOMoveX(value, StageObjectConfig.MOVE_SPEED);
+                }
+                case ColorType.Purple:
+                {
+                    var value = -GetMoveValue(inputType) + _transform.position.x;
+                    return _transform.DOMoveX(value, StageObjectConfig.MOVE_SPEED);
+                }
                 default:
                     throw new ArgumentOutOfRangeException();
             }

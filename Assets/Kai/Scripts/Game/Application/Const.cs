@@ -13,6 +13,7 @@ namespace Kai.Game.Application
         public static readonly Quaternion rotateRed = Quaternion.Euler(new Vector3(0.0f, 0.0f, 90.0f));
         public static readonly Quaternion rotateGreen = Quaternion.Euler(new Vector3(0.0f, 0.0f, -90.0f));
         public static readonly Quaternion rotateBlue = Quaternion.Euler(new Vector3(0.0f, 0.0f, 0.0f));
+        public static readonly Quaternion rotatePurple = Quaternion.Euler(new Vector3(0.0f, 0.0f, 180.0f));
         public static readonly Vector3[] rotateVector = new Vector3[4]
         {
             new Vector3(0.0f, 0.0f, 0.0f),

@@ -66,19 +66,15 @@ namespace Kai.Game.Factory
 
         private static Quaternion GetQuaternion(ColorType colorType)
         {
-            switch (colorType)
+            return colorType switch
             {
-                case ColorType.None:
-                    return StageObjectConfig.rotateDefault;
-                case ColorType.Red:
-                    return StageObjectConfig.rotateRed;
-                case ColorType.Green:
-                    return StageObjectConfig.rotateGreen;
-                case ColorType.Blue:
-                    return StageObjectConfig.rotateBlue;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(colorType), colorType, null);
-            }
+                ColorType.None   => StageObjectConfig.rotateDefault,
+                ColorType.Red    => StageObjectConfig.rotateRed,
+                ColorType.Green  => StageObjectConfig.rotateGreen,
+                ColorType.Blue   => StageObjectConfig.rotateBlue,
+                ColorType.Purple => StageObjectConfig.rotatePurple,
+                _ => throw new ArgumentOutOfRangeException(nameof(colorType), colorType, null)
+            };
         }
     }
 }
