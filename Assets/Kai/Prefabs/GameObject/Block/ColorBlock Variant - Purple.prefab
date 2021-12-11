@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3193884119883670833
+--- !u!1001 &8738576618093825363
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -76,7 +76,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -8857338293929048325, guid: 009cd0479c3b440ccb91beb5ffadde0a,
+      objectReference: {fileID: 7791996660352987282, guid: 009cd0479c3b440ccb91beb5ffadde0a,
         type: 3}
     - target: {fileID: 889369014154362312, guid: 5eebac5a5e4694b3fa0f5b5987743fda,
         type: 3}
@@ -96,12 +96,12 @@ PrefabInstance:
     - target: {fileID: 6116669612745439207, guid: 5eebac5a5e4694b3fa0f5b5987743fda,
         type: 3}
       propertyPath: colorType
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6343225149184780635, guid: 5eebac5a5e4694b3fa0f5b5987743fda,
         type: 3}
       propertyPath: m_Name
-      value: ColorBlock Variant - Green
+      value: ColorBlock Variant - Purple
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5eebac5a5e4694b3fa0f5b5987743fda, type: 3}

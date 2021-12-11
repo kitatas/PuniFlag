@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2851913256728388944
+--- !u!1001 &784165616411202197
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -64,29 +64,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6116305697814251390, guid: 636d52c349c30460d8db0680c5b707ca,
         type: 3}
-      propertyPath: goalType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6116305697814251390, guid: 636d52c349c30460d8db0680c5b707ca,
-        type: 3}
       propertyPath: colorType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7051845588385788641, guid: 636d52c349c30460d8db0680c5b707ca,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 7051845588385788641, guid: 636d52c349c30460d8db0680c5b707ca,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 16
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7051845588385788641, guid: 636d52c349c30460d8db0680c5b707ca,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -315998952061291969, guid: 009cd0479c3b440ccb91beb5ffadde0a,
+      objectReference: {fileID: -1128204485355713389, guid: 009cd0479c3b440ccb91beb5ffadde0a,
         type: 3}
     - target: {fileID: 7051845588385788641, guid: 636d52c349c30460d8db0680c5b707ca,
         type: 3}
@@ -96,7 +81,7 @@ PrefabInstance:
     - target: {fileID: 7677271560688376802, guid: 636d52c349c30460d8db0680c5b707ca,
         type: 3}
       propertyPath: m_Name
-      value: Flag Variant - Blue
+      value: Flag Variant - Purple
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 636d52c349c30460d8db0680c5b707ca, type: 3}
