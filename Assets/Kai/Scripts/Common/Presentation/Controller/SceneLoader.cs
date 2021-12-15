@@ -14,18 +14,20 @@ namespace Kai.Common.Presentation.Controller
         private readonly CancellationTokenSource _tokenSource;
         private readonly ZenjectSceneLoader _zenjectSceneLoader;
         private readonly TransitionMaskView _transitionMaskView;
+        private readonly IGameTypeUseCase _gameTypeUseCase;
         private readonly StepCountView _stepCountView;
         private readonly ILevelUseCase _levelUseCase;
         private readonly LevelView _levelView;
         private readonly IButtonContainerUseCase _buttonContainerUseCase;
 
         public SceneLoader(ZenjectSceneLoader zenjectSceneLoader, TransitionMaskView transitionMaskView,
-            StepCountView stepCountView,
+            IGameTypeUseCase gameTypeUseCase, StepCountView stepCountView,
             ILevelUseCase levelUseCase, LevelView levelView, IButtonContainerUseCase buttonContainerUseCase)
         {
             _tokenSource = new CancellationTokenSource();
             _zenjectSceneLoader = zenjectSceneLoader;
             _transitionMaskView = transitionMaskView;
+            _gameTypeUseCase = gameTypeUseCase;
             _stepCountView = stepCountView;
             _levelUseCase = levelUseCase;
             _levelView = levelView;
@@ -56,6 +58,7 @@ namespace Kai.Common.Presentation.Controller
 
         private void LoadScoreAttack(SceneName sceneName, LoadType loadType)
         {
+            _gameTypeUseCase.SetGameType(GameType.ScoreAttack);
             _levelView.SetMaxStageCount(GameConfig.STAGE_COUNT);
             _levelView.SetPlayLevelUpSe(true);
 
@@ -89,6 +92,7 @@ namespace Kai.Common.Presentation.Controller
 
         private void LoadFreePlay(SceneName sceneName, LoadType loadType, int level)
         {
+            _gameTypeUseCase.SetGameType(GameType.FreePlay);
             _levelView.SetMaxStageCount(GameConfig.FREE_PLAY_COUNT);
 
             switch (loadType)

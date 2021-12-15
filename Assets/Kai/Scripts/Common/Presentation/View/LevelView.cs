@@ -17,6 +17,7 @@ namespace Kai.Common.Presentation.View
         [SerializeField] private TextMeshProUGUI stageMaxLevelText = default;
         [SerializeField] private TextMeshProUGUI slash = default;
 
+        private string _digit;
         private bool _isPlayLevelUpSe;
         private CancellationToken _token;
         private SeController _seController;
@@ -30,7 +31,7 @@ namespace Kai.Common.Presentation.View
 
         public void SetMaxStageCount(int value)
         {
-            stageMaxLevelText.text = $"{value:00}";
+            stageMaxLevelText.text = $"{value.ToString()}";
         }
 
         public void SetPlayLevelUpSe(bool value)
@@ -54,7 +55,20 @@ namespace Kai.Common.Presentation.View
                 _seController.PlaySe(SeType.LevelUp);
             }
 
-            stageLevelText.text = $"{level + 1:00}";
+            stageLevelText.text = $"{(level + 1).ToString(_digit)}";
+        }
+
+        public void UpdateDigit(GameType gameType)
+        {
+            _digit = gameType switch
+            {
+                GameType.None => "D2",
+                GameType.ScoreAttack => "D2",
+                GameType.FreePlay => "D3",
+                _ => throw new ArgumentOutOfRangeException(nameof(gameType), gameType, null)
+            };
+
+            stageLevelText.text = $"{1.ToString(_digit)}";
         }
 
         public void ShowClear()

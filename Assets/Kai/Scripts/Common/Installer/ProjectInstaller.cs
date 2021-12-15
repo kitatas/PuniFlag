@@ -32,6 +32,10 @@ namespace Kai.Common.Installer
             #region Entity
 
             Container
+                .BindInterfacesTo<GameTypeEntity>()
+                .AsCached();
+
+            Container
                 .BindInterfacesTo<LevelEntity>()
                 .AsSingle();
 
@@ -42,6 +46,10 @@ namespace Kai.Common.Installer
             #endregion
 
             #region Model
+
+            Container
+                .BindInterfacesTo<GameTypeModel>()
+                .AsCached();
 
             Container
                 .BindInterfacesTo<LevelModel>()
@@ -74,6 +82,10 @@ namespace Kai.Common.Installer
             Container
                 .BindInterfacesTo<ContainerUseCase>()
                 .AsSingle();
+
+            Container
+                .BindInterfacesTo<GameTypeUseCase>()
+                .AsCached();
 
             Container
                 .BindInterfacesTo<LevelUseCase>()
