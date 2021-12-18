@@ -6,11 +6,11 @@ namespace Kai.Common.Data.Entity
     public sealed class LanguageDataEntity
     {
         public LanguageType type;
-        public LanguageData data;
+        public LanguageScreenData data;
     }
 
     [Serializable]
-    public sealed class LanguageData
+    public sealed class LanguageScreenData
     {
         public TitleScreen titleScreen;
         public ConfigScreen configScreen;

@@ -3,6 +3,7 @@ using Kai.Common.Data.Entity;
 using Kai.Common.Domain.Repository.Interface;
 using Kai.Title.Domain.UseCase.Interface;
 using UniRx;
+using UnityEngine;
 
 namespace Kai.Title.Domain.UseCase
 {
@@ -19,7 +20,9 @@ namespace Kai.Title.Domain.UseCase
 
         public IReadOnlyReactiveProperty<LanguageType> language => _language;
 
-        public LanguageData GetLanguageData(LanguageType languageType) => _languageRepository.Find(languageType);
+        public LanguageScreenData GetLanguageData(LanguageType languageType) => _languageRepository.Find(languageType);
+
+        public Sprite GetTitleLogo(LanguageType languageType) => _languageRepository.GetLogo(languageType);
 
         public void SetLanguage(LanguageType languageType) => _language.Value = languageType;
     }

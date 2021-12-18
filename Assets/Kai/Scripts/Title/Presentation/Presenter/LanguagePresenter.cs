@@ -13,6 +13,9 @@ namespace Kai.Title.Presentation.Presenter
                 {
                     var data = languageUseCase.GetLanguageData(x);
                     languageView.Show(data);
+
+                    var logo = languageUseCase.GetTitleLogo(x);
+                    languageView.SetLogo(logo);
                 })
                 .AddTo(languageView);
         }

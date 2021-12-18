@@ -1,6 +1,7 @@
 using Kai.Common.Data.Entity;
 using Kai.Title.Presentation.View.Screen;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Kai.Title.Presentation.View
 {
@@ -10,13 +11,21 @@ namespace Kai.Title.Presentation.View
         [SerializeField] private ConfigScreenView configScreenView = default;
         [SerializeField] private ExplainScreenView explainScreenView = default;
         [SerializeField] private InformationScreenView informationScreenView = default;
+        [SerializeField] private Image titleLogo = default;
+        [SerializeField] private Image titleLogoShadow = default;
 
-        public void Show(LanguageData languageData)
+        public void Show(LanguageScreenData languageScreenData)
         {
-            titleScreenView.Show(languageData.titleScreen);
-            configScreenView.Show(languageData.configScreen);
-            explainScreenView.Show(languageData.explainScreen);
-            informationScreenView.Show(languageData.informationScreen);
+            titleScreenView.Show(languageScreenData.titleScreen);
+            configScreenView.Show(languageScreenData.configScreen);
+            explainScreenView.Show(languageScreenData.explainScreen);
+            informationScreenView.Show(languageScreenData.informationScreen);
+        }
+
+        public void SetLogo(Sprite logo)
+        {
+            titleLogo.sprite = logo;
+            titleLogoShadow.sprite = logo;
         }
     }
 }

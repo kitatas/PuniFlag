@@ -7,16 +7,16 @@ namespace Kai.Result.Domain.UseCase
 {
     public sealed class RankingScreenUseCase : IRankingScreenUseCase
     {
-        private readonly LanguageData _languageData;
+        private readonly LanguageScreenData _languageScreenData;
 
         public RankingScreenUseCase(ISaveDataRepository saveDataRepository, ILanguageRepository languageRepository)
         {
             language = saveDataRepository.Load().language;
-            _languageData = languageRepository.Find(language);
+            _languageScreenData = languageRepository.Find(language);
         }
 
         public LanguageType language { get; }
 
-        public RankingScreen rankingScreen => _languageData.rankingScreen;
+        public RankingScreen rankingScreen => _languageScreenData.rankingScreen;
     }
 }

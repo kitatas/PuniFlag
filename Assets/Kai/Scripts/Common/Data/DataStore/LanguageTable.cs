@@ -6,7 +6,8 @@ namespace Kai.Common.Data.DataStore
     [CreateAssetMenu(fileName = "LanguageTable", menuName = "DataTable/LanguageTable", order = 0)]
     public sealed class LanguageTable : ScriptableObject
     {
-        [SerializeField] private List<TextAsset> languageDataList = default;
-        public IEnumerable<TextAsset> languageData => languageDataList;
+        [SerializeField] private List<LanguageData> languageDataList = default;
+        
+        public List<LanguageData> languageData => languageDataList;
     }
 }
