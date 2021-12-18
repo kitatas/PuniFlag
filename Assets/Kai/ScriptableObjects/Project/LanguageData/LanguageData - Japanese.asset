@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b382a823eec4696a094a17d6f31fe22, type: 3}
-  m_Name: LanguageTable
+  m_Script: {fileID: 11500000, guid: 1b10bf2ab7234c1b96f94983cb179ce1, type: 3}
+  m_Name: LanguageData - Japanese
   m_EditorClassIdentifier: 
-  languageDataList:
-  - {fileID: 11400000, guid: 7d2696b9149244b1dac3177a0cd20597, type: 2}
-  - {fileID: 11400000, guid: 5bdd2530874674afc9710f1e93764ee5, type: 2}
+  type: 2
+  json: {fileID: 4900000, guid: 31a6939bfc85443a7a5748ff4cecc015, type: 3}
+  logo: {fileID: 9020353521477053924, guid: e70d1a83d733b4c75b8ef39a3db87448, type: 3}
