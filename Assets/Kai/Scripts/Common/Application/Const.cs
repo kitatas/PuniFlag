@@ -12,5 +12,9 @@ namespace Kai.Common.Application
     {
         public const int STAGE_COUNT = 10;
         public const int FREE_PLAY_COUNT = 100;
+
+        public const string GAME_ID = "puni_flag";
+        public const string HASH_TAG1 = "unityroom";
+        public const string HASH_TAG2 = "unity1week";
     }
 }

@@ -12,11 +12,12 @@ namespace Kai.Title.Presentation.Controller
     public sealed class ClearDataController : MonoBehaviour
     {
         [SerializeField] private List<StageButtonView> stageButtonViews = default;
+        [SerializeField] private TweetButtonView tweetButtonView = default;
         [SerializeField] private GameObject red = default;
         [SerializeField] private GameObject green = default;
 
         [Inject]
-        private void Construct(IStageDataUseCase stageDataUseCase, IClearDataUseCase clearDataUseCase, SceneLoader sceneLoader)
+        private void Construct(IStageDataUseCase stageDataUseCase, IClearDataUseCase clearDataUseCase, ISaveLanguageUseCase languageUseCase, SceneLoader sceneLoader)
         {
             for (int i = 0; i < clearDataUseCase.clearData.Length; i++)
             {
@@ -29,10 +30,13 @@ namespace Kai.Title.Presentation.Controller
                 });
             }
 
+            var freePlayClearCount = clearDataUseCase.clearData
+                .Count(x => x);
+
+            tweetButtonView.Init(languageUseCase, freePlayClearCount);
+
             // FreePlay全クリア
-            var isFreePlayClear = clearDataUseCase.clearData
-                .Count(x => x)
-                .Equals(GameConfig.FREE_PLAY_COUNT);
+            var isFreePlayClear = freePlayClearCount.Equals(GameConfig.FREE_PLAY_COUNT);
             red.SetActive(isFreePlayClear);
 
             // ScoreAttack全クリア
