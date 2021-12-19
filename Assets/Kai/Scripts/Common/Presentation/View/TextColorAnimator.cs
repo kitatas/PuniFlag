@@ -7,7 +7,17 @@ namespace Kai.Common.Presentation.View
     [RequireComponent(typeof(TextMeshProUGUI))]
     public sealed class TextColorAnimator : MonoBehaviour
     {
+        [SerializeField] private bool isPlay = false;
+
         private void Start()
+        {
+            if (isPlay)
+            {
+                Play();
+            }
+        }
+
+        public void Play()
         {
             var highlightColor = new Color(1.0f, 1.0f, 0.8f);
 

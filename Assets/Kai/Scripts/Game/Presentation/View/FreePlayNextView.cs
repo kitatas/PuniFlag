@@ -5,6 +5,7 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Kai.Common.Application;
 using Kai.Common.Presentation.Controller;
+using Kai.Common.Presentation.View;
 using UnityEngine;
 using Zenject;
 
@@ -12,8 +13,10 @@ namespace Kai.Game.Presentation.View
 {
     public sealed class FreePlayNextView : MonoBehaviour
     {
+        [SerializeField] private TextColorAnimator textColorAnimator = default;
         [SerializeField] private RectTransform leftSide = default;
         [SerializeField] private RectTransform rightSide = default;
+        [SerializeField] private RectTransform clearText = default;
         [SerializeField] private NextButtonView reload = default;
         [SerializeField] private NextButtonView loadNext = default;
         [SerializeField] private NextButtonView loadTitle = default;
@@ -46,6 +49,8 @@ namespace Kai.Game.Presentation.View
 
         public async UniTaskVoid ShowAsync(CancellationToken token)
         {
+            textColorAnimator.Play();
+
             var delayTime = CommonViewConfig.FADE_TIME - 0.1f;
             _seController.DelayPlaySeAsync(SeType.Transition, delayTime, token).Forget();
 
@@ -59,6 +64,13 @@ namespace Kai.Game.Presentation.View
                     .SetEase(Ease.InQuart)
                     .WithCancellation(token)
             );
+
+            await UniTask.Delay(TimeSpan.FromSeconds(CommonViewConfig.FADE_TIME), cancellationToken: token);
+
+            await clearText
+                .DOAnchorPosY(35.0f, CommonViewConfig.FADE_TIME)
+                .SetEase(Ease.Linear)
+                .WithCancellation(token);
 
             await UniTask.Delay(TimeSpan.FromSeconds(CommonViewConfig.FADE_TIME), cancellationToken: token);
 
