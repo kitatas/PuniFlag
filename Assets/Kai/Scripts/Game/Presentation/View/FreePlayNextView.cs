@@ -76,6 +76,7 @@ namespace Kai.Game.Presentation.View
 
             foreach (var nextButtonView in _nextButtonViews)
             {
+                _seController.PlaySe(SeType.PopButton);
                 nextButtonView.SetInteractable(true);
                 nextButtonView.FadeOut();
                 await UniTask.Delay(TimeSpan.FromSeconds(0.1f), cancellationToken: token);

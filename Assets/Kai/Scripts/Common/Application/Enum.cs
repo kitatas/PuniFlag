@@ -15,6 +15,7 @@ namespace Kai.Common.Application
         StageClear = 3,
         LevelUp = 4,
         GameClear = 5,
+        PopButton = 6,
     }
 
     public enum ButtonType
