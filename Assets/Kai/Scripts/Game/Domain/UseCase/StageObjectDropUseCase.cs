@@ -7,7 +7,7 @@ namespace Kai.Game.Domain.UseCase
 {
     public sealed class StageObjectDropUseCase : IStageObjectDropUseCase
     {
-        private const float _gravityRate = 49.0f;
+        private const float _gravityRate = 40.0f;
         private readonly Rigidbody2D _rigidbody2D;
 
         public StageObjectDropUseCase(Rigidbody2D rigidbody2D)
@@ -17,7 +17,8 @@ namespace Kai.Game.Domain.UseCase
 
         public void UpdateGravity(ColorType colorType)
         {
-            _rigidbody2D.AddForce(GetGravity(colorType), ForceMode2D.Force);
+            var gravity = GetGravityDirection(colorType) * _gravityRate;
+            _rigidbody2D.AddForce(gravity, ForceMode2D.Force);
         }
 
         public void ResetVelocity()
@@ -25,14 +26,14 @@ namespace Kai.Game.Domain.UseCase
             _rigidbody2D.velocity = Vector2.zero;
         }
 
-        private static Vector3 GetGravity(ColorType colorType)
+        private static Vector2 GetGravityDirection(ColorType colorType)
         {
             return colorType switch
             {
-                ColorType.Red    => _gravityRate * Vector3.right,
-                ColorType.Green  => _gravityRate * Vector3.left,
-                ColorType.Blue   => _gravityRate * Vector3.down,
-                ColorType.Purple => _gravityRate * Vector3.up,
+                ColorType.Red    => Vector2.right,
+                ColorType.Green  => Vector2.left,
+                ColorType.Blue   => Vector2.down,
+                ColorType.Purple => Vector2.up,
                 _ => throw new ArgumentOutOfRangeException(nameof(colorType), colorType, null)
             };
         }
