@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6f76889dbbc4354a91d01e119adbf0c, type: 3}
   m_Name: StageData - FreePlay - 023
   m_EditorClassIdentifier: 
-  lockTexture: {fileID: 3424754470180187727, guid: aa2fad912cb1a4c028311128b1f523c5,
+  lockTexture: {fileID: 2567148177346786509, guid: aa2fad912cb1a4c028311128b1f523c5,
     type: 3}
-  clearTexture: {fileID: 6020987189386353431, guid: aa2fad912cb1a4c028311128b1f523c5,
+  clearTexture: {fileID: 4417209171942462586, guid: aa2fad912cb1a4c028311128b1f523c5,
     type: 3}
   stageJsonData: {fileID: 4900000, guid: 7a0bc096378244a59ab3ae728fc9d463, type: 3}
