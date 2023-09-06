@@ -1,6 +1,7 @@
 using Kai.Common.Application;
 using Kai.Common.Data.Entity;
 using Kai.Common.Domain.Repository.Interface;
+using Kai.Game.Application;
 using UnityEngine;
 
 namespace Kai.Common.Domain.Repository
@@ -16,6 +17,7 @@ namespace Kai.Common.Domain.Repository
                 bgmVolume = 0.5f,
                 seVolume = 0.5f,
                 language = LanguageType.English,
+                iconColor = ColorType.Blue,
                 rankData = new bool[GameConfig.STAGE_COUNT],
                 clearData = new bool[GameConfig.FREE_PLAY_COUNT],
             };
