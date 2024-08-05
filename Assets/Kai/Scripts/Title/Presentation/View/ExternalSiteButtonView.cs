@@ -1,3 +1,4 @@
+using Kai.Common.Application;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,13 +12,10 @@ namespace Kai.Title.Presentation.View
 
         private void Start()
         {
+            var url = $"https://kitatas.github.io/games/{GameConfig.GAME_ID}/{detailPath}/";
             GetComponent<Button>()
                 .OnClickAsObservable()
-                .Subscribe(_ =>
-                {
-                    var url = $"https://kitatas.github.io/PuniFlag/{detailPath}/";
-                    Application.OpenURL(url);
-                })
+                .Subscribe(_ => Application.OpenURL(url))
                 .AddTo(this);
         }
     }
