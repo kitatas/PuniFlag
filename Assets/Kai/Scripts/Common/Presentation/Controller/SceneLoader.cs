@@ -144,7 +144,7 @@ namespace Kai.Common.Presentation.Controller
             {
                 container.BindInstance(level);
                 container.BindInstance(gameType);
-            });
+            }).ToUniTask(cancellationToken: token);
 
             // トランジションが完了するまでボタンを押下させない
             _buttonContainerUseCase.ActivateButton(false);
