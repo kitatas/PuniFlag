@@ -9,7 +9,7 @@ namespace Kai.Common.Data.Container
     {
         private ButtonActivator[] _buttonActivators;
 
-        private IEnumerable<ButtonActivator> buttonActivators => _buttonActivators ??= Object.FindObjectsOfType<ButtonActivator>();
+        private IEnumerable<ButtonActivator> buttonActivators => _buttonActivators ??= Object.FindObjectsByType<ButtonActivator>(FindObjectsSortMode.None);
 
         public void ActivateAll(bool value)
         {

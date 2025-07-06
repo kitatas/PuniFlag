@@ -14,7 +14,7 @@ namespace Kai.Common.Presentation.Controller
                 .Where(_ => canvas.worldCamera == null)
                 .Subscribe(_ =>
                 {
-                    canvas.worldCamera = FindObjectOfType<Camera>();
+                    canvas.worldCamera = FindFirstObjectByType<Camera>();
                     canvas.sortingLayerName = "UI";
                     canvas.sortingOrder = 999;
                 })
