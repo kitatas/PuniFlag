@@ -17,4 +17,10 @@ namespace Kai.Common.Application
         public const string HASH_TAG1 = "unityroom";
         public const string HASH_TAG2 = "unity1week";
     }
+
+    public sealed class VersionConfig
+    {
+        public const int MAJOR_VERSION = 1;
+        public const int MINOR_VERSION = 3;
+    }
 }
