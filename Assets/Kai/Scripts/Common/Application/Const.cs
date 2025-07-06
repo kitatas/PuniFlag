@@ -21,6 +21,6 @@ namespace Kai.Common.Application
     public sealed class VersionConfig
     {
         public const int MAJOR_VERSION = 1;
-        public const int MINOR_VERSION = 3;
+        public const int MINOR_VERSION = 4;
     }
 }
